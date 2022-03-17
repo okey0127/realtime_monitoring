@@ -2,13 +2,24 @@
 <html>
     <head>
         <meta charset=""utf-8" />
-    <title> Video Monitoring system test</title>
+    <title> Video monitoring system test</title>
     </head>
-
+    <button type="button" onclick="alert('Hello World!')">Data log</button> <font size="1em"> 지난 알림 및 데이터를 확인할 수 있습니다. </font>
     <body>
-        <strong>Video</strong>
-        <h1>Part No.1</h1>
-        <img src="http://172.30.1.57:8080/video"> <img src="http://172.30.1.57:8080/video">
-    </body>
-
+	<div style="background-color:lightgrey; text-align:center">
+		<h2>Video Monitoring System Test</h2>
+	</div>
+	
+	<div style="text-align:center">
+		<h3>Part No.1</h3>
+		<td>
+			<img src="http://172.30.1.57:8080/video" alt="video1" style="width:40%">
+			<img style="width:5%">
+			<img src="http://172.30.1.57:8080/video" alt="video2" style="width:40%">
+		</td>
+	</div>
+    </body>    
 </html>
+
+<!-- 스트리밍 서버 주소 "http://172.30.1.57:8080/video" -->
+<!-- 테스트 이미지 주소 "test_img.png" -->
