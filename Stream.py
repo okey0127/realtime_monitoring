@@ -80,12 +80,21 @@ def captureFrames():
         ret, frame = cap.read()
         if not ret:
             break
+        
+        #calculates
+        
         #filter
         time=str(datetime.datetime.now())
+        
         cv2.putText(frame,time,L_time,font,fontscale,white,thickness)
         cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness)
         cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness)
-
+        cv2.putText(img,'Temperature',L_tempT,font,fontscale,white,thickness)
+        cv2.putText(img,str(temp),L_temp,font,fontscale,white,thickness)
+        cv2.putText(img,'RPM',L_RPMT,font,fontscale,white,thickness)
+        cv2.putText(img,'Vibration',L_VibT,font,fontscale,white,thickness)
+        cv2.putText(img,str(VibV),L_Vib,font,fontscale,white,thickness)
+        
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
