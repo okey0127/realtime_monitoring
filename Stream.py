@@ -1,5 +1,4 @@
-#해당 방법은 mjpg streamer로 송출되는 필터 미적용 영상을 웹에서(포트번호: 8000) 
-#python으로 가져와 필터를 적용하여 다른 포트로(8080) 송출하는 방법임
+# edit: 22.03.24
 
 import cv2
 import time
@@ -11,6 +10,22 @@ import math
 import time
 import logging
 import RPi.GPIO as GPIO
+
+#ADC module import
+import board
+import busio
+import adafruit_ads1x15.ads1115 as ADS
+from adafruit_ads1x15.analog_in import AnalogIn
+
+# Create the I2C bus
+i2c = busio.I2C(board.SCL, board.SDA)
+                                                                   
+# Create the ADC object using the I2C bus
+ads = ADS.ADS1115(i2c)
+
+# Create single-ended input on channel 0
+V0 = AnalogIn(ads, ADS.P0)
+V1 = AnalogIn(ads, ADS.P1)
 
 #initial value
 img_w = 640
@@ -47,6 +62,7 @@ day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
 fontscale =1
+
 # Image frame sent to the Flask object
 global video_frame
 video_frame = None
@@ -82,18 +98,24 @@ def captureFrames():
             break
         
         #calculates
-        
+        time=str(datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S'))
+        tempR=1000/(1-(V0.value)/(26555))
+        temp=round(706.6*(tempR**(-0.1541))-146,2)
+        VibV=V1.value/26555*3.3
+        VibV=round(abs(0.58-round(VibV,2)),2)
         #filter
-        time=str(datetime.datetime.now())
+        cv2.putText(frame,time,L_time,font,fontscale,white,thickness,cv2.LINE_AA)
         
-        cv2.putText(frame,time,L_time,font,fontscale,white,thickness)
-        cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness)
-        cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness)
-        cv2.putText(img,'Temperature',L_tempT,font,fontscale,white,thickness)
-        cv2.putText(img,str(temp),L_temp,font,fontscale,white,thickness)
-        cv2.putText(img,'RPM',L_RPMT,font,fontscale,white,thickness)
-        cv2.putText(img,'Vibration',L_VibT,font,fontscale,white,thickness)
-        cv2.putText(img,str(VibV),L_Vib,font,fontscale,white,thickness)
+        cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness,cv2.LINE_AA)
+        cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness,cv2.LINE_AA)
+        
+        cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness,cv2.LINE_AA)
+        cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness,cv2.LINE_AA)
+        
+        cv2.putText(frame,'RPM',L_RPMT,font,fontscale,white,thickness,cv2.LINE_AA)
+        
+        cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
+        cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
         
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
@@ -140,3 +162,4 @@ if __name__ == '__main__':
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
     # the host machine's localhost and is discoverable by other machines on the same network 
     app.run(host="0.0.0.0", port="8080")
+
