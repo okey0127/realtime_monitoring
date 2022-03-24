@@ -17,7 +17,7 @@ while True:
 	#print(product_number)
 	#time.sleep(1)
 	#if cv2.waitKey(1) & 0xFF == 27:
-    #		break
+    #break
     if GPIO.input(proximity_pin) == GPIO.HIGH:
         print('detect!')
     time.sleep(0.1)
