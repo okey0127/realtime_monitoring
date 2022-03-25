@@ -154,10 +154,13 @@ def captureFrames():
                     
         #calculates
         time=str(datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S'))
+        
         tempR=1000/(1-(V0.value)/(26555))
         temp=round(706.6*(tempR**(-0.1541))-146,2)
+        
         VibV=V1.value/26555*3.3
         VibV=round(abs(0.58-round(VibV,2)),2)
+        
         #filter
         cv2.putText(frame,time,L_time,font,fontscale,white,thickness,cv2.LINE_AA)
         
@@ -176,7 +179,6 @@ def captureFrames():
         global n
         
         if temp>50 and n%5==0:
-        
            n=n+1
            check=check+1
            logger1.warning('Too high Temp')
@@ -192,8 +194,8 @@ def captureFrames():
             check=check+1
             n=n+1
             if n%100==0:
-                logger1.info(f'Temp : {temp} RPM : {RPM}')
-                logger2.info(f'Temp : {temp} RPM : {RPM}')
+                logger1.info(f'{"Production":%12s} : {product_number:>4} {"Temperature":%12s} : {temp:>4} \n {"RPM":%12s} : {RPM:>4} {"Vibration":%12s} : {VibV:>4}')
+                logger2.info(f'{"Production":%12s} : {product_number:>4} {"Temperature":%12s} : {temp:>4} \n {"RPM":%12s} : {RPM:>4} {"Vibration":%12s} : {VibV:>4}')
         
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
@@ -215,8 +217,7 @@ def encodeFrame():
                 continue
 
         # Output image as a byte array
-        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + 
-            bytearray(encoded_image) + b'\r\n')
+        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encoded_image) + b'\r\n')
 
 @app.route('/video')
 def streamFrames():
@@ -240,4 +241,3 @@ if __name__ == '__main__':
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
     # the host machine's localhost and is discoverable by other machines on the same network 
     app.run(host="0.0.0.0", port="8080")
-

@@ -27,6 +27,8 @@ while True:
     VibV=abs(0.58-round(VibV,2))
     print(f"p0 {V0.value:>5}\t{V0.voltage:>5}")
     print(f"p1 {V1.value:>5}\t{V1.voltage:>5}")
+    print(f"p2 {V2.value:>5}\t{V2.voltage:>5}")
+    print(f"p3 {V3.value:>5}\t{V3.voltage:>5}")
     print(f"temp {temp:.2f}")
     print(f"vibv {VibV:.2f}")
     
