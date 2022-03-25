@@ -1,10 +1,19 @@
 <!DOCTYPE html>
+<span id="date">
+</span>
+      
 <html>
+    <script>
+    var year = today.getFullYear();
+    var month = today.getMonth()+1;
+    var date = today.getDate();
+    var today = year+'-'+month+'-'+day+'-'+'server.log';
+    </script>
     <head>
         <meta charset=""utf-8" />
     <title> Video monitoring system test</title>
     </head>
-    <button type="button" onclick="alert('Hello World!')">Data log</button> <font size="1em"> 지난 알림 및 데이터를 확인할 수 있습니다. </font>
+    <button type="button" onclick="location.href='/home/pi/m1_project/log/server.log'">Data log</button> <font size="1em"> 지난 알림 및 데이터를 확인할 수 있습니다. </font>
     <body>
 	<div style="background-color:lightgrey; text-align:center">
 		<h2>Video Monitoring System Test</h2>
