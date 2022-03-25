@@ -27,12 +27,21 @@ ads = ADS.ADS1115(i2c)
 V0 = AnalogIn(ads, ADS.P0)
 V1 = AnalogIn(ads, ADS.P1)
 
-#initial value
+#initial
 img_w = 640
 img_h = 480
 GAIN = 1
-GPIO.setmode(GPIO.BCM)
 product_number = 0
+check=0
+timeC=0
+checkR=0
+n=0
+RPM=0
+img2=np.zeros((img_h,img_w,3),np.uint8)
+img3=np.zeros((img_h,img_w,3),np.uint8)
+
+
+GPIO.setmode(GPIO.BCM)
 
 #color
 red=(0,0,255)
@@ -56,7 +65,23 @@ L_RPMT=(center_x-100,center_y-180)
 L_Vib=(center_x+250,center_y-200)
 L_VibT=(center_x+150,center_y-200)
 
+#log
+logger1=logging.getLogger()
+logger2=logging.getLogger()
+
+logger1.setLevel(logging.INFO)
+logger2.setLevel(logging.INFO)
+
+formatter1 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
+formatter2 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
+
 day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+file_handler1=logging.FileHandler(f'log/{day}server.log')
+file_handler2=logging.FileHandler(f'log/server.log')
+file_handler1.setFormatter(formatter1)
+file_handler2.setFormatter(formatter2)
+logger1.addHandler(file_handler1)
+logger2.addHandler(file_handler2)
 
 #text
 thickness =2
@@ -71,9 +96,23 @@ video_frame = None
 global thread_lock 
 thread_lock = threading.Lock()
 
+#function
 def add_product(channel):
     global product_number
     product_number += 1
+    logger1.info(f'Proudction : {product_number}')
+    logger2.info(f'Proudction : {product_number}')
+    
+def count_RPM(channel) :
+    global RPM
+    global checkR
+    global timeC
+    checkR+=1
+    RPM=1/(time.time()-timeC)*60
+    RPM=round(RPM,1)
+    if RPM<30:
+        RPM=0
+    timeC=time.time()
 
 #counter
 #GPIO.setup(8,GPIO.IN,pull_up_down=GPIO.PUD_DOWN) 
@@ -97,6 +136,22 @@ def captureFrames():
         if not ret:
             break
         
+        #warning img create
+        global check
+        if check==0:
+            for i in range(0,img_h-1):
+                for j in range(0,img_w-1):
+                    img2[i,j,0]=60
+                    img2[i,j,1]=60
+                    img2[i,j,2]=255
+        
+        if check==0:
+            for i in range(0,img_h-1):
+                for j in range(0,img_w-1):
+                    img3[i,j,0]=60
+                    img3[i,j,1]=60
+                    img3[i,j,2]=60
+                    
         #calculates
         time=str(datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S'))
         tempR=1000/(1-(V0.value)/(26555))
@@ -116,6 +171,29 @@ def captureFrames():
         
         cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
         cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
+        
+        #warning
+        global n
+        
+        if temp>50 and n%5==0:
+        
+           n=n+1
+           check=check+1
+           logger1.warning('Too high Temp')
+           logger2.warning('Too high Temp')
+           frame = img2
+        elif VibV>0.5 and n%5==0:
+            n=n+1
+            check=check+1
+            logger1.warning('Too high Vibration')
+            logger2.warning('Too high Vibration')
+            frame = img3
+        else:
+            check=check+1
+            n=n+1
+            if n%100==0:
+                logger1.info(f'Temp : {temp} RPM : {RPM}')
+                logger2.info(f'Temp : {temp} RPM : {RPM}')
         
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
