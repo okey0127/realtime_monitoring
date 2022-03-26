@@ -7,22 +7,25 @@
     </head>
     
 	<body>
-	<button onclick="log_path()">Data log</button> <font size="1em"> 지난 알림 및 데이터를 확인할 수 있습니다. </font>
 	<script>
-		function log_path(){
-			var date = new Date()
-			var yyyy = String(date.getFullYear());
-			var mon = date.getMonth()+1
-			if(mon < 10)
-				mon = "0" + mon;
-			var mm = String(mon);
-			var day = date.getDate();
-			if(day < 10)
-				day = "0" + day;
-			var dd = String(day);
-			var file_name = '../log/'+yyyy+'-'+mm+'-'+dd+'server.log';
-			
-			location.href = file_name;
+		var ipAddr = 'http://172.30.1.29:8080';
+		function Today_log(){
+			var route = '/log/today';
+			var path = ipAddr + route;
+			location.href = path;
+			}
+
+		function All_log(){
+			var route = '/log/all';
+			var path = ipAddr + route;
+			location.href = path;
+			}
+		
+		function Video_open(){
+			var ipAddress = getServerIp();
+			alert(ipAddress)
+			var file_name = 'http://'+ipAddress+'/video';
+			location.href =  file_name;
 			}
 
 	</script>
@@ -32,16 +35,20 @@
 	<div style="text-align:center">
 		<h3>Part No.1</h3>
 		<td>	
-			<a target="_blank" href="http://172.30.1.24:8080/video">
-				<img src="http://172.30.1.24:8080/video" title="다른 창에서 영상만 보기" style="width:40%">
+			<a target="_blank" href="http://172.30.1.29:8080/video">
+				<img src="http://172.30.1.29:8080/video" title="새창에서 영상 열기" style="width:40%">
 			</a>
 			<img style="width:5%">
-			<a target="_blank" href="http://172.30.1.24:8080/video">
-				<img src="http://172.30.1.24:8080/video" title="다른 창에서 영상만 보기" style="width:40%">
+			<a target="_blank" href="http://172.30.1.29:8080/video">
+				<img src="http://172.30.1.29:8080/video" title="새창에서 영상 열기" style="width:40%">
 			</a>
 		</td>
+		
 	</div>
-    
+	<td>
+	    	<button onclick="Today_log()">Today log</button>
+		<button onclick="All_log()">All log</button>
+	</td>
     </body>    
 </html>
 
