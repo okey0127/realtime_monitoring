@@ -1,4 +1,4 @@
-# edit: 22.03.26
+# edit: 22.03.24
 
 import cv2
 import time
@@ -175,7 +175,11 @@ def captureFrames():
         cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness,cv2.LINE_AA)
         
         cv2.putText(frame,'RPM',L_RPMT,font,fontscale,white,thickness,cv2.LINE_AA)
-        
+        if checkR==0:
+            cv2.putText(frame,'0',L_RPM,font,fontscale,white,thickness)
+        else:
+            cv2.putText(frame,str(RPM),L_RPM,font,fontscale,white,thickness)
+            
         cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
         cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
         
