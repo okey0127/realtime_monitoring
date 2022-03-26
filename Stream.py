@@ -83,6 +83,10 @@ file_handler2.setFormatter(formatter2)
 logger1.addHandler(file_handler1)
 logger2.addHandler(file_handler2)
 
+#remove werkzeug messages from logging
+log = logging.getLogger('werkzeug')
+log.setLevel(logging.ERROR)
+
 #text
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
@@ -194,8 +198,8 @@ def captureFrames():
             check=check+1
             n=n+1
             if n%100==0:
-                logger1.info(f'{"Production":%12s} : {product_number:>4} {"Temperature":%12s} : {temp:>4} \n {"RPM":%12s} : {RPM:>4} {"Vibration":%12s} : {VibV:>4}')
-                logger2.info(f'{"Production":%12s} : {product_number:>4} {"Temperature":%12s} : {temp:>4} \n {"RPM":%12s} : {RPM:>4} {"Vibration":%12s} : {VibV:>4}')
+                logger1.info(f'{"Production"} : {product_number} {"Temperature"} : {temp:.1f} {"RPM"} : {RPM:.1f} {"Vibration"} : {VibV:.2f}')
+                logger2.info(f'{"Production"} : {product_number} {"Temperature"} : {temp:.1f} {"RPM"} : {RPM:.1f} {"Vibration"} : {VibV:.2f}')
         
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
@@ -225,7 +229,20 @@ def streamFrames():
 
 @app.route('/')
 def index():
+
     return render_template('index.html')
+
+#log file open
+@app.route('/log/today')
+def today_log()->str:
+    file_name = 'log/' + str(datetime.date.today()) + 'server.log'
+    f = open(file_name,'r')
+    return "</br>".join(f.readlines())
+    
+@app.route('/log/all')
+def all_log()->str:
+    f = open('log/server.log','r')        
+    return "</br>".join(f.readlines())
 
 # check to see if this is the main thread of execution
 if __name__ == '__main__':

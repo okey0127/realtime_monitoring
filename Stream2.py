@@ -71,9 +71,9 @@ def captureFrames():
         
         #filter
         time=str(datetime.datetime.now())
-        cv2.putText(frame,time,L_time,font,fontscale,white,thickness)
-        cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness)
-        cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness)
+        cv2.putText(frame,time,L_time,font,fontscale,white,thickness,cv2.LINE_AA)
+        cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness,cv2.LINE_AA)
+        cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness,cv2.LINE_AA)
         
         #encoding
         return_key, encoded_image = cv2.imencode(".jpg", frame)
@@ -81,8 +81,6 @@ def captureFrames():
             continue
         
         yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encoded_image) + b'\r\n')
-        
-        cap.release()
             
 @app.route('/video')
 def streamFrames():
