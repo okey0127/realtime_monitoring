@@ -240,19 +240,25 @@ def index():
 @app.route('/log/today')
 def today_log()->str:
     file_name = 'log/' + str(datetime.date.today()) + 'server.log'
-    f = open(file_name,'r')
-    return "</br>".join(f.readlines())
+    fl = f.readlines()
+    f_out = []
+    for i in range(len(fl)):
+        if fl[i].find('werkzeug') > 0:
+            pass
+        else:
+            f_out.append(fl[i])
+    return "</br>".join(f_out)
     
 @app.route('/log/all')
 def all_log()->str:
     f = open('log/server.log','r')
     fl = f.readlines()
     f_out = []
-    for i in len(fl):
+    for i in range(len(fl)):
         if fl[i].find('werkzeug') > 0:
             pass
         else:
-            f_out = fl[i]
+            f_out.append(fl[i])
     return "</br>".join(f_out)
 
 # check to see if this is the main thread of execution
