@@ -4,11 +4,9 @@
     <head>
         <meta charset="utf-8" />
     <title> Video monitoring system test</title>
-    </head>
-    
-	<body>
 	<script>
 		var ipAddr = 'http://172.30.1.29:8080';
+
 		function Today_log(){
 			var route = '/log/today';
 			var path = ipAddr + route;
@@ -20,33 +18,30 @@
 			var path = ipAddr + route;
 			location.href = path;
 			}
-		
-		function Video_open(){
-			var ipAddress = getServerIp();
-			alert(ipAddress)
-			var file_name = 'http://'+ipAddress+'/video';
-			location.href =  file_name;
+
+		function Video_open(json){
+			var path = ipAddr + '/video';
+			window.open(path) ;
 			}
 
 	</script>
+    </head>
+    
+	<body>
 	<div style="background-color:lightgrey; text-align:center">
 		<h2>Video Monitoring System Test</h2>
 	</div>
 	<div style="text-align:center">
 		<h3>Part No.1</h3>
 		<td>	
-			<a target="_blank" href="http://172.30.1.29:8080/video">
-				<img src="http://172.30.1.29:8080/video" title="새창에서 영상 열기" style="width:40%">
-			</a>
-			<img style="width:5%">
-			<a target="_blank" href="http://172.30.1.29:8080/video">
-				<img src="http://172.30.1.29:8080/video" title="새창에서 영상 열기" style="width:40%">
+			<a target="_blank" href="javascript:void(0);" onclick="Video_open();">
+				<img src="http://172.30.1.29:8080" title="새창에서 영상 열기" style="width:80%">
 			</a>
 		</td>
 		
 	</div>
 	<td>
-	    	<button onclick="Today_log()">Today log</button>
+	    <button onclick="Today_log()">Today log</button>
 		<button onclick="All_log()">All log</button>
 	</td>
     </body>    
