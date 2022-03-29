@@ -1,4 +1,4 @@
-# edit: 22.03.24
+# edit: 22.03.29
 
 import cv2
 import time
@@ -245,8 +245,15 @@ def today_log()->str:
     
 @app.route('/log/all')
 def all_log()->str:
-    f = open('log/server.log','r')        
-    return "</br>".join(f.readlines())
+    f = open('log/server.log','r')
+    fl = f.readlines()
+    f_out = []
+    for i in len(fl):
+        if fl[i].find('werkzeug') > 0:
+            pass
+        else:
+            f_out = fl[i]
+    return "</br>".join(f_out)
 
 # check to see if this is the main thread of execution
 if __name__ == '__main__':
