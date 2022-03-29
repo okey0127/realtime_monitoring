@@ -240,6 +240,7 @@ def index():
 @app.route('/log/today')
 def today_log()->str:
     file_name = 'log/' + str(datetime.date.today()) + 'server.log'
+    f = open(file_name,'r')
     fl = f.readlines()
     f_out = []
     for i in range(len(fl)):
