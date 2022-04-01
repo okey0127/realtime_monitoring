@@ -244,10 +244,10 @@ def today_log()->str:
     fl = f.readlines()
     f_out = []
     for i in range(len(fl)):
-        if fl[i].find('werkzeug') > 0:
-            pass
-        else:
+        if fl[i].find('root') > 0:
             f_out.append(fl[i])
+        else:
+            pass
     return "</br>".join(f_out)
     
 @app.route('/log/all')
@@ -256,10 +256,10 @@ def all_log()->str:
     fl = f.readlines()
     f_out = []
     for i in range(len(fl)):
-        if fl[i].find('werkzeug') > 0:
-            pass
-        else:
+        if fl[i].find('root') > 0:
             f_out.append(fl[i])
+        else:
+            pass
     return "</br>".join(f_out)
 
 # check to see if this is the main thread of execution
