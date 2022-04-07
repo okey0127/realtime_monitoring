@@ -1,4 +1,4 @@
-# edit: 22.03.29
+# edit: 22.04.07
 
 import cv2
 import time
@@ -30,17 +30,15 @@ V1 = AnalogIn(ads, ADS.P1)
 #initial
 img_w = 640
 img_h = 480
-GAIN = 1
 product_number = 0
-check=0
 timeC=0
-checkR=0
+check=0
 n=0
-RPM=0
+#RPM=0
+#checkR=0
+
 img2=np.zeros((img_h,img_w,3),np.uint8)
 img3=np.zeros((img_h,img_w,3),np.uint8)
-
-
 
 #color
 red=(0,0,255)
@@ -105,7 +103,7 @@ def add_product(channel):
     product_number += 1
     #logger1.info(f'Proudction : {product_number}')
     #logger2.info(f'Proudction : {product_number}')
-    
+'''
 def count_RPM(channel) :
     global RPM
     global checkR
@@ -116,6 +114,7 @@ def count_RPM(channel) :
     if RPM<30:
         RPM=0
     timeC=time.time()
+'''
 #set proximity sensor
 #product counter
 proximity_pin = 18
@@ -174,13 +173,13 @@ def captureFrames():
         
         cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness,cv2.LINE_AA)
         cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness,cv2.LINE_AA)
-        
+        '''
         cv2.putText(frame,'RPM',L_RPMT,font,fontscale,white,thickness,cv2.LINE_AA)
         if checkR==0:
             cv2.putText(frame,'0',L_RPM,font,fontscale,white,thickness)
         else:
             cv2.putText(frame,str(RPM),L_RPM,font,fontscale,white,thickness)
-            
+        ''' 
         cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
         cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
         
@@ -203,8 +202,11 @@ def captureFrames():
             check=check+1
             n=n+1
             if n%100==0:
-                logger1.info(f'{"Production"} : {product_number} {"Temperature"} : {temp:.1f} {"RPM"} : {RPM:.1f} {"Vibration"} : {VibV:.2f}')
-                logger2.info(f'{"Production"} : {product_number} {"Temperature"} : {temp:.1f} {"RPM"} : {RPM:.1f} {"Vibration"} : {VibV:.2f}')
+                logger1.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"Vibration"} : {VibV:.2f}')
+                logger2.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"Vibration"} : {VibV:.2f}')
+                #including RPM 
+                #logger1.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"RPM"} : {RPM:.1f} | {"Vibration"} : {VibV:.2f}')
+                #logger2.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"RPM"} : {RPM:.1f} | {"Vibration"} : {VibV:.2f}')
         
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
@@ -245,7 +247,7 @@ def today_log()->str:
     fl = f.readlines()
     f_out = []
     for i in range(len(fl)):
-        if fl[i].find('root') > 0:
+        if 'root' in fl[i] > 0:
             f_out.append(fl[i])
         else:
             pass
@@ -257,7 +259,7 @@ def all_log()->str:
     fl = f.readlines()
     f_out = []
     for i in range(len(fl)):
-        if fl[i].find('root') > 0:
+        if 'root' in fl[i]:
             f_out.append(fl[i])
         else:
             pass
