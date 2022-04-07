@@ -41,7 +41,6 @@ img2=np.zeros((img_h,img_w,3),np.uint8)
 img3=np.zeros((img_h,img_w,3),np.uint8)
 
 
-GPIO.setmode(GPIO.BCM)
 
 #color
 red=(0,0,255)
@@ -104,8 +103,8 @@ thread_lock = threading.Lock()
 def add_product(channel):
     global product_number
     product_number += 1
-    logger1.info(f'Proudction : {product_number}')
-    logger2.info(f'Proudction : {product_number}')
+    #logger1.info(f'Proudction : {product_number}')
+    #logger2.info(f'Proudction : {product_number}')
     
 def count_RPM(channel) :
     global RPM
@@ -117,10 +116,12 @@ def count_RPM(channel) :
     if RPM<30:
         RPM=0
     timeC=time.time()
-
-#counter
-#GPIO.setup(8,GPIO.IN,pull_up_down=GPIO.PUD_DOWN) 
-#GPIO.add_event_detect(8,GPIO.FALLING, callback=add_product,bouncetime=1000)
+#set proximity sensor
+#product counter
+proximity_pin = 18
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(proximity_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.add_event_detect(proximity_pin, GPIO.FALLING, callback=add_product, bouncetime=1000)
 
 #declare Flask Server
 app = Flask(__name__)

@@ -1,5 +1,3 @@
-2022-03-26 15:19:53,114-werkzeug-INFO- * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
-2022-03-26 15:20:08,470-werkzeug-INFO- * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
 2022-04-07 16:39:30,190-root-INFO-Production : 0 Temperature : 21.4 RPM : 0.0 Vibration : 0.00
 2022-04-07 16:39:30,194-root-INFO-Production : 0 Temperature : 21.4 RPM : 0.0 Vibration : 0.00
 2022-04-07 16:39:34,217-root-INFO-Production : 0 Temperature : 21.4 RPM : 0.0 Vibration : 0.02
