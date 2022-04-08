@@ -35,13 +35,28 @@ product_number = 0
 timeC=0
 check=0
 n=0
+c_cnt = 0
 #RPM=0
 #checkR=0
+
 n_img=np.zeros((img_h,img_w,3),np.uint8)
 img2=np.zeros((img_h,img_w,3),np.uint8)
 img3=np.zeros((img_h,img_w,3),np.uint8)
 
-
+if check==0:
+    for i in range(0,img_h-1):
+        for j in range(0,img_w-1):
+            img2[i,j,0]=60
+            img2[i,j,1]=60
+            img2[i,j,2]=255
+                    
+            img3[i,j,0]=60
+            img3[i,j,1]=60
+            img3[i,j,2]=60
+                    
+            n_img[i,j,0]=0
+            n_img[i,j,1]=0
+            n_img[i,j,2]=0
 
 #color
 red=(0,0,255)
@@ -77,21 +92,21 @@ if not os.path.exists(now_dir+'/log'):
     os.mkdir(now_dir+'/log')
     
 logger1=logging.getLogger()
-logger2=logging.getLogger()
+#logger2=logging.getLogger()
 
 logger1.setLevel(logging.INFO)
-logger2.setLevel(logging.INFO)
+#logger2.setLevel(logging.INFO)
 
 formatter1 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
-formatter2 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
+#formatter2 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
 
 day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
 file_handler1=logging.FileHandler(log_path1)
 file_handler2=logging.FileHandler(log_path2)
 file_handler1.setFormatter(formatter1)
-file_handler2.setFormatter(formatter2)
+file_handler2.setFormatter(formatter1)
 logger1.addHandler(file_handler1)
-logger2.addHandler(file_handler2)
+logger1.addHandler(file_handler2)
 
 #remove werkzeug messages from logging
 log = logging.getLogger('werkzeug')
@@ -143,11 +158,7 @@ def captureFrames():
     global video_frame, thread_lock
 
     # Video capturing
-    try:
-        cap = cv2.VideoCapture(0)
-    except:
-        logger1.warning('Camera is not detected!')
-        logger2.warning('Camera is not detected!')
+    cap = cv2.VideoCapture(0)
 
     # Set Video Size
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, img_w)
@@ -155,26 +166,16 @@ def captureFrames():
     
     while True:
         #warning img create
-        global check
-        if check==0:
-            for i in range(0,img_h-1):
-                for j in range(0,img_w-1):
-                    img2[i,j,0]=60
-                    img2[i,j,1]=60
-                    img2[i,j,2]=255
-                    
-                    img3[i,j,0]=60
-                    img3[i,j,1]=60
-                    img3[i,j,2]=60
-                    
-                    n_img[i,j,0]=0
-                    n_img[i,j,1]=0
-                    n_img[i,j,2]=0
-                    
+        global check, c_cnt
+        
         ret, frame = cap.read()
+        
         if not ret:
             frame = n_img
             cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
+            if c_cnt == 0:
+                logger1.warning('Camera is not detected!')
+                c_cnt += 1
                     
         #calculates
         time=str(datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S'))
@@ -210,24 +211,20 @@ def captureFrames():
            n=n+1
            check=check+1
            logger1.warning('Too high Temp')
-           logger2.warning('Too high Temp')
            frame = img2
         elif VibV>0.5 and n%5==0:
             n=n+1
             check=check+1
             logger1.warning('Too high Vibration')
-            logger2.warning('Too high Vibration')
             frame = img3
         else:
             check=check+1
             n=n+1
             if n%100==0:
                 logger1.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"Vibration"} : {VibV:.2f}')
-                logger2.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"Vibration"} : {VibV:.2f}')
                 #including RPM 
                 #logger1.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"RPM"} : {RPM:.1f} | {"Vibration"} : {VibV:.2f}')
-                #logger2.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"RPM"} : {RPM:.1f} | {"Vibration"} : {VibV:.2f}')
-        
+                        
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
