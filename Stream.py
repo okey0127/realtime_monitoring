@@ -1,4 +1,4 @@
-# edit: 22.04.07
+# edit: 22.04.08
 
 import cv2
 import time
@@ -10,6 +10,7 @@ import math
 import time
 import logging
 import RPi.GPIO as GPIO
+import os
 
 #ADC module import
 import board
@@ -36,9 +37,11 @@ check=0
 n=0
 #RPM=0
 #checkR=0
-
+n_img=np.zeros((img_h,img_w,3),np.uint8)
 img2=np.zeros((img_h,img_w,3),np.uint8)
 img3=np.zeros((img_h,img_w,3),np.uint8)
+
+
 
 #color
 red=(0,0,255)
@@ -63,6 +66,16 @@ L_Vib=(center_x+250,center_y-200)
 L_VibT=(center_x+150,center_y-200)
 
 #log
+#set path
+now_dir = os.path.dirname(os.path.abspath(__file__))
+day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+log_path1 = f'{now_dir}/log/{day}server.log'
+log_path2 = f'{now_dir}/log/server.log'
+
+#if not exist log folder -> create log folter
+if not os.path.exists(now_dir+'/log'):
+    os.mkdir(now_dir+'/log')
+    
 logger1=logging.getLogger()
 logger2=logging.getLogger()
 
@@ -73,8 +86,8 @@ formatter1 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
 formatter2 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
 
 day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-file_handler1=logging.FileHandler(f'log/{day}server.log')
-file_handler2=logging.FileHandler(f'log/server.log')
+file_handler1=logging.FileHandler(log_path1)
+file_handler2=logging.FileHandler(log_path2)
 file_handler1.setFormatter(formatter1)
 file_handler2.setFormatter(formatter2)
 logger1.addHandler(file_handler1)
@@ -103,6 +116,7 @@ def add_product(channel):
     product_number += 1
     #logger1.info(f'Proudction : {product_number}')
     #logger2.info(f'Proudction : {product_number}')
+    
 '''
 def count_RPM(channel) :
     global RPM
@@ -129,17 +143,17 @@ def captureFrames():
     global video_frame, thread_lock
 
     # Video capturing
-    cap = cv2.VideoCapture(0)
+    try:
+        cap = cv2.VideoCapture(0)
+    except:
+        logger1.warning('Camera is not detected!')
+        logger2.warning('Camera is not detected!')
 
     # Set Video Size
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, img_w)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, img_h)
     
-    while True and cap.isOpened():
-        ret, frame = cap.read()
-        if not ret:
-            break
-        
+    while True:
         #warning img create
         global check
         if check==0:
@@ -148,13 +162,19 @@ def captureFrames():
                     img2[i,j,0]=60
                     img2[i,j,1]=60
                     img2[i,j,2]=255
-        
-        if check==0:
-            for i in range(0,img_h-1):
-                for j in range(0,img_w-1):
+                    
                     img3[i,j,0]=60
                     img3[i,j,1]=60
                     img3[i,j,2]=60
+                    
+                    n_img[i,j,0]=0
+                    n_img[i,j,1]=0
+                    n_img[i,j,2]=0
+                    
+        ret, frame = cap.read()
+        if not ret:
+            frame = n_img
+            cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
                     
         #calculates
         time=str(datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S'))
@@ -242,20 +262,7 @@ def index():
 #log file open
 @app.route('/log/today')
 def today_log()->str:
-    file_name = 'log/' + str(datetime.date.today()) + 'server.log'
-    f = open(file_name,'r')
-    fl = f.readlines()
-    f_out = []
-    for i in range(len(fl)):
-        if 'root' in fl[i] > 0:
-            f_out.append(fl[i])
-        else:
-            pass
-    return "</br>".join(f_out)
-    
-@app.route('/log/all')
-def all_log()->str:
-    f = open('log/server.log','r')
+    f = open(log_path1,'r')
     fl = f.readlines()
     f_out = []
     for i in range(len(fl)):
@@ -263,6 +270,20 @@ def all_log()->str:
             f_out.append(fl[i])
         else:
             pass
+    f_out.reverse()
+    return "</br>".join(f_out)
+    
+@app.route('/log/all')
+def all_log()->str:
+    f = open(log_path2,'r')
+    fl = f.readlines()
+    f_out = []
+    for i in range(len(fl)):
+        if 'root' in fl[i]:
+            f_out.append(fl[i])
+        else:
+            pass
+    f_out.reverse()
     return "</br>".join(f_out)
 
 # check to see if this is the main thread of execution
