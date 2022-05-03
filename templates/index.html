@@ -5,28 +5,30 @@
         <meta charset="utf-8"/>
     <title> Video monitoring system test</title>
 	<script>
-		var ipAddr = 'http://172.30.1.45:8080';
-
+		var ipAddr = 'http://'+"{{ipaddr['in_ip']}}"+':8080';
+		
 		function Today_log(){
-			var route = '/log/today';
-			var path = ipAddr + route;
-			location.href = path;
+			var route = '/log/today';			
+			var path1 = ipAddr + route;
+			var path2 = "{{ipaddr['log_today']}}";
+			location.href = path2;
 			}
 
 		function All_log(){
 			var route = '/log/all';
-			var path = ipAddr + route;
-			location.href = path;
+			var path1 = ipAddr + route;
+			var path2 = "{{ipaddr['log_all']}}";
+			location.href = path2;
 			}
 
 		function Video_open(json){
-			var path = ipAddr + '/video';
-			window.open(path) ;
+			var path1 = ipAddr + '/video';
+			var path2 = "{{ipaddr['video']}}";
+			window.open(path2) ;
 			}
 
 	</script>
     </head>
-    
 	<body>
 	<div style="background-color:lightgrey; text-align:center">
 		<h2>Video Monitoring System Test</h2>
@@ -35,15 +37,19 @@
 		<h3>Part No.1</h3>
 		<td>	
 			<a target="_blank" href="javascript:void(0);" onclick="Video_open();">
-				<img src="http://172.30.1.45:8080/video" title="새창에서 영상 열기" style="width:60%"
+				<img src={{ipaddr['video']}} title="새창에서 영상 열기" style="width:50%">
 			</a>
 		</td>
-		
 	</div>
 	<td>
 	    <button onclick="Today_log()">Today log</button>
 	    <button onclick="All_log()">All log</button>
 	</td>
+	<details>
+		<summary>외부 접속 주소</summary>
+		<p>{{ipaddr['ex_ip']}}:8080</p>
+		<p>외부 네트워크에서 접속하기 위해서는 포트 포워딩이 필요합니다.</p>
+	</details>
     </body>    
 </html>
 

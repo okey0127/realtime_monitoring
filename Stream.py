@@ -13,6 +13,7 @@ import RPi.GPIO as GPIO
 import os
 import requests
 
+
 #ADC module import
 import board
 import busio
@@ -117,8 +118,12 @@ log.setLevel(logging.ERROR)
 #get ip
 URL = 'https://icanhazip.com'
 respons = requests.get(URL)
-my_ip = respons.text.strip()
-
+in_ip = os.popen('hostname -I').read()
+ex_ip = respons.text.strip()
+video_ip = 'http://'+ex_ip+':8080/video'
+log_all_ip = 'http://'+ex_ip+':8080/log/all'
+log_today_ip = 'http://'+ex_ip+':8080/log/today'
+ipaddr={'in_ip':in_ip,'ex_ip':ex_ip, 'video':video_ip, 'log_all':log_all_ip, 'log_today':log_today_ip}
 #text
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
@@ -264,7 +269,7 @@ def streamFrames():
 @app.route('/')
 def index():
     
-    return render_template('index.html')
+    return render_template('index.html', ipaddr = ipaddr)
 
 #log file open
 @app.route('/log/today')
