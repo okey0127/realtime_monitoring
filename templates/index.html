@@ -2,10 +2,10 @@
       
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8"/>
     <title> Video monitoring system test</title>
 	<script>
-		var ipAddr = 'http://172.30.1.15:8080';
+		var ipAddr = 'http://172.30.1.45:8080';
 
 		function Today_log(){
 			var route = '/log/today';
@@ -35,17 +35,17 @@
 		<h3>Part No.1</h3>
 		<td>	
 			<a target="_blank" href="javascript:void(0);" onclick="Video_open();">
-				<img src="http://172.30.1.15:8080/video" title="새창에서 영상 열기" style="width:60%">
+				<img src="http://172.30.1.45:8080/video" title="새창에서 영상 열기" style="width:60%"
 			</a>
 		</td>
 		
 	</div>
 	<td>
 	    <button onclick="Today_log()">Today log</button>
-		<button onclick="All_log()">All log</button>
+	    <button onclick="All_log()">All log</button>
 	</td>
     </body>    
 </html>
 
-<!-- 스트리밍 서버 주소 "http://172.30.1.24:8080/video" -->
+<!-- 스트리밍 서버 주소 "http://172.30.1.45:8080/video" -->
 <!-- 테스트 이미지 주소 "test_img.png" -->

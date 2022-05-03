@@ -1,4 +1,4 @@
-# edit: 22.04.08
+# edit: 22.04.28
 
 import cv2
 import time
@@ -11,6 +11,7 @@ import time
 import logging
 import RPi.GPIO as GPIO
 import os
+import requests
 
 #ADC module import
 import board
@@ -36,6 +37,7 @@ timeC=0
 check=0
 n=0
 c_cnt = 0
+data_dic={} #save ip and sensor data
 #RPM=0
 #checkR=0
 
@@ -112,6 +114,11 @@ logger1.addHandler(file_handler2)
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
 
+#get ip
+URL = 'https://icanhazip.com'
+respons = requests.get(URL)
+my_ip = respons.text.strip()
+
 #text
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
@@ -178,7 +185,7 @@ def captureFrames():
                 c_cnt += 1
                     
         #calculates
-        time=str(datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S'))
+        time=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         
         tempR=1000/(1-(V0.value)/(26555))
         temp=round(706.6*(tempR**(-0.1541))-146,2)
@@ -186,6 +193,9 @@ def captureFrames():
         VibV=V1.value/26555*3.3
         VibV=round(abs(0.58-round(VibV,2)),2)
         
+        #save sensor data
+        data_dic = {'product':product_number, 'temperature':temp, 'vibration':VibV}
+    
         #filter
         cv2.putText(frame,time,L_time,font,fontscale,white,thickness,cv2.LINE_AA)
         
@@ -253,7 +263,7 @@ def streamFrames():
 
 @app.route('/')
 def index():
-
+    
     return render_template('index.html')
 
 #log file open
