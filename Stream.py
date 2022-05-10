@@ -118,12 +118,18 @@ log.setLevel(logging.ERROR)
 #get ip
 URL = 'https://icanhazip.com'
 respons = requests.get(URL)
-in_ip = os.popen('hostname -I').read()
 ex_ip = respons.text.strip()
-video_ip = 'http://'+ex_ip+':8080/video'
-log_all_ip = 'http://'+ex_ip+':8080/log/all'
-log_today_ip = 'http://'+ex_ip+':8080/log/today'
-ipaddr={'in_ip':in_ip,'ex_ip':ex_ip, 'video':video_ip, 'log_all':log_all_ip, 'log_today':log_today_ip}
+ex_video_ip = 'http://'+ex_ip+':8080/video'
+ex_log_all_ip = 'http://'+ex_ip+':8080/log/all'
+ex_log_today_ip = 'http://'+ex_ip+':8080/log/today'
+in_ip = os.popen('hostname -I').read().strip()
+in_video_ip = 'http://'+in_ip+':8080/video'
+in_log_all_ip = 'http://'+in_ip+':8080/log/all'
+in_log_today_ip = 'http://'+in_ip+':8080/log/today'
+
+in_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':in_video_ip, 'log_all':in_log_all_ip, 'log_today':in_log_today_ip}
+ex_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':ex_video_ip, 'log_all':ex_log_all_ip, 'log_today':ex_log_today_ip}
+
 #text
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
@@ -267,9 +273,12 @@ def streamFrames():
     return Response(encodeFrame(), mimetype = "multipart/x-mixed-replace; boundary=frame")
 
 @app.route('/')
-def index():
-    
-    return render_template('index.html', ipaddr = ipaddr)
+def in_index():    
+    return render_template('in_index.html', ipaddr = in_ipaddr)
+
+@app.route('/ex')
+def ex_index():
+    return render_template('ex_index.html', ipaddr = ex_ipaddr)
 
 #log file open
 @app.route('/log/today')
