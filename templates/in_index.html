@@ -3,7 +3,9 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-    <title> Video monitoring system test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Video monitoring system test</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<script>		
 		function Today_log(){			
 			var path1 = "{{ipaddr['log_today']}}";
@@ -18,6 +20,11 @@
 		function Video_open(json){
 			var path1 = "{{ipaddr['video']}}";
 			window.open(path1);
+			}
+		function Ex_page(){
+			var path = "{{ipaddr['ex_ip']}}";
+			var path1 = 'http://'+path+':8080/ex';
+			location.href = path1;
 			}
 	</script>
     </head>
@@ -34,14 +41,16 @@
 		</td>
 	</div>
 	<td>
-	    <button onclick="Today_log()">Today log</button>
-	    <button onclick="All_log()">All log</button>
+	    <button type="button" class="btn btn-secondary" onclick="Today_log()">Today log</button>
+	    <button type="button" class="btn btn-secondary" onclick="All_log()">All log</button>
 	</td>
 	<details>
 		<summary>외부 접속 주소</summary>
-		<p>{{ipaddr['ex_ip']}}:8080/ex</p>
+		<td>
+		<p>{{ipaddr['ex_ip']}}:8080/ex </p>
+		<button type="button" class="btn btn-primary" onclick="Ex_page()">열기</button>
+		</td>
 		<p>외부 네트워크에서 접속하기 위해서는 포트 포워딩이 필요합니다.</p>
 	</details>
     </body>    
 </html>
-
