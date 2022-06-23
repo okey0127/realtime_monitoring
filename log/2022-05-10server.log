@@ -1,0 +1,2382 @@
+2022-05-10 16:01:12,003-root-INFO-Production : 0 | Temperature : 43.9 | Vibration : 0.00
+2022-05-10 16:01:15,352-root-INFO-Production : 0 | Temperature : 43.9 | Vibration : 0.00
+2022-05-10 16:01:18,673-root-INFO-Production : 0 | Temperature : 44.0 | Vibration : 0.00
+2022-05-10 16:01:22,001-root-INFO-Production : 0 | Temperature : 44.0 | Vibration : 0.00
+2022-05-10 16:01:25,335-root-INFO-Production : 0 | Temperature : 44.0 | Vibration : 0.00
+2022-05-10 16:01:28,671-root-INFO-Production : 0 | Temperature : 44.2 | Vibration : 0.00
+2022-05-10 16:01:32,003-root-INFO-Production : 0 | Temperature : 44.3 | Vibration : 0.00
+2022-05-10 16:01:35,333-root-INFO-Production : 0 | Temperature : 44.4 | Vibration : 0.00
+2022-05-10 16:01:38,666-root-INFO-Production : 0 | Temperature : 44.6 | Vibration : 0.00
+2022-05-10 16:01:41,999-root-INFO-Production : 0 | Temperature : 44.8 | Vibration : 0.00
+2022-05-10 16:01:45,335-root-INFO-Production : 0 | Temperature : 44.9 | Vibration : 0.00
+2022-05-10 16:01:48,666-root-INFO-Production : 0 | Temperature : 45.0 | Vibration : 0.00
+2022-05-10 16:01:51,997-root-INFO-Production : 0 | Temperature : 45.1 | Vibration : 0.00
+2022-05-10 16:01:55,330-root-INFO-Production : 0 | Temperature : 45.0 | Vibration : 0.00
+2022-05-10 16:01:58,664-root-INFO-Production : 0 | Temperature : 45.2 | Vibration : 0.00
+2022-05-10 16:02:02,013-root-INFO-Production : 0 | Temperature : 45.4 | Vibration : 0.00
+2022-05-10 16:02:05,329-root-INFO-Production : 0 | Temperature : 45.4 | Vibration : 0.00
+2022-05-10 16:02:08,661-root-INFO-Production : 0 | Temperature : 45.5 | Vibration : 0.00
+2022-05-10 16:02:11,994-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:02:15,327-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:02:18,665-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.00
+2022-05-10 16:02:21,992-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.01
+2022-05-10 16:02:25,326-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.00
+2022-05-10 16:02:28,658-root-INFO-Production : 0 | Temperature : 46.0 | Vibration : 0.00
+2022-05-10 16:02:31,991-root-INFO-Production : 0 | Temperature : 46.0 | Vibration : 0.00
+2022-05-10 16:02:35,324-root-INFO-Production : 0 | Temperature : 45.9 | Vibration : 0.00
+2022-05-10 16:02:38,660-root-INFO-Production : 0 | Temperature : 46.2 | Vibration : 0.00
+2022-05-10 16:02:41,995-root-INFO-Production : 0 | Temperature : 46.7 | Vibration : 0.00
+2022-05-10 16:02:45,327-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.01
+2022-05-10 16:02:48,655-root-INFO-Production : 0 | Temperature : 45.9 | Vibration : 0.01
+2022-05-10 16:02:51,990-root-INFO-Production : 0 | Temperature : 45.9 | Vibration : 0.00
+2022-05-10 16:02:55,324-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.01
+2022-05-10 16:02:58,658-root-INFO-Production : 0 | Temperature : 45.9 | Vibration : 0.01
+2022-05-10 16:03:01,986-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.00
+2022-05-10 16:03:05,319-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:03:08,652-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.00
+2022-05-10 16:03:11,984-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:03:15,317-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.00
+2022-05-10 16:03:18,650-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:03:21,983-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:03:25,316-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:03:28,648-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:03:31,981-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:03:35,314-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:03:38,647-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:03:41,980-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:03:45,318-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:03:48,647-root-INFO-Production : 0 | Temperature : 45.5 | Vibration : 0.01
+2022-05-10 16:03:51,978-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:03:55,311-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:03:58,644-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:04:01,977-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:04:05,309-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:04:08,642-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.01
+2022-05-10 16:04:11,975-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:04:15,311-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:04:18,641-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.00
+2022-05-10 16:04:21,977-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.00
+2022-05-10 16:04:25,306-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:04:28,639-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:04:31,972-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:04:35,305-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.00
+2022-05-10 16:04:38,638-root-INFO-Production : 0 | Temperature : 45.8 | Vibration : 0.01
+2022-05-10 16:04:41,977-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:04:45,303-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:04:48,637-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:04:51,969-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:04:55,308-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:04:58,641-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:05:01,967-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:05:05,301-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:05:08,641-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.00
+2022-05-10 16:05:11,972-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.01
+2022-05-10 16:05:15,299-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:05:18,634-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:05:21,969-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:05:25,297-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:05:28,633-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:05:31,966-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.01
+2022-05-10 16:05:35,299-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:05:38,634-root-INFO-Production : 0 | Temperature : 45.6 | Vibration : 0.01
+2022-05-10 16:05:52,755-root-INFO-Production : 0 | Temperature : 45.7 | Vibration : 0.00
+2022-05-10 16:06:37,441-root-INFO-Production : 0 | Temperature : 45.1 | Vibration : 0.00
+2022-05-10 16:06:40,773-root-INFO-Production : 0 | Temperature : 46.3 | Vibration : 0.00
+2022-05-10 16:06:44,106-root-INFO-Production : 0 | Temperature : 48.9 | Vibration : 0.01
+2022-05-10 16:06:44,973-root-WARNING-Too high Temp
+2022-05-10 16:06:47,443-root-INFO-Production : 0 | Temperature : 44.1 | Vibration : 0.01
+2022-05-10 16:06:50,772-root-INFO-Production : 0 | Temperature : 44.5 | Vibration : 0.00
+2022-05-10 16:07:55,414-root-WARNING-Too high Vibration
+2022-05-10 16:07:56,059-root-WARNING-Too high Vibration
+2022-05-10 16:07:56,229-root-WARNING-Too high Vibration
+2022-05-10 16:07:56,393-root-WARNING-Too high Vibration
+2022-05-10 16:07:56,560-root-WARNING-Too high Vibration
+2022-05-10 16:07:56,893-root-WARNING-Too high Vibration
+2022-05-10 16:07:57,065-root-WARNING-Too high Vibration
+2022-05-10 16:07:57,226-root-WARNING-Too high Vibration
+2022-05-10 16:07:57,392-root-WARNING-Too high Vibration
+2022-05-10 16:07:57,559-root-WARNING-Too high Vibration
+2022-05-10 16:07:57,726-root-WARNING-Too high Vibration
+2022-05-10 16:07:57,908-root-WARNING-Too high Vibration
+2022-05-10 16:07:58,059-root-WARNING-Too high Vibration
+2022-05-10 16:07:58,227-root-WARNING-Too high Vibration
+2022-05-10 16:07:58,393-root-WARNING-Too high Vibration
+2022-05-10 16:07:58,559-root-WARNING-Too high Vibration
+2022-05-10 16:07:58,698-root-INFO-Production : 0 | Temperature : 41.5 | Vibration : 1.16
+2022-05-10 16:07:58,732-root-WARNING-Too high Vibration
+2022-05-10 16:07:58,892-root-WARNING-Too high Vibration
+2022-05-10 16:07:59,058-root-WARNING-Too high Vibration
+2022-05-10 16:07:59,229-root-WARNING-Too high Vibration
+2022-05-10 16:07:59,391-root-WARNING-Too high Vibration
+2022-05-10 16:07:59,564-root-WARNING-Too high Vibration
+2022-05-10 16:07:59,725-root-WARNING-Too high Vibration
+2022-05-10 16:07:59,896-root-WARNING-Too high Vibration
+2022-05-10 16:08:00,059-root-WARNING-Too high Vibration
+2022-05-10 16:08:00,226-root-WARNING-Too high Vibration
+2022-05-10 16:08:00,392-root-WARNING-Too high Vibration
+2022-05-10 16:08:00,559-root-WARNING-Too high Vibration
+2022-05-10 16:08:00,725-root-WARNING-Too high Vibration
+2022-05-10 16:08:00,892-root-WARNING-Too high Vibration
+2022-05-10 16:08:01,058-root-WARNING-Too high Vibration
+2022-05-10 16:08:01,233-root-WARNING-Too high Temp
+2022-05-10 16:08:01,391-root-WARNING-Too high Temp
+2022-05-10 16:08:01,559-root-WARNING-Too high Temp
+2022-05-10 16:08:01,725-root-WARNING-Too high Temp
+2022-05-10 16:08:01,893-root-WARNING-Too high Temp
+2022-05-10 16:08:02,033-root-INFO-Production : 0 | Temperature : 50.4 | Vibration : 1.20
+2022-05-10 16:08:02,069-root-WARNING-Too high Temp
+2022-05-10 16:08:02,227-root-WARNING-Too high Temp
+2022-05-10 16:08:02,391-root-WARNING-Too high Temp
+2022-05-10 16:08:02,558-root-WARNING-Too high Temp
+2022-05-10 16:08:02,724-root-WARNING-Too high Temp
+2022-05-10 16:08:02,896-root-WARNING-Too high Temp
+2022-05-10 16:08:03,061-root-WARNING-Too high Temp
+2022-05-10 16:08:03,224-root-WARNING-Too high Temp
+2022-05-10 16:08:03,390-root-WARNING-Too high Temp
+2022-05-10 16:08:03,558-root-WARNING-Too high Temp
+2022-05-10 16:08:03,731-root-WARNING-Too high Temp
+2022-05-10 16:08:03,891-root-WARNING-Too high Temp
+2022-05-10 16:08:04,057-root-WARNING-Too high Temp
+2022-05-10 16:08:04,224-root-WARNING-Too high Temp
+2022-05-10 16:08:04,390-root-WARNING-Too high Temp
+2022-05-10 16:08:04,566-root-WARNING-Too high Temp
+2022-05-10 16:08:04,735-root-WARNING-Too high Temp
+2022-05-10 16:08:04,891-root-WARNING-Too high Temp
+2022-05-10 16:08:05,057-root-WARNING-Too high Temp
+2022-05-10 16:08:05,224-root-WARNING-Too high Temp
+2022-05-10 16:08:05,357-root-INFO-Production : 0 | Temperature : 51.0 | Vibration : 0.08
+2022-05-10 16:08:05,390-root-WARNING-Too high Temp
+2022-05-10 16:08:05,558-root-WARNING-Too high Temp
+2022-05-10 16:08:05,723-root-WARNING-Too high Temp
+2022-05-10 16:08:05,892-root-WARNING-Too high Temp
+2022-05-10 16:08:06,056-root-WARNING-Too high Temp
+2022-05-10 16:08:06,226-root-WARNING-Too high Temp
+2022-05-10 16:08:06,389-root-WARNING-Too high Temp
+2022-05-10 16:08:06,557-root-WARNING-Too high Temp
+2022-05-10 16:08:06,723-root-WARNING-Too high Temp
+2022-05-10 16:08:06,890-root-WARNING-Too high Temp
+2022-05-10 16:08:07,062-root-WARNING-Too high Temp
+2022-05-10 16:08:07,223-root-WARNING-Too high Temp
+2022-05-10 16:08:07,389-root-WARNING-Too high Temp
+2022-05-10 16:08:07,557-root-WARNING-Too high Temp
+2022-05-10 16:08:07,723-root-WARNING-Too high Temp
+2022-05-10 16:08:07,898-root-WARNING-Too high Temp
+2022-05-10 16:08:08,056-root-WARNING-Too high Temp
+2022-05-10 16:08:08,223-root-WARNING-Too high Temp
+2022-05-10 16:08:08,389-root-WARNING-Too high Temp
+2022-05-10 16:08:08,557-root-WARNING-Too high Temp
+2022-05-10 16:08:08,693-root-INFO-Production : 0 | Temperature : 52.5 | Vibration : 0.05
+2022-05-10 16:08:08,727-root-WARNING-Too high Temp
+2022-05-10 16:08:08,890-root-WARNING-Too high Temp
+2022-05-10 16:08:09,056-root-WARNING-Too high Temp
+2022-05-10 16:08:09,559-root-WARNING-Too high Vibration
+2022-05-10 16:08:11,059-root-WARNING-Too high Vibration
+2022-05-10 16:08:11,225-root-WARNING-Too high Vibration
+2022-05-10 16:08:12,028-root-INFO-Production : 0 | Temperature : 34.5 | Vibration : 0.07
+2022-05-10 16:08:15,354-root-INFO-Production : 0 | Temperature : 34.5 | Vibration : 0.31
+2022-05-10 16:08:15,730-root-WARNING-Too high Vibration
+2022-05-10 16:08:15,888-root-WARNING-Too high Vibration
+2022-05-10 16:08:16,057-root-WARNING-Too high Vibration
+2022-05-10 16:08:16,222-root-WARNING-Too high Vibration
+2022-05-10 16:08:16,722-root-WARNING-Too high Vibration
+2022-05-10 16:08:16,889-root-WARNING-Too high Vibration
+2022-05-10 16:08:17,062-root-WARNING-Too high Vibration
+2022-05-10 16:08:17,398-root-WARNING-Too high Vibration
+2022-05-10 16:08:18,053-root-WARNING-Too high Vibration
+2022-05-10 16:08:18,686-root-INFO-Production : 0 | Temperature : 34.5 | Vibration : 0.37
+2022-05-10 16:08:19,567-root-WARNING-Too high Vibration
+2022-05-10 16:08:19,719-root-WARNING-Too high Vibration
+2022-05-10 16:08:19,891-root-WARNING-Too high Vibration
+2022-05-10 16:08:20,387-root-WARNING-Too high Vibration
+2022-05-10 16:08:20,553-root-WARNING-Too high Vibration
+2022-05-10 16:08:20,719-root-WARNING-Too high Vibration
+2022-05-10 16:08:21,055-root-WARNING-Too high Vibration
+2022-05-10 16:08:21,229-root-WARNING-Too high Vibration
+2022-05-10 16:08:21,385-root-WARNING-Too high Vibration
+2022-05-10 16:08:21,552-root-WARNING-Too high Vibration
+2022-05-10 16:08:21,718-root-WARNING-Too high Vibration
+2022-05-10 16:08:21,886-root-WARNING-Too high Vibration
+2022-05-10 16:08:22,030-root-INFO-Production : 0 | Temperature : 34.5 | Vibration : 1.25
+2022-05-10 16:08:22,067-root-WARNING-Too high Vibration
+2022-05-10 16:08:22,236-root-WARNING-Too high Vibration
+2022-05-10 16:08:22,395-root-WARNING-Too high Vibration
+2022-05-10 16:08:22,554-root-WARNING-Too high Vibration
+2022-05-10 16:08:22,718-root-WARNING-Too high Vibration
+2022-05-10 16:08:22,890-root-WARNING-Too high Vibration
+2022-05-10 16:08:23,051-root-WARNING-Too high Vibration
+2022-05-10 16:08:23,239-root-WARNING-Too high Vibration
+2022-05-10 16:08:23,396-root-WARNING-Too high Vibration
+2022-05-10 16:08:23,552-root-WARNING-Too high Vibration
+2022-05-10 16:08:23,718-root-WARNING-Too high Vibration
+2022-05-10 16:08:23,885-root-WARNING-Too high Vibration
+2022-05-10 16:08:24,061-root-WARNING-Too high Vibration
+2022-05-10 16:08:24,222-root-WARNING-Too high Vibration
+2022-05-10 16:08:24,385-root-WARNING-Too high Vibration
+2022-05-10 16:08:24,551-root-WARNING-Too high Vibration
+2022-05-10 16:08:24,718-root-WARNING-Too high Vibration
+2022-05-10 16:08:24,894-root-WARNING-Too high Vibration
+2022-05-10 16:08:25,051-root-WARNING-Too high Vibration
+2022-05-10 16:08:25,219-root-WARNING-Too high Vibration
+2022-05-10 16:08:25,354-root-INFO-Production : 0 | Temperature : 34.6 | Vibration : 2.25
+2022-05-10 16:08:25,385-root-WARNING-Too high Vibration
+2022-05-10 16:08:25,552-root-WARNING-Too high Vibration
+2022-05-10 16:08:25,722-root-WARNING-Too high Vibration
+2022-05-10 16:08:25,886-root-WARNING-Too high Vibration
+2022-05-10 16:08:26,050-root-WARNING-Too high Vibration
+2022-05-10 16:08:26,218-root-WARNING-Too high Vibration
+2022-05-10 16:08:26,386-root-WARNING-Too high Vibration
+2022-05-10 16:08:26,551-root-WARNING-Too high Vibration
+2022-05-10 16:08:26,717-root-WARNING-Too high Vibration
+2022-05-10 16:08:26,884-root-WARNING-Too high Vibration
+2022-05-10 16:08:27,050-root-WARNING-Too high Vibration
+2022-05-10 16:08:27,226-root-WARNING-Too high Vibration
+2022-05-10 16:08:27,383-root-WARNING-Too high Vibration
+2022-05-10 16:08:27,552-root-WARNING-Too high Vibration
+2022-05-10 16:08:27,717-root-WARNING-Too high Vibration
+2022-05-10 16:08:27,885-root-WARNING-Too high Vibration
+2022-05-10 16:08:28,069-root-WARNING-Too high Vibration
+2022-05-10 16:08:28,248-root-WARNING-Too high Vibration
+2022-05-10 16:08:28,402-root-WARNING-Too high Vibration
+2022-05-10 16:08:28,550-root-WARNING-Too high Vibration
+2022-05-10 16:08:28,683-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:08:28,717-root-WARNING-Too high Vibration
+2022-05-10 16:08:28,884-root-WARNING-Too high Vibration
+2022-05-10 16:08:29,054-root-WARNING-Too high Vibration
+2022-05-10 16:08:29,217-root-WARNING-Too high Vibration
+2022-05-10 16:08:29,384-root-WARNING-Too high Vibration
+2022-05-10 16:08:29,553-root-WARNING-Too high Vibration
+2022-05-10 16:08:29,721-root-WARNING-Too high Vibration
+2022-05-10 16:08:29,892-root-WARNING-Too high Vibration
+2022-05-10 16:08:30,050-root-WARNING-Too high Vibration
+2022-05-10 16:08:30,217-root-WARNING-Too high Vibration
+2022-05-10 16:08:30,385-root-WARNING-Too high Vibration
+2022-05-10 16:08:30,550-root-WARNING-Too high Vibration
+2022-05-10 16:08:30,725-root-WARNING-Too high Vibration
+2022-05-10 16:08:30,886-root-WARNING-Too high Vibration
+2022-05-10 16:08:31,049-root-WARNING-Too high Vibration
+2022-05-10 16:08:31,219-root-WARNING-Too high Vibration
+2022-05-10 16:08:31,382-root-WARNING-Too high Vibration
+2022-05-10 16:08:31,556-root-WARNING-Too high Vibration
+2022-05-10 16:08:31,735-root-WARNING-Too high Vibration
+2022-05-10 16:08:31,917-root-WARNING-Too high Vibration
+2022-05-10 16:08:32,055-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:08:32,090-root-WARNING-Too high Vibration
+2022-05-10 16:08:32,246-root-WARNING-Too high Vibration
+2022-05-10 16:08:32,393-root-WARNING-Too high Vibration
+2022-05-10 16:08:32,549-root-WARNING-Too high Vibration
+2022-05-10 16:08:32,715-root-WARNING-Too high Vibration
+2022-05-10 16:08:32,888-root-WARNING-Too high Vibration
+2022-05-10 16:08:33,048-root-WARNING-Too high Vibration
+2022-05-10 16:08:33,216-root-WARNING-Too high Vibration
+2022-05-10 16:08:33,381-root-WARNING-Too high Vibration
+2022-05-10 16:08:33,549-root-WARNING-Too high Vibration
+2022-05-10 16:08:33,728-root-WARNING-Too high Vibration
+2022-05-10 16:08:33,882-root-WARNING-Too high Vibration
+2022-05-10 16:08:34,049-root-WARNING-Too high Vibration
+2022-05-10 16:08:34,216-root-WARNING-Too high Vibration
+2022-05-10 16:08:34,381-root-WARNING-Too high Vibration
+2022-05-10 16:08:34,554-root-WARNING-Too high Vibration
+2022-05-10 16:08:34,714-root-WARNING-Too high Vibration
+2022-05-10 16:08:34,882-root-WARNING-Too high Vibration
+2022-05-10 16:08:35,047-root-WARNING-Too high Vibration
+2022-05-10 16:08:35,215-root-WARNING-Too high Vibration
+2022-05-10 16:08:35,356-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:08:35,384-root-WARNING-Too high Vibration
+2022-05-10 16:08:35,549-root-WARNING-Too high Vibration
+2022-05-10 16:08:35,715-root-WARNING-Too high Vibration
+2022-05-10 16:08:35,883-root-WARNING-Too high Vibration
+2022-05-10 16:08:36,054-root-WARNING-Too high Vibration
+2022-05-10 16:08:36,216-root-WARNING-Too high Vibration
+2022-05-10 16:08:36,381-root-WARNING-Too high Vibration
+2022-05-10 16:08:36,548-root-WARNING-Too high Vibration
+2022-05-10 16:08:36,714-root-WARNING-Too high Vibration
+2022-05-10 16:08:36,885-root-WARNING-Too high Vibration
+2022-05-10 16:08:37,068-root-WARNING-Too high Vibration
+2022-05-10 16:08:37,232-root-WARNING-Too high Vibration
+2022-05-10 16:08:37,380-root-WARNING-Too high Vibration
+2022-05-10 16:08:37,548-root-WARNING-Too high Vibration
+2022-05-10 16:08:37,720-root-WARNING-Too high Vibration
+2022-05-10 16:08:37,888-root-WARNING-Too high Vibration
+2022-05-10 16:08:38,073-root-WARNING-Too high Vibration
+2022-05-10 16:08:38,234-root-WARNING-Too high Vibration
+2022-05-10 16:08:38,393-root-WARNING-Too high Vibration
+2022-05-10 16:08:38,560-root-WARNING-Too high Vibration
+2022-05-10 16:08:38,689-root-INFO-Production : 0 | Temperature : 34.3 | Vibration : 2.25
+2022-05-10 16:08:38,724-root-WARNING-Too high Vibration
+2022-05-10 16:08:38,922-root-WARNING-Too high Vibration
+2022-05-10 16:08:39,089-root-WARNING-Too high Vibration
+2022-05-10 16:08:39,242-root-WARNING-Too high Vibration
+2022-05-10 16:08:39,386-root-WARNING-Too high Vibration
+2022-05-10 16:08:39,547-root-WARNING-Too high Vibration
+2022-05-10 16:08:39,720-root-WARNING-Too high Vibration
+2022-05-10 16:08:39,884-root-WARNING-Too high Vibration
+2022-05-10 16:08:40,050-root-WARNING-Too high Vibration
+2022-05-10 16:08:40,217-root-WARNING-Too high Vibration
+2022-05-10 16:08:40,381-root-WARNING-Too high Vibration
+2022-05-10 16:08:40,550-root-WARNING-Too high Vibration
+2022-05-10 16:08:40,713-root-WARNING-Too high Vibration
+2022-05-10 16:08:40,880-root-WARNING-Too high Vibration
+2022-05-10 16:08:41,047-root-WARNING-Too high Vibration
+2022-05-10 16:08:41,217-root-WARNING-Too high Vibration
+2022-05-10 16:08:41,379-root-WARNING-Too high Vibration
+2022-05-10 16:08:41,552-root-WARNING-Too high Vibration
+2022-05-10 16:08:41,712-root-WARNING-Too high Vibration
+2022-05-10 16:08:41,891-root-WARNING-Too high Vibration
+2022-05-10 16:08:42,014-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:08:42,052-root-WARNING-Too high Vibration
+2022-05-10 16:08:42,224-root-WARNING-Too high Vibration
+2022-05-10 16:08:42,390-root-WARNING-Too high Vibration
+2022-05-10 16:08:42,549-root-WARNING-Too high Vibration
+2022-05-10 16:08:42,712-root-WARNING-Too high Vibration
+2022-05-10 16:08:42,893-root-WARNING-Too high Vibration
+2022-05-10 16:08:43,047-root-WARNING-Too high Vibration
+2022-05-10 16:08:43,212-root-WARNING-Too high Vibration
+2022-05-10 16:08:43,380-root-WARNING-Too high Vibration
+2022-05-10 16:08:43,546-root-WARNING-Too high Vibration
+2022-05-10 16:08:43,715-root-WARNING-Too high Vibration
+2022-05-10 16:08:43,891-root-WARNING-Too high Vibration
+2022-05-10 16:08:44,046-root-WARNING-Too high Vibration
+2022-05-10 16:08:44,214-root-WARNING-Too high Vibration
+2022-05-10 16:08:44,378-root-WARNING-Too high Vibration
+2022-05-10 16:08:44,549-root-WARNING-Too high Vibration
+2022-05-10 16:08:44,730-root-WARNING-Too high Vibration
+2022-05-10 16:08:44,879-root-WARNING-Too high Vibration
+2022-05-10 16:08:45,045-root-WARNING-Too high Vibration
+2022-05-10 16:08:45,212-root-WARNING-Too high Vibration
+2022-05-10 16:08:45,354-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:08:45,391-root-WARNING-Too high Vibration
+2022-05-10 16:08:45,556-root-WARNING-Too high Vibration
+2022-05-10 16:08:45,718-root-WARNING-Too high Vibration
+2022-05-10 16:08:45,878-root-WARNING-Too high Vibration
+2022-05-10 16:08:46,045-root-WARNING-Too high Vibration
+2022-05-10 16:08:46,212-root-WARNING-Too high Vibration
+2022-05-10 16:08:46,382-root-WARNING-Too high Vibration
+2022-05-10 16:08:46,545-root-WARNING-Too high Vibration
+2022-05-10 16:08:46,711-root-WARNING-Too high Vibration
+2022-05-10 16:08:46,878-root-WARNING-Too high Vibration
+2022-05-10 16:08:47,044-root-WARNING-Too high Vibration
+2022-05-10 16:08:47,217-root-WARNING-Too high Vibration
+2022-05-10 16:08:47,377-root-WARNING-Too high Vibration
+2022-05-10 16:08:47,544-root-WARNING-Too high Vibration
+2022-05-10 16:08:47,711-root-WARNING-Too high Vibration
+2022-05-10 16:08:47,878-root-WARNING-Too high Vibration
+2022-05-10 16:08:48,051-root-WARNING-Too high Vibration
+2022-05-10 16:08:48,211-root-WARNING-Too high Vibration
+2022-05-10 16:08:48,377-root-WARNING-Too high Vibration
+2022-05-10 16:08:48,544-root-WARNING-Too high Vibration
+2022-05-10 16:08:48,677-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:08:48,710-root-WARNING-Too high Vibration
+2022-05-10 16:08:48,886-root-WARNING-Too high Vibration
+2022-05-10 16:08:49,049-root-WARNING-Too high Vibration
+2022-05-10 16:08:49,211-root-WARNING-Too high Vibration
+2022-05-10 16:08:49,377-root-WARNING-Too high Vibration
+2022-05-10 16:08:49,545-root-WARNING-Too high Vibration
+2022-05-10 16:08:49,710-root-WARNING-Too high Vibration
+2022-05-10 16:08:49,884-root-WARNING-Too high Vibration
+2022-05-10 16:08:50,045-root-WARNING-Too high Vibration
+2022-05-10 16:08:50,211-root-WARNING-Too high Vibration
+2022-05-10 16:08:50,376-root-WARNING-Too high Vibration
+2022-05-10 16:08:50,543-root-WARNING-Too high Vibration
+2022-05-10 16:08:50,716-root-WARNING-Too high Vibration
+2022-05-10 16:08:50,877-root-WARNING-Too high Vibration
+2022-05-10 16:08:51,043-root-WARNING-Too high Vibration
+2022-05-10 16:08:51,210-root-WARNING-Too high Vibration
+2022-05-10 16:08:51,376-root-WARNING-Too high Vibration
+2022-05-10 16:08:51,551-root-WARNING-Too high Vibration
+2022-05-10 16:08:51,711-root-WARNING-Too high Vibration
+2022-05-10 16:08:51,877-root-WARNING-Too high Vibration
+2022-05-10 16:08:52,009-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:08:52,043-root-WARNING-Too high Vibration
+2022-05-10 16:08:52,210-root-WARNING-Too high Vibration
+2022-05-10 16:08:52,376-root-WARNING-Too high Vibration
+2022-05-10 16:08:52,558-root-WARNING-Too high Vibration
+2022-05-10 16:08:52,714-root-WARNING-Too high Vibration
+2022-05-10 16:08:52,880-root-WARNING-Too high Vibration
+2022-05-10 16:08:53,047-root-WARNING-Too high Vibration
+2022-05-10 16:08:53,215-root-WARNING-Too high Vibration
+2022-05-10 16:08:53,381-root-WARNING-Too high Vibration
+2022-05-10 16:08:53,547-root-WARNING-Too high Vibration
+2022-05-10 16:08:53,709-root-WARNING-Too high Vibration
+2022-05-10 16:08:53,877-root-WARNING-Too high Vibration
+2022-05-10 16:08:54,047-root-WARNING-Too high Vibration
+2022-05-10 16:08:54,210-root-WARNING-Too high Vibration
+2022-05-10 16:08:54,376-root-WARNING-Too high Vibration
+2022-05-10 16:08:54,543-root-WARNING-Too high Vibration
+2022-05-10 16:08:54,714-root-WARNING-Too high Vibration
+2022-05-10 16:08:54,896-root-WARNING-Too high Vibration
+2022-05-10 16:08:55,065-root-WARNING-Too high Vibration
+2022-05-10 16:08:55,220-root-WARNING-Too high Vibration
+2022-05-10 16:08:55,347-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:08:55,380-root-WARNING-Too high Vibration
+2022-05-10 16:08:55,547-root-WARNING-Too high Vibration
+2022-05-10 16:08:55,712-root-WARNING-Too high Vibration
+2022-05-10 16:08:55,889-root-WARNING-Too high Vibration
+2022-05-10 16:08:56,044-root-WARNING-Too high Vibration
+2022-05-10 16:08:56,209-root-WARNING-Too high Vibration
+2022-05-10 16:08:56,375-root-WARNING-Too high Vibration
+2022-05-10 16:08:56,547-root-WARNING-Too high Vibration
+2022-05-10 16:08:56,720-root-WARNING-Too high Vibration
+2022-05-10 16:08:56,876-root-WARNING-Too high Vibration
+2022-05-10 16:08:57,044-root-WARNING-Too high Vibration
+2022-05-10 16:08:57,212-root-WARNING-Too high Vibration
+2022-05-10 16:08:57,375-root-WARNING-Too high Vibration
+2022-05-10 16:08:57,549-root-WARNING-Too high Vibration
+2022-05-10 16:08:57,710-root-WARNING-Too high Vibration
+2022-05-10 16:08:57,878-root-WARNING-Too high Vibration
+2022-05-10 16:08:58,043-root-WARNING-Too high Vibration
+2022-05-10 16:08:58,211-root-WARNING-Too high Vibration
+2022-05-10 16:08:58,377-root-WARNING-Too high Vibration
+2022-05-10 16:08:58,544-root-WARNING-Too high Vibration
+2022-05-10 16:08:58,675-root-INFO-Production : 0 | Temperature : 34.3 | Vibration : 2.25
+2022-05-10 16:08:58,709-root-WARNING-Too high Vibration
+2022-05-10 16:08:58,876-root-WARNING-Too high Vibration
+2022-05-10 16:08:59,044-root-WARNING-Too high Vibration
+2022-05-10 16:08:59,224-root-WARNING-Too high Vibration
+2022-05-10 16:08:59,388-root-WARNING-Too high Vibration
+2022-05-10 16:08:59,543-root-WARNING-Too high Vibration
+2022-05-10 16:08:59,709-root-WARNING-Too high Vibration
+2022-05-10 16:08:59,876-root-WARNING-Too high Vibration
+2022-05-10 16:09:00,043-root-WARNING-Too high Vibration
+2022-05-10 16:09:00,222-root-WARNING-Too high Vibration
+2022-05-10 16:09:00,377-root-WARNING-Too high Vibration
+2022-05-10 16:09:00,544-root-WARNING-Too high Vibration
+2022-05-10 16:09:00,716-root-WARNING-Too high Vibration
+2022-05-10 16:09:00,878-root-WARNING-Too high Vibration
+2022-05-10 16:09:01,050-root-WARNING-Too high Vibration
+2022-05-10 16:09:10,395-root-WARNING-Too high Vibration
+2022-05-10 16:09:10,558-root-WARNING-Too high Vibration
+2022-05-10 16:09:10,708-root-WARNING-Too high Vibration
+2022-05-10 16:09:10,874-root-WARNING-Too high Vibration
+2022-05-10 16:09:11,041-root-WARNING-Too high Vibration
+2022-05-10 16:09:11,215-root-WARNING-Too high Vibration
+2022-05-10 16:09:11,379-root-WARNING-Too high Vibration
+2022-05-10 16:09:11,541-root-WARNING-Too high Vibration
+2022-05-10 16:09:11,707-root-WARNING-Too high Vibration
+2022-05-10 16:09:11,875-root-WARNING-Too high Vibration
+2022-05-10 16:09:12,041-root-WARNING-Too high Vibration
+2022-05-10 16:09:12,235-root-WARNING-Too high Vibration
+2022-05-10 16:09:12,399-root-WARNING-Too high Vibration
+2022-05-10 16:09:12,558-root-WARNING-Too high Vibration
+2022-05-10 16:09:12,707-root-WARNING-Too high Vibration
+2022-05-10 16:09:12,874-root-WARNING-Too high Vibration
+2022-05-10 16:09:13,040-root-WARNING-Too high Vibration
+2022-05-10 16:09:13,209-root-WARNING-Too high Vibration
+2022-05-10 16:09:13,373-root-WARNING-Too high Vibration
+2022-05-10 16:09:13,541-root-WARNING-Too high Vibration
+2022-05-10 16:09:13,673-root-INFO-Production : 0 | Temperature : 34.3 | Vibration : 2.25
+2022-05-10 16:09:13,707-root-WARNING-Too high Vibration
+2022-05-10 16:09:13,874-root-WARNING-Too high Vibration
+2022-05-10 16:09:14,045-root-WARNING-Too high Vibration
+2022-05-10 16:09:14,208-root-WARNING-Too high Vibration
+2022-05-10 16:09:14,374-root-WARNING-Too high Vibration
+2022-05-10 16:09:14,541-root-WARNING-Too high Vibration
+2022-05-10 16:09:14,706-root-WARNING-Too high Vibration
+2022-05-10 16:09:14,884-root-WARNING-Too high Vibration
+2022-05-10 16:09:15,040-root-WARNING-Too high Vibration
+2022-05-10 16:09:15,207-root-WARNING-Too high Vibration
+2022-05-10 16:09:15,374-root-WARNING-Too high Vibration
+2022-05-10 16:09:15,540-root-WARNING-Too high Vibration
+2022-05-10 16:09:15,713-root-WARNING-Too high Vibration
+2022-05-10 16:09:15,873-root-WARNING-Too high Vibration
+2022-05-10 16:09:16,039-root-WARNING-Too high Vibration
+2022-05-10 16:09:16,207-root-WARNING-Too high Vibration
+2022-05-10 16:09:16,374-root-WARNING-Too high Vibration
+2022-05-10 16:09:16,542-root-WARNING-Too high Vibration
+2022-05-10 16:09:16,706-root-WARNING-Too high Vibration
+2022-05-10 16:09:16,873-root-WARNING-Too high Vibration
+2022-05-10 16:09:17,006-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:09:17,039-root-WARNING-Too high Vibration
+2022-05-10 16:09:17,206-root-WARNING-Too high Vibration
+2022-05-10 16:09:17,377-root-WARNING-Too high Vibration
+2022-05-10 16:09:17,539-root-WARNING-Too high Vibration
+2022-05-10 16:09:17,706-root-WARNING-Too high Vibration
+2022-05-10 16:09:17,873-root-WARNING-Too high Vibration
+2022-05-10 16:09:18,039-root-WARNING-Too high Vibration
+2022-05-10 16:09:18,211-root-WARNING-Too high Vibration
+2022-05-10 16:09:18,372-root-WARNING-Too high Vibration
+2022-05-10 16:09:18,540-root-WARNING-Too high Vibration
+2022-05-10 16:09:18,705-root-WARNING-Too high Vibration
+2022-05-10 16:09:18,872-root-WARNING-Too high Vibration
+2022-05-10 16:09:19,045-root-WARNING-Too high Vibration
+2022-05-10 16:09:19,206-root-WARNING-Too high Vibration
+2022-05-10 16:09:19,372-root-WARNING-Too high Vibration
+2022-05-10 16:09:19,539-root-WARNING-Too high Vibration
+2022-05-10 16:09:19,705-root-WARNING-Too high Vibration
+2022-05-10 16:09:19,874-root-WARNING-Too high Vibration
+2022-05-10 16:09:20,038-root-WARNING-Too high Vibration
+2022-05-10 16:09:20,206-root-WARNING-Too high Vibration
+2022-05-10 16:09:20,338-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:09:20,371-root-WARNING-Too high Vibration
+2022-05-10 16:09:20,539-root-WARNING-Too high Vibration
+2022-05-10 16:09:20,709-root-WARNING-Too high Vibration
+2022-05-10 16:09:20,873-root-WARNING-Too high Vibration
+2022-05-10 16:09:21,038-root-WARNING-Too high Vibration
+2022-05-10 16:09:21,205-root-WARNING-Too high Vibration
+2022-05-10 16:09:21,371-root-WARNING-Too high Vibration
+2022-05-10 16:09:21,543-root-WARNING-Too high Vibration
+2022-05-10 16:09:21,704-root-WARNING-Too high Vibration
+2022-05-10 16:09:21,872-root-WARNING-Too high Vibration
+2022-05-10 16:09:22,037-root-WARNING-Too high Vibration
+2022-05-10 16:09:22,205-root-WARNING-Too high Vibration
+2022-05-10 16:09:22,377-root-WARNING-Too high Vibration
+2022-05-10 16:09:22,538-root-WARNING-Too high Vibration
+2022-05-10 16:09:22,705-root-WARNING-Too high Vibration
+2022-05-10 16:09:22,872-root-WARNING-Too high Vibration
+2022-05-10 16:09:23,038-root-WARNING-Too high Vibration
+2022-05-10 16:09:23,212-root-WARNING-Too high Vibration
+2022-05-10 16:09:23,377-root-WARNING-Too high Vibration
+2022-05-10 16:09:23,538-root-WARNING-Too high Vibration
+2022-05-10 16:09:23,670-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:09:23,704-root-WARNING-Too high Vibration
+2022-05-10 16:09:23,871-root-WARNING-Too high Vibration
+2022-05-10 16:09:24,037-root-WARNING-Too high Vibration
+2022-05-10 16:09:24,209-root-WARNING-Too high Vibration
+2022-05-10 16:09:24,370-root-WARNING-Too high Vibration
+2022-05-10 16:09:24,538-root-WARNING-Too high Vibration
+2022-05-10 16:09:24,704-root-WARNING-Too high Vibration
+2022-05-10 16:09:24,871-root-WARNING-Too high Vibration
+2022-05-10 16:09:25,038-root-WARNING-Too high Vibration
+2022-05-10 16:09:25,204-root-WARNING-Too high Vibration
+2022-05-10 16:09:25,370-root-WARNING-Too high Vibration
+2022-05-10 16:09:25,537-root-WARNING-Too high Vibration
+2022-05-10 16:09:25,705-root-WARNING-Too high Vibration
+2022-05-10 16:09:25,878-root-WARNING-Too high Vibration
+2022-05-10 16:09:26,041-root-WARNING-Too high Vibration
+2022-05-10 16:09:26,209-root-WARNING-Too high Vibration
+2022-05-10 16:09:26,381-root-WARNING-Too high Vibration
+2022-05-10 16:09:26,565-root-WARNING-Too high Vibration
+2022-05-10 16:09:26,746-root-WARNING-Too high Vibration
+2022-05-10 16:09:26,905-root-WARNING-Too high Vibration
+2022-05-10 16:09:27,031-root-INFO-Production : 0 | Temperature : 34.4 | Vibration : 2.25
+2022-05-10 16:09:27,060-root-WARNING-Too high Vibration
+2022-05-10 16:09:27,204-root-WARNING-Too high Vibration
+2022-05-10 16:09:27,371-root-WARNING-Too high Vibration
+2022-05-10 16:09:27,544-root-WARNING-Too high Vibration
+2022-05-10 16:09:27,704-root-WARNING-Too high Vibration
+2022-05-10 16:09:27,871-root-WARNING-Too high Vibration
+2022-05-10 16:09:28,037-root-WARNING-Too high Vibration
+2022-05-10 16:09:28,205-root-WARNING-Too high Vibration
+2022-05-10 16:09:28,379-root-WARNING-Too high Vibration
+2022-05-10 16:09:28,543-root-WARNING-Too high Vibration
+2022-05-10 16:09:28,706-root-WARNING-Too high Vibration
+2022-05-10 16:09:28,893-root-WARNING-Too high Vibration
+2022-05-10 16:09:29,084-root-WARNING-Too high Vibration
+2022-05-10 16:09:29,246-root-WARNING-Too high Vibration
+2022-05-10 16:09:29,407-root-WARNING-Too high Vibration
+2022-05-10 16:09:29,561-root-WARNING-Too high Vibration
+2022-05-10 16:09:29,706-root-WARNING-Too high Vibration
+2022-05-10 16:09:29,876-root-WARNING-Too high Vibration
+2022-05-10 16:09:30,040-root-WARNING-Too high Vibration
+2022-05-10 16:09:30,208-root-WARNING-Too high Vibration
+2022-05-10 16:09:30,336-root-INFO-Production : 0 | Temperature : 34.5 | Vibration : 2.25
+2022-05-10 16:09:30,369-root-WARNING-Too high Vibration
+2022-05-10 16:09:30,537-root-WARNING-Too high Vibration
+2022-05-10 16:09:30,706-root-WARNING-Too high Vibration
+2022-05-10 16:09:30,872-root-WARNING-Too high Vibration
+2022-05-10 16:09:31,045-root-WARNING-Too high Vibration
+2022-05-10 16:09:31,205-root-WARNING-Too high Vibration
+2022-05-10 16:09:31,371-root-WARNING-Too high Vibration
+2022-05-10 16:09:31,539-root-WARNING-Too high Vibration
+2022-05-10 16:09:31,704-root-WARNING-Too high Vibration
+2022-05-10 16:09:31,872-root-WARNING-Too high Vibration
+2022-05-10 16:09:32,035-root-WARNING-Too high Vibration
+2022-05-10 16:09:32,204-root-WARNING-Too high Vibration
+2022-05-10 16:09:32,368-root-WARNING-Too high Vibration
+2022-05-10 16:10:31,837-root-WARNING-Too high Vibration
+2022-05-10 16:10:32,015-root-WARNING-Too high Vibration
+2022-05-10 16:10:32,168-root-WARNING-Too high Vibration
+2022-05-10 16:10:32,315-root-WARNING-Too high Vibration
+2022-05-10 16:10:32,481-root-WARNING-Too high Vibration
+2022-05-10 16:10:32,648-root-WARNING-Too high Vibration
+2022-05-10 16:10:32,823-root-WARNING-Too high Vibration
+2022-05-10 16:10:32,991-root-WARNING-Too high Vibration
+2022-05-10 16:10:33,147-root-WARNING-Too high Vibration
+2022-05-10 16:10:33,315-root-WARNING-Too high Vibration
+2022-05-10 16:10:33,481-root-WARNING-Too high Vibration
+2022-05-10 16:10:33,648-root-WARNING-Too high Vibration
+2022-05-10 16:10:33,827-root-WARNING-Too high Vibration
+2022-05-10 16:10:33,993-root-WARNING-Too high Vibration
+2022-05-10 16:10:34,147-root-WARNING-Too high Vibration
+2022-05-10 16:10:34,315-root-WARNING-Too high Vibration
+2022-05-10 16:10:34,480-root-WARNING-Too high Vibration
+2022-05-10 16:10:34,682-root-WARNING-Too high Vibration
+2022-05-10 16:10:34,886-root-WARNING-Too high Vibration
+2022-05-10 16:10:35,056-root-WARNING-Too high Vibration
+2022-05-10 16:10:35,190-root-INFO-Production : 0 | Temperature : 39.9 | Vibration : 2.15
+2022-05-10 16:10:35,223-root-WARNING-Too high Vibration
+2022-05-10 16:10:35,397-root-WARNING-Too high Vibration
+2022-05-10 16:10:35,556-root-WARNING-Too high Vibration
+2022-05-10 16:10:35,725-root-WARNING-Too high Vibration
+2022-05-10 16:10:35,899-root-WARNING-Too high Vibration
+2022-05-10 16:10:36,068-root-WARNING-Too high Vibration
+2022-05-10 16:10:36,228-root-WARNING-Too high Vibration
+2022-05-10 16:10:36,397-root-WARNING-Too high Vibration
+2022-05-10 16:10:36,564-root-WARNING-Too high Vibration
+2022-05-10 16:10:36,728-root-WARNING-Too high Vibration
+2022-05-10 16:10:36,882-root-WARNING-Too high Vibration
+2022-05-10 16:10:37,044-root-WARNING-Too high Vibration
+2022-05-10 16:10:37,187-root-WARNING-Too high Vibration
+2022-05-10 16:10:37,356-root-WARNING-Too high Vibration
+2022-05-10 16:10:37,514-root-WARNING-Too high Vibration
+2022-05-10 16:10:37,698-root-WARNING-Too high Vibration
+2022-05-10 16:10:37,851-root-WARNING-Too high Vibration
+2022-05-10 16:10:38,004-root-WARNING-Too high Vibration
+2022-05-10 16:10:38,151-root-WARNING-Too high Vibration
+2022-05-10 16:10:38,314-root-WARNING-Too high Vibration
+2022-05-10 16:10:38,451-root-INFO-Production : 0 | Temperature : 39.9 | Vibration : 2.15
+2022-05-10 16:10:38,480-root-WARNING-Too high Vibration
+2022-05-10 16:10:38,648-root-WARNING-Too high Vibration
+2022-05-10 16:10:38,825-root-WARNING-Too high Vibration
+2022-05-10 16:10:39,000-root-WARNING-Too high Vibration
+2022-05-10 16:10:39,164-root-WARNING-Too high Vibration
+2022-05-10 16:10:39,324-root-WARNING-Too high Vibration
+2022-05-10 16:10:39,489-root-WARNING-Too high Vibration
+2022-05-10 16:10:39,654-root-WARNING-Too high Vibration
+2022-05-10 16:10:39,828-root-WARNING-Too high Vibration
+2022-05-10 16:10:40,002-root-WARNING-Too high Vibration
+2022-05-10 16:10:40,161-root-WARNING-Too high Vibration
+2022-05-10 16:10:40,319-root-WARNING-Too high Vibration
+2022-05-10 16:10:40,487-root-WARNING-Too high Vibration
+2022-05-10 16:10:40,664-root-WARNING-Too high Vibration
+2022-05-10 16:10:40,841-root-WARNING-Too high Vibration
+2022-05-10 16:10:41,019-root-WARNING-Too high Vibration
+2022-05-10 16:10:41,186-root-WARNING-Too high Vibration
+2022-05-10 16:10:41,339-root-WARNING-Too high Vibration
+2022-05-10 16:10:41,510-root-WARNING-Too high Vibration
+2022-05-10 16:10:41,678-root-WARNING-Too high Vibration
+2022-05-10 16:10:41,794-root-INFO-Production : 0 | Temperature : 40.0 | Vibration : 2.15
+2022-05-10 16:10:41,828-root-WARNING-Too high Vibration
+2022-05-10 16:10:41,993-root-WARNING-Too high Vibration
+2022-05-10 16:10:42,155-root-WARNING-Too high Vibration
+2022-05-10 16:10:42,313-root-WARNING-Too high Vibration
+2022-05-10 16:10:42,484-root-WARNING-Too high Vibration
+2022-05-10 16:10:42,659-root-WARNING-Too high Vibration
+2022-05-10 16:10:42,823-root-WARNING-Too high Vibration
+2022-05-10 16:10:42,981-root-WARNING-Too high Vibration
+2022-05-10 16:10:43,145-root-WARNING-Too high Vibration
+2022-05-10 16:10:43,320-root-WARNING-Too high Vibration
+2022-05-10 16:10:43,483-root-WARNING-Too high Vibration
+2022-05-10 16:10:43,648-root-WARNING-Too high Vibration
+2022-05-10 16:10:43,818-root-WARNING-Too high Vibration
+2022-05-10 16:10:43,995-root-WARNING-Too high Vibration
+2022-05-10 16:10:44,152-root-WARNING-Too high Vibration
+2022-05-10 16:10:44,313-root-WARNING-Too high Vibration
+2022-05-10 16:10:44,489-root-WARNING-Too high Vibration
+2022-05-10 16:10:44,663-root-WARNING-Too high Vibration
+2022-05-10 16:10:44,851-root-WARNING-Too high Vibration
+2022-05-10 16:10:45,017-root-WARNING-Too high Vibration
+2022-05-10 16:10:45,156-root-INFO-Production : 0 | Temperature : 39.9 | Vibration : 2.15
+2022-05-10 16:10:45,185-root-WARNING-Too high Vibration
+2022-05-10 16:10:45,358-root-WARNING-Too high Vibration
+2022-05-10 16:10:45,527-root-WARNING-Too high Vibration
+2022-05-10 16:10:45,713-root-WARNING-Too high Vibration
+2022-05-10 16:10:45,867-root-WARNING-Too high Vibration
+2022-05-10 16:10:46,049-root-WARNING-Too high Vibration
+2022-05-10 16:10:46,253-root-WARNING-Too high Vibration
+2022-05-10 16:10:46,469-root-WARNING-Too high Vibration
+2022-05-10 16:10:46,697-root-WARNING-Too high Vibration
+2022-05-10 16:10:46,920-root-WARNING-Too high Vibration
+2022-05-10 16:10:47,139-root-WARNING-Too high Vibration
+2022-05-10 16:10:47,316-root-WARNING-Too high Vibration
+2022-05-10 16:10:47,502-root-WARNING-Too high Vibration
+2022-05-10 16:10:47,682-root-WARNING-Too high Vibration
+2022-05-10 16:10:47,860-root-WARNING-Too high Vibration
+2022-05-10 16:10:48,022-root-WARNING-Too high Vibration
+2022-05-10 16:10:48,189-root-WARNING-Too high Vibration
+2022-05-10 16:10:48,370-root-WARNING-Too high Vibration
+2022-05-10 16:10:48,551-root-WARNING-Too high Vibration
+2022-05-10 16:10:48,723-root-WARNING-Too high Vibration
+2022-05-10 16:10:48,867-root-INFO-Production : 0 | Temperature : 40.0 | Vibration : 2.15
+2022-05-10 16:10:48,907-root-WARNING-Too high Vibration
+2022-05-10 16:10:49,076-root-WARNING-Too high Vibration
+2022-05-10 16:10:49,244-root-WARNING-Too high Vibration
+2022-05-10 16:10:49,422-root-WARNING-Too high Vibration
+2022-05-10 16:10:49,627-root-WARNING-Too high Vibration
+2022-05-10 16:10:49,825-root-WARNING-Too high Vibration
+2022-05-10 16:10:49,992-root-WARNING-Too high Vibration
+2022-05-10 16:10:50,165-root-WARNING-Too high Vibration
+2022-05-10 16:10:50,336-root-WARNING-Too high Vibration
+2022-05-10 16:10:50,508-root-WARNING-Too high Vibration
+2022-05-10 16:10:50,682-root-WARNING-Too high Vibration
+2022-05-10 16:10:50,859-root-WARNING-Too high Vibration
+2022-05-10 16:10:51,025-root-WARNING-Too high Vibration
+2022-05-10 16:10:51,203-root-WARNING-Too high Vibration
+2022-05-10 16:10:51,369-root-WARNING-Too high Vibration
+2022-05-10 16:10:51,543-root-WARNING-Too high Vibration
+2022-05-10 16:10:51,737-root-WARNING-Too high Vibration
+2022-05-10 16:10:51,923-root-WARNING-Too high Vibration
+2022-05-10 16:10:52,104-root-WARNING-Too high Vibration
+2022-05-10 16:10:52,281-root-WARNING-Too high Vibration
+2022-05-10 16:10:52,445-root-INFO-Production : 0 | Temperature : 40.1 | Vibration : 2.15
+2022-05-10 16:10:52,489-root-WARNING-Too high Vibration
+2022-05-10 16:10:52,694-root-WARNING-Too high Vibration
+2022-05-10 16:10:52,881-root-WARNING-Too high Vibration
+2022-05-10 16:10:53,070-root-WARNING-Too high Vibration
+2022-05-10 16:10:53,275-root-WARNING-Too high Vibration
+2022-05-10 16:10:53,460-root-WARNING-Too high Vibration
+2022-05-10 16:10:53,632-root-WARNING-Too high Vibration
+2022-05-10 16:10:53,823-root-WARNING-Too high Vibration
+2022-05-10 16:10:53,999-root-WARNING-Too high Vibration
+2022-05-10 16:10:54,159-root-WARNING-Too high Vibration
+2022-05-10 16:10:54,331-root-WARNING-Too high Vibration
+2022-05-10 16:10:54,517-root-WARNING-Too high Vibration
+2022-05-10 16:10:54,692-root-WARNING-Too high Vibration
+2022-05-10 16:10:54,881-root-WARNING-Too high Vibration
+2022-05-10 16:10:55,037-root-WARNING-Too high Vibration
+2022-05-10 16:10:55,196-root-WARNING-Too high Vibration
+2022-05-10 16:10:55,350-root-WARNING-Too high Vibration
+2022-05-10 16:10:55,503-root-WARNING-Too high Vibration
+2022-05-10 16:10:55,689-root-WARNING-Too high Vibration
+2022-05-10 16:10:55,849-root-WARNING-Too high Vibration
+2022-05-10 16:10:55,972-root-INFO-Production : 0 | Temperature : 40.2 | Vibration : 2.14
+2022-05-10 16:10:56,006-root-WARNING-Too high Vibration
+2022-05-10 16:10:56,157-root-WARNING-Too high Vibration
+2022-05-10 16:10:56,314-root-WARNING-Too high Vibration
+2022-05-10 16:10:56,483-root-WARNING-Too high Vibration
+2022-05-10 16:10:56,665-root-WARNING-Too high Vibration
+2022-05-10 16:10:56,834-root-WARNING-Too high Vibration
+2022-05-10 16:10:56,999-root-WARNING-Too high Vibration
+2022-05-10 16:10:57,166-root-WARNING-Too high Vibration
+2022-05-10 16:10:57,323-root-WARNING-Too high Vibration
+2022-05-10 16:10:57,487-root-WARNING-Too high Vibration
+2022-05-10 16:10:57,644-root-WARNING-Too high Vibration
+2022-05-10 16:10:57,797-root-WARNING-Too high Vibration
+2022-05-10 16:10:57,966-root-WARNING-Too high Vibration
+2022-05-10 16:10:58,167-root-WARNING-Too high Vibration
+2022-05-10 16:10:58,351-root-WARNING-Too high Vibration
+2022-05-10 16:10:58,528-root-WARNING-Too high Vibration
+2022-05-10 16:10:58,707-root-WARNING-Too high Vibration
+2022-05-10 16:10:58,904-root-WARNING-Too high Vibration
+2022-05-10 16:10:59,079-root-WARNING-Too high Vibration
+2022-05-10 16:10:59,259-root-WARNING-Too high Vibration
+2022-05-10 16:10:59,380-root-INFO-Production : 0 | Temperature : 40.2 | Vibration : 2.14
+2022-05-10 16:10:59,417-root-WARNING-Too high Vibration
+2022-05-10 16:10:59,604-root-WARNING-Too high Vibration
+2022-05-10 16:10:59,775-root-WARNING-Too high Vibration
+2022-05-10 16:10:59,945-root-WARNING-Too high Vibration
+2022-05-10 16:11:00,130-root-WARNING-Too high Vibration
+2022-05-10 16:11:00,305-root-WARNING-Too high Vibration
+2022-05-10 16:11:00,472-root-WARNING-Too high Vibration
+2022-05-10 16:11:00,642-root-WARNING-Too high Vibration
+2022-05-10 16:11:00,842-root-WARNING-Too high Vibration
+2022-05-10 16:11:01,028-root-WARNING-Too high Vibration
+2022-05-10 16:11:01,206-root-WARNING-Too high Vibration
+2022-05-10 16:11:01,360-root-WARNING-Too high Vibration
+2022-05-10 16:11:01,526-root-WARNING-Too high Vibration
+2022-05-10 16:11:01,691-root-WARNING-Too high Vibration
+2022-05-10 16:11:01,886-root-WARNING-Too high Vibration
+2022-05-10 16:11:02,076-root-WARNING-Too high Vibration
+2022-05-10 16:11:02,261-root-WARNING-Too high Vibration
+2022-05-10 16:11:02,425-root-WARNING-Too high Vibration
+2022-05-10 16:11:02,591-root-WARNING-Too high Vibration
+2022-05-10 16:11:02,785-root-WARNING-Too high Vibration
+2022-05-10 16:11:02,934-root-INFO-Production : 0 | Temperature : 40.2 | Vibration : 2.14
+2022-05-10 16:11:02,975-root-WARNING-Too high Vibration
+2022-05-10 16:11:03,152-root-WARNING-Too high Vibration
+2022-05-10 16:11:03,333-root-WARNING-Too high Vibration
+2022-05-10 16:11:03,514-root-WARNING-Too high Vibration
+2022-05-10 16:11:03,707-root-WARNING-Too high Vibration
+2022-05-10 16:11:03,923-root-WARNING-Too high Vibration
+2022-05-10 16:11:04,133-root-WARNING-Too high Vibration
+2022-05-10 16:11:04,376-root-WARNING-Too high Vibration
+2022-05-10 16:11:04,654-root-WARNING-Too high Vibration
+2022-05-10 16:11:04,891-root-WARNING-Too high Vibration
+2022-05-10 16:11:05,078-root-WARNING-Too high Vibration
+2022-05-10 16:11:05,249-root-WARNING-Too high Vibration
+2022-05-10 16:11:05,443-root-WARNING-Too high Vibration
+2022-05-10 16:11:05,632-root-WARNING-Too high Vibration
+2022-05-10 16:11:05,817-root-WARNING-Too high Vibration
+2022-05-10 16:11:05,982-root-WARNING-Too high Vibration
+2022-05-10 16:11:06,170-root-WARNING-Too high Vibration
+2022-05-10 16:11:15,124-root-WARNING-Too high Vibration
+2022-05-10 16:11:15,290-root-WARNING-Too high Vibration
+2022-05-10 16:11:15,447-root-WARNING-Too high Vibration
+2022-05-10 16:11:15,603-root-WARNING-Too high Vibration
+2022-05-10 16:11:15,768-root-WARNING-Too high Vibration
+2022-05-10 16:11:15,936-root-WARNING-Too high Vibration
+2022-05-10 16:11:16,101-root-WARNING-Too high Vibration
+2022-05-10 16:11:16,270-root-WARNING-Too high Vibration
+2022-05-10 16:11:16,434-root-WARNING-Too high Vibration
+2022-05-10 16:11:16,602-root-WARNING-Too high Vibration
+2022-05-10 16:11:16,768-root-WARNING-Too high Vibration
+2022-05-10 16:11:16,935-root-WARNING-Too high Vibration
+2022-05-10 16:11:17,107-root-WARNING-Too high Vibration
+2022-05-10 16:11:17,268-root-WARNING-Too high Vibration
+2022-05-10 16:11:17,435-root-WARNING-Too high Vibration
+2022-05-10 16:11:17,601-root-WARNING-Too high Vibration
+2022-05-10 16:11:17,768-root-WARNING-Too high Vibration
+2022-05-10 16:11:17,940-root-WARNING-Too high Vibration
+2022-05-10 16:11:18,104-root-WARNING-Too high Vibration
+2022-05-10 16:11:18,272-root-WARNING-Too high Vibration
+2022-05-10 16:11:18,404-root-INFO-Production : 0 | Temperature : 40.3 | Vibration : 2.14
+2022-05-10 16:11:18,438-root-WARNING-Too high Vibration
+2022-05-10 16:11:18,605-root-WARNING-Too high Vibration
+2022-05-10 16:11:18,771-root-WARNING-Too high Vibration
+2022-05-10 16:11:18,935-root-WARNING-Too high Vibration
+2022-05-10 16:11:19,101-root-WARNING-Too high Vibration
+2022-05-10 16:11:19,268-root-WARNING-Too high Vibration
+2022-05-10 16:11:19,435-root-WARNING-Too high Vibration
+2022-05-10 16:11:19,624-root-WARNING-Too high Vibration
+2022-05-10 16:11:19,803-root-WARNING-Too high Vibration
+2022-05-10 16:11:19,978-root-WARNING-Too high Vibration
+2022-05-10 16:11:20,159-root-WARNING-Too high Vibration
+2022-05-10 16:11:20,345-root-WARNING-Too high Vibration
+2022-05-10 16:11:20,505-root-WARNING-Too high Vibration
+2022-05-10 16:11:20,689-root-WARNING-Too high Vibration
+2022-05-10 16:11:20,857-root-WARNING-Too high Vibration
+2022-05-10 16:11:21,027-root-WARNING-Too high Vibration
+2022-05-10 16:11:21,210-root-WARNING-Too high Vibration
+2022-05-10 16:11:21,378-root-WARNING-Too high Vibration
+2022-05-10 16:11:21,536-root-WARNING-Too high Vibration
+2022-05-10 16:11:21,714-root-WARNING-Too high Vibration
+2022-05-10 16:11:21,844-root-INFO-Production : 0 | Temperature : 40.3 | Vibration : 2.14
+2022-05-10 16:11:21,874-root-WARNING-Too high Vibration
+2022-05-10 16:11:22,039-root-WARNING-Too high Vibration
+2022-05-10 16:11:22,206-root-WARNING-Too high Vibration
+2022-05-10 16:11:22,383-root-WARNING-Too high Vibration
+2022-05-10 16:11:22,567-root-WARNING-Too high Vibration
+2022-05-10 16:11:22,729-root-WARNING-Too high Vibration
+2022-05-10 16:11:22,906-root-WARNING-Too high Vibration
+2022-05-10 16:11:23,072-root-WARNING-Too high Vibration
+2022-05-10 16:11:23,242-root-WARNING-Too high Vibration
+2022-05-10 16:11:23,410-root-WARNING-Too high Vibration
+2022-05-10 16:11:23,557-root-WARNING-Too high Vibration
+2022-05-10 16:11:23,709-root-WARNING-Too high Vibration
+2022-05-10 16:11:23,857-root-WARNING-Too high Vibration
+2022-05-10 16:11:24,056-root-WARNING-Too high Vibration
+2022-05-10 16:11:24,219-root-WARNING-Too high Vibration
+2022-05-10 16:11:24,401-root-WARNING-Too high Vibration
+2022-05-10 16:11:24,566-root-WARNING-Too high Vibration
+2022-05-10 16:11:24,740-root-WARNING-Too high Vibration
+2022-05-10 16:11:24,909-root-WARNING-Too high Vibration
+2022-05-10 16:11:25,094-root-WARNING-Too high Vibration
+2022-05-10 16:11:25,252-root-INFO-Production : 0 | Temperature : 40.2 | Vibration : 2.14
+2022-05-10 16:11:25,282-root-WARNING-Too high Vibration
+2022-05-10 16:11:25,459-root-WARNING-Too high Vibration
+2022-05-10 16:11:25,628-root-WARNING-Too high Vibration
+2022-05-10 16:11:25,797-root-WARNING-Too high Vibration
+2022-05-10 16:11:25,985-root-WARNING-Too high Vibration
+2022-05-10 16:11:26,149-root-WARNING-Too high Vibration
+2022-05-10 16:11:26,319-root-WARNING-Too high Vibration
+2022-05-10 16:11:26,477-root-WARNING-Too high Vibration
+2022-05-10 16:11:26,659-root-WARNING-Too high Vibration
+2022-05-10 16:11:26,815-root-WARNING-Too high Vibration
+2022-05-10 16:11:26,974-root-WARNING-Too high Vibration
+2022-05-10 16:11:27,158-root-WARNING-Too high Vibration
+2022-05-10 16:11:27,334-root-WARNING-Too high Vibration
+2022-05-10 16:11:27,508-root-WARNING-Too high Vibration
+2022-05-10 16:11:27,686-root-WARNING-Too high Vibration
+2022-05-10 16:11:27,855-root-WARNING-Too high Vibration
+2022-05-10 16:11:28,029-root-WARNING-Too high Vibration
+2022-05-10 16:11:28,204-root-WARNING-Too high Vibration
+2022-05-10 16:11:28,383-root-WARNING-Too high Vibration
+2022-05-10 16:11:28,565-root-WARNING-Too high Vibration
+2022-05-10 16:11:28,693-root-INFO-Production : 0 | Temperature : 40.2 | Vibration : 2.14
+2022-05-10 16:11:28,732-root-WARNING-Too high Vibration
+2022-05-10 16:11:28,914-root-WARNING-Too high Vibration
+2022-05-10 16:11:29,086-root-WARNING-Too high Vibration
+2022-05-10 16:11:29,248-root-WARNING-Too high Vibration
+2022-05-10 16:11:29,427-root-WARNING-Too high Vibration
+2022-05-10 16:11:29,596-root-WARNING-Too high Vibration
+2022-05-10 16:11:29,760-root-WARNING-Too high Vibration
+2022-05-10 16:11:29,940-root-WARNING-Too high Vibration
+2022-05-10 16:11:30,107-root-WARNING-Too high Vibration
+2022-05-10 16:11:30,291-root-WARNING-Too high Vibration
+2022-05-10 16:11:30,464-root-WARNING-Too high Vibration
+2022-05-10 16:11:30,634-root-WARNING-Too high Vibration
+2022-05-10 16:11:30,810-root-WARNING-Too high Vibration
+2022-05-10 16:11:30,966-root-WARNING-Too high Vibration
+2022-05-10 16:11:31,140-root-WARNING-Too high Vibration
+2022-05-10 16:11:31,312-root-WARNING-Too high Vibration
+2022-05-10 16:11:31,469-root-WARNING-Too high Vibration
+2022-05-10 16:11:31,632-root-WARNING-Too high Vibration
+2022-05-10 16:11:31,787-root-WARNING-Too high Vibration
+2022-05-10 16:11:31,966-root-WARNING-Too high Vibration
+2022-05-10 16:11:32,110-root-INFO-Production : 0 | Temperature : 40.2 | Vibration : 2.14
+2022-05-10 16:11:32,147-root-WARNING-Too high Vibration
+2022-05-10 16:11:32,331-root-WARNING-Too high Vibration
+2022-05-10 16:11:32,506-root-WARNING-Too high Vibration
+2022-05-10 16:11:32,691-root-WARNING-Too high Vibration
+2022-05-10 16:11:32,864-root-WARNING-Too high Vibration
+2022-05-10 16:12:33,125-root-WARNING-Too high Vibration
+2022-05-10 16:12:33,288-root-WARNING-Too high Vibration
+2022-05-10 16:12:33,447-root-WARNING-Too high Vibration
+2022-05-10 16:12:33,613-root-WARNING-Too high Temp
+2022-05-10 16:12:33,779-root-WARNING-Too high Temp
+2022-05-10 16:12:33,946-root-WARNING-Too high Temp
+2022-05-10 16:12:34,114-root-WARNING-Too high Temp
+2022-05-10 16:12:34,280-root-WARNING-Too high Temp
+2022-05-10 16:12:34,446-root-WARNING-Too high Temp
+2022-05-10 16:12:34,613-root-WARNING-Too high Temp
+2022-05-10 16:12:34,779-root-WARNING-Too high Vibration
+2022-05-10 16:12:34,950-root-WARNING-Too high Vibration
+2022-05-10 16:12:35,112-root-WARNING-Too high Vibration
+2022-05-10 16:12:35,279-root-WARNING-Too high Vibration
+2022-05-10 16:12:35,446-root-WARNING-Too high Vibration
+2022-05-10 16:12:35,613-root-WARNING-Too high Vibration
+2022-05-10 16:12:35,789-root-WARNING-Too high Vibration
+2022-05-10 16:12:35,961-root-WARNING-Too high Vibration
+2022-05-10 16:12:36,125-root-WARNING-Too high Vibration
+2022-05-10 16:12:36,281-root-WARNING-Too high Vibration
+2022-05-10 16:12:36,415-root-INFO-Production : 0 | Temperature : 49.8 | Vibration : 1.92
+2022-05-10 16:12:36,445-root-WARNING-Too high Vibration
+2022-05-10 16:12:36,616-root-WARNING-Too high Vibration
+2022-05-10 16:12:36,779-root-WARNING-Too high Vibration
+2022-05-10 16:12:36,952-root-WARNING-Too high Vibration
+2022-05-10 16:12:37,113-root-WARNING-Too high Vibration
+2022-05-10 16:12:37,284-root-WARNING-Too high Vibration
+2022-05-10 16:12:37,450-root-WARNING-Too high Vibration
+2022-05-10 16:12:37,612-root-WARNING-Too high Vibration
+2022-05-10 16:12:37,790-root-WARNING-Too high Vibration
+2022-05-10 16:12:37,959-root-WARNING-Too high Vibration
+2022-05-10 16:12:38,136-root-WARNING-Too high Vibration
+2022-05-10 16:12:38,319-root-WARNING-Too high Temp
+2022-05-10 16:12:38,478-root-WARNING-Too high Temp
+2022-05-10 16:12:38,651-root-WARNING-Too high Temp
+2022-05-10 16:12:38,819-root-WARNING-Too high Temp
+2022-05-10 16:12:38,991-root-WARNING-Too high Temp
+2022-05-10 16:12:39,152-root-WARNING-Too high Temp
+2022-05-10 16:12:39,309-root-WARNING-Too high Temp
+2022-05-10 16:12:39,477-root-WARNING-Too high Temp
+2022-05-10 16:12:39,645-root-WARNING-Too high Temp
+2022-05-10 16:12:39,787-root-INFO-Production : 0 | Temperature : 50.3 | Vibration : 1.91
+2022-05-10 16:12:39,824-root-WARNING-Too high Temp
+2022-05-10 16:12:39,992-root-WARNING-Too high Temp
+2022-05-10 16:12:40,138-root-WARNING-Too high Temp
+2022-05-10 16:12:40,308-root-WARNING-Too high Temp
+2022-05-10 16:12:40,491-root-WARNING-Too high Temp
+2022-05-10 16:12:40,650-root-WARNING-Too high Temp
+2022-05-10 16:12:40,809-root-WARNING-Too high Temp
+2022-05-10 16:12:40,985-root-WARNING-Too high Temp
+2022-05-10 16:12:41,144-root-WARNING-Too high Temp
+2022-05-10 16:12:41,320-root-WARNING-Too high Temp
+2022-05-10 16:12:41,483-root-WARNING-Too high Temp
+2022-05-10 16:12:41,644-root-WARNING-Too high Temp
+2022-05-10 16:12:41,814-root-WARNING-Too high Temp
+2022-05-10 16:12:41,978-root-WARNING-Too high Temp
+2022-05-10 16:12:42,148-root-WARNING-Too high Temp
+2022-05-10 16:12:42,314-root-WARNING-Too high Temp
+2022-05-10 16:12:42,490-root-WARNING-Too high Temp
+2022-05-10 16:12:42,659-root-WARNING-Too high Temp
+2022-05-10 16:12:42,822-root-WARNING-Too high Temp
+2022-05-10 16:12:42,989-root-WARNING-Too high Temp
+2022-05-10 16:12:43,115-root-INFO-Production : 0 | Temperature : 50.8 | Vibration : 1.90
+2022-05-10 16:12:43,148-root-WARNING-Too high Temp
+2022-05-10 16:12:43,323-root-WARNING-Too high Temp
+2022-05-10 16:12:43,499-root-WARNING-Too high Temp
+2022-05-10 16:12:43,657-root-WARNING-Too high Temp
+2022-05-10 16:12:43,834-root-WARNING-Too high Temp
+2022-05-10 16:12:44,006-root-WARNING-Too high Temp
+2022-05-10 16:12:44,181-root-WARNING-Too high Temp
+2022-05-10 16:12:44,350-root-WARNING-Too high Temp
+2022-05-10 16:12:44,507-root-WARNING-Too high Temp
+2022-05-10 16:12:44,681-root-WARNING-Too high Temp
+2022-05-10 16:12:44,849-root-WARNING-Too high Temp
+2022-05-10 16:12:45,025-root-WARNING-Too high Temp
+2022-05-10 16:12:45,186-root-WARNING-Too high Temp
+2022-05-10 16:12:45,360-root-WARNING-Too high Temp
+2022-05-10 16:12:45,531-root-WARNING-Too high Temp
+2022-05-10 16:12:45,687-root-WARNING-Too high Temp
+2022-05-10 16:12:45,877-root-WARNING-Too high Temp
+2022-05-10 16:12:46,042-root-WARNING-Too high Temp
+2022-05-10 16:12:46,221-root-WARNING-Too high Temp
+2022-05-10 16:12:46,375-root-WARNING-Too high Temp
+2022-05-10 16:12:46,502-root-INFO-Production : 0 | Temperature : 51.7 | Vibration : 1.87
+2022-05-10 16:12:46,533-root-WARNING-Too high Temp
+2022-05-10 16:12:46,698-root-WARNING-Too high Temp
+2022-05-10 16:12:46,862-root-WARNING-Too high Temp
+2022-05-10 16:12:47,022-root-WARNING-Too high Temp
+2022-05-10 16:12:47,175-root-WARNING-Too high Temp
+2022-05-10 16:12:47,345-root-WARNING-Too high Temp
+2022-05-10 16:12:47,513-root-WARNING-Too high Temp
+2022-05-10 16:12:47,680-root-WARNING-Too high Temp
+2022-05-10 16:12:47,847-root-WARNING-Too high Temp
+2022-05-10 16:12:47,994-root-WARNING-Too high Temp
+2022-05-10 16:12:48,151-root-WARNING-Too high Temp
+2022-05-10 16:12:48,321-root-WARNING-Too high Temp
+2022-05-10 16:12:48,533-root-WARNING-Too high Temp
+2022-05-10 16:12:48,718-root-WARNING-Too high Temp
+2022-05-10 16:12:48,869-root-WARNING-Too high Temp
+2022-05-10 16:12:49,025-root-WARNING-Too high Temp
+2022-05-10 16:12:49,240-root-WARNING-Too high Temp
+2022-05-10 16:12:49,402-root-WARNING-Too high Temp
+2022-05-10 16:12:49,554-root-WARNING-Too high Temp
+2022-05-10 16:12:49,708-root-WARNING-Too high Temp
+2022-05-10 16:12:49,825-root-INFO-Production : 0 | Temperature : 52.2 | Vibration : 1.86
+2022-05-10 16:12:49,855-root-WARNING-Too high Temp
+2022-05-10 16:12:50,013-root-WARNING-Too high Temp
+2022-05-10 16:12:50,165-root-WARNING-Too high Temp
+2022-05-10 16:12:50,326-root-WARNING-Too high Temp
+2022-05-10 16:12:50,482-root-WARNING-Too high Temp
+2022-05-10 16:12:50,652-root-WARNING-Too high Temp
+2022-05-10 16:12:50,825-root-WARNING-Too high Temp
+2022-05-10 16:12:51,003-root-WARNING-Too high Temp
+2022-05-10 16:12:51,177-root-WARNING-Too high Temp
+2022-05-10 16:12:51,330-root-WARNING-Too high Temp
+2022-05-10 16:12:51,490-root-WARNING-Too high Temp
+2022-05-10 16:12:51,652-root-WARNING-Too high Temp
+2022-05-10 16:12:51,800-root-WARNING-Too high Temp
+2022-05-10 16:12:51,972-root-WARNING-Too high Temp
+2022-05-10 16:12:52,144-root-WARNING-Too high Temp
+2022-05-10 16:12:52,309-root-WARNING-Too high Temp
+2022-05-10 16:12:52,459-root-WARNING-Too high Temp
+2022-05-10 16:12:52,626-root-WARNING-Too high Temp
+2022-05-10 16:12:52,781-root-WARNING-Too high Temp
+2022-05-10 16:12:52,964-root-WARNING-Too high Temp
+2022-05-10 16:12:53,104-root-INFO-Production : 0 | Temperature : 52.4 | Vibration : 1.85
+2022-05-10 16:12:53,142-root-WARNING-Too high Temp
+2022-05-10 16:12:53,316-root-WARNING-Too high Temp
+2022-05-10 16:12:53,476-root-WARNING-Too high Temp
+2022-05-10 16:12:53,639-root-WARNING-Too high Temp
+2022-05-10 16:12:53,841-root-WARNING-Too high Temp
+2022-05-10 16:12:54,019-root-WARNING-Too high Temp
+2022-05-10 16:12:54,171-root-WARNING-Too high Temp
+2022-05-10 16:12:54,348-root-WARNING-Too high Temp
+2022-05-10 16:12:54,518-root-WARNING-Too high Temp
+2022-05-10 16:12:54,694-root-WARNING-Too high Temp
+2022-05-10 16:12:54,864-root-WARNING-Too high Temp
+2022-05-10 16:12:55,007-root-WARNING-Too high Temp
+2022-05-10 16:12:55,172-root-WARNING-Too high Temp
+2022-05-10 16:12:55,350-root-WARNING-Too high Temp
+2022-05-10 16:12:55,524-root-WARNING-Too high Temp
+2022-05-10 16:12:55,698-root-WARNING-Too high Temp
+2022-05-10 16:12:55,862-root-WARNING-Too high Temp
+2022-05-10 16:12:56,029-root-WARNING-Too high Temp
+2022-05-10 16:12:56,173-root-WARNING-Too high Temp
+2022-05-10 16:12:56,347-root-WARNING-Too high Temp
+2022-05-10 16:12:56,481-root-INFO-Production : 0 | Temperature : 51.8 | Vibration : 1.87
+2022-05-10 16:12:56,510-root-WARNING-Too high Temp
+2022-05-10 16:12:56,685-root-WARNING-Too high Temp
+2022-05-10 16:12:56,862-root-WARNING-Too high Temp
+2022-05-10 16:12:57,041-root-WARNING-Too high Temp
+2022-05-10 16:12:57,219-root-WARNING-Too high Temp
+2022-05-10 16:12:57,390-root-WARNING-Too high Vibration
+2022-05-10 16:12:57,561-root-WARNING-Too high Vibration
+2022-05-10 16:12:57,736-root-WARNING-Too high Vibration
+2022-05-10 16:12:57,910-root-WARNING-Too high Vibration
+2022-05-10 16:12:58,083-root-WARNING-Too high Vibration
+2022-05-10 16:12:58,250-root-WARNING-Too high Vibration
+2022-05-10 16:12:58,397-root-WARNING-Too high Vibration
+2022-05-10 16:12:58,574-root-WARNING-Too high Vibration
+2022-05-10 16:12:58,755-root-WARNING-Too high Vibration
+2022-05-10 16:12:58,949-root-WARNING-Too high Vibration
+2022-05-10 16:12:59,153-root-WARNING-Too high Vibration
+2022-05-10 16:12:59,310-root-WARNING-Too high Vibration
+2022-05-10 16:12:59,475-root-WARNING-Too high Vibration
+2022-05-10 16:12:59,665-root-WARNING-Too high Vibration
+2022-05-10 16:12:59,840-root-WARNING-Too high Vibration
+2022-05-10 16:12:59,971-root-INFO-Production : 0 | Temperature : 48.5 | Vibration : 1.96
+2022-05-10 16:13:00,004-root-WARNING-Too high Vibration
+2022-05-10 16:13:00,178-root-WARNING-Too high Vibration
+2022-05-10 16:13:00,357-root-WARNING-Too high Vibration
+2022-05-10 16:13:00,528-root-WARNING-Too high Vibration
+2022-05-10 16:13:00,684-root-WARNING-Too high Vibration
+2022-05-10 16:13:00,831-root-WARNING-Too high Vibration
+2022-05-10 16:13:01,000-root-WARNING-Too high Vibration
+2022-05-10 16:13:01,208-root-WARNING-Too high Vibration
+2022-05-10 16:13:01,383-root-WARNING-Too high Vibration
+2022-05-10 16:13:01,564-root-WARNING-Too high Vibration
+2022-05-10 16:13:01,756-root-WARNING-Too high Vibration
+2022-05-10 16:13:01,923-root-WARNING-Too high Vibration
+2022-05-10 16:13:02,069-root-WARNING-Too high Vibration
+2022-05-10 16:13:02,234-root-WARNING-Too high Vibration
+2022-05-10 16:13:02,415-root-WARNING-Too high Vibration
+2022-05-10 16:13:02,604-root-WARNING-Too high Vibration
+2022-05-10 16:13:02,790-root-WARNING-Too high Vibration
+2022-05-10 16:13:02,939-root-WARNING-Too high Vibration
+2022-05-10 16:13:03,107-root-WARNING-Too high Vibration
+2022-05-10 16:13:03,281-root-WARNING-Too high Vibration
+2022-05-10 16:13:03,426-root-INFO-Production : 0 | Temperature : 48.4 | Vibration : 1.96
+2022-05-10 16:13:03,462-root-WARNING-Too high Vibration
+2022-05-10 16:13:03,643-root-WARNING-Too high Vibration
+2022-05-10 16:13:03,805-root-WARNING-Too high Vibration
+2022-05-10 16:13:03,958-root-WARNING-Too high Vibration
+2022-05-10 16:13:04,123-root-WARNING-Too high Vibration
+2022-05-10 16:13:04,289-root-WARNING-Too high Vibration
+2022-05-10 16:13:04,466-root-WARNING-Too high Vibration
+2022-05-10 16:13:04,613-root-WARNING-Too high Vibration
+2022-05-10 16:13:04,768-root-WARNING-Too high Vibration
+2022-05-10 16:13:04,946-root-WARNING-Too high Vibration
+2022-05-10 16:13:05,120-root-WARNING-Too high Vibration
+2022-05-10 16:13:05,299-root-WARNING-Too high Vibration
+2022-05-10 16:13:05,477-root-WARNING-Too high Vibration
+2022-05-10 16:13:05,652-root-WARNING-Too high Vibration
+2022-05-10 16:13:05,836-root-WARNING-Too high Vibration
+2022-05-10 16:13:06,007-root-WARNING-Too high Vibration
+2022-05-10 16:13:06,159-root-WARNING-Too high Vibration
+2022-05-10 16:13:06,317-root-WARNING-Too high Vibration
+2022-05-10 16:13:06,494-root-WARNING-Too high Vibration
+2022-05-10 16:13:06,671-root-WARNING-Too high Vibration
+2022-05-10 16:13:06,816-root-INFO-Production : 0 | Temperature : 48.1 | Vibration : 1.97
+2022-05-10 16:13:06,851-root-WARNING-Too high Vibration
+2022-05-10 16:13:07,029-root-WARNING-Too high Vibration
+2022-05-10 16:13:07,176-root-WARNING-Too high Vibration
+2022-05-10 16:13:07,352-root-WARNING-Too high Vibration
+2022-05-10 16:13:07,533-root-WARNING-Too high Vibration
+2022-05-10 16:13:07,682-root-WARNING-Too high Vibration
+2022-05-10 16:13:07,830-root-WARNING-Too high Vibration
+2022-05-10 16:13:07,977-root-WARNING-Too high Vibration
+2022-05-10 16:13:08,155-root-WARNING-Too high Vibration
+2022-05-10 16:13:08,357-root-WARNING-Too high Vibration
+2022-05-10 16:13:08,522-root-WARNING-Too high Vibration
+2022-05-10 16:13:08,670-root-WARNING-Too high Vibration
+2022-05-10 16:13:08,817-root-WARNING-Too high Vibration
+2022-05-10 16:13:08,961-root-WARNING-Too high Vibration
+2022-05-10 16:13:09,112-root-WARNING-Too high Vibration
+2022-05-10 16:13:09,266-root-WARNING-Too high Vibration
+2022-05-10 16:13:09,435-root-WARNING-Too high Vibration
+2022-05-10 16:13:09,595-root-WARNING-Too high Vibration
+2022-05-10 16:13:09,738-root-WARNING-Too high Vibration
+2022-05-10 16:13:09,887-root-WARNING-Too high Vibration
+2022-05-10 16:13:10,021-root-INFO-Production : 0 | Temperature : 48.1 | Vibration : 1.97
+2022-05-10 16:13:10,050-root-WARNING-Too high Vibration
+2022-05-10 16:13:10,205-root-WARNING-Too high Vibration
+2022-05-10 16:13:10,371-root-WARNING-Too high Vibration
+2022-05-10 16:13:10,538-root-WARNING-Too high Vibration
+2022-05-10 16:13:10,710-root-WARNING-Too high Vibration
+2022-05-10 16:13:10,872-root-WARNING-Too high Vibration
+2022-05-10 16:13:11,037-root-WARNING-Too high Vibration
+2022-05-10 16:13:11,207-root-WARNING-Too high Vibration
+2022-05-10 16:13:11,370-root-WARNING-Too high Vibration
+2022-05-10 16:13:11,542-root-WARNING-Too high Vibration
+2022-05-10 16:13:11,717-root-WARNING-Too high Vibration
+2022-05-10 16:13:11,878-root-WARNING-Too high Vibration
+2022-05-10 16:13:12,037-root-WARNING-Too high Vibration
+2022-05-10 16:13:12,204-root-WARNING-Too high Vibration
+2022-05-10 16:13:12,381-root-WARNING-Too high Vibration
+2022-05-10 16:13:12,542-root-WARNING-Too high Vibration
+2022-05-10 16:13:12,722-root-WARNING-Too high Vibration
+2022-05-10 16:13:12,885-root-WARNING-Too high Vibration
+2022-05-10 16:13:13,044-root-WARNING-Too high Vibration
+2022-05-10 16:13:13,208-root-WARNING-Too high Vibration
+2022-05-10 16:13:13,338-root-INFO-Production : 0 | Temperature : 48.1 | Vibration : 1.97
+2022-05-10 16:13:13,370-root-WARNING-Too high Vibration
+2022-05-10 16:13:13,538-root-WARNING-Too high Vibration
+2022-05-10 16:13:13,704-root-WARNING-Too high Vibration
+2022-05-10 16:13:13,871-root-WARNING-Too high Vibration
+2022-05-10 16:13:14,046-root-WARNING-Too high Vibration
+2022-05-10 16:13:14,214-root-WARNING-Too high Vibration
+2022-05-10 16:13:14,381-root-WARNING-Too high Vibration
+2022-05-10 16:13:14,537-root-WARNING-Too high Vibration
+2022-05-10 16:13:14,703-root-WARNING-Too high Vibration
+2022-05-10 16:13:14,871-root-WARNING-Too high Vibration
+2022-05-10 16:13:15,045-root-WARNING-Too high Vibration
+2022-05-10 16:13:15,216-root-WARNING-Too high Vibration
+2022-05-10 16:13:15,376-root-WARNING-Too high Vibration
+2022-05-10 16:13:15,543-root-WARNING-Too high Vibration
+2022-05-10 16:13:15,711-root-WARNING-Too high Vibration
+2022-05-10 16:13:15,887-root-WARNING-Too high Vibration
+2022-05-10 16:13:16,049-root-WARNING-Too high Vibration
+2022-05-10 16:13:16,234-root-WARNING-Too high Vibration
+2022-05-10 16:13:16,405-root-WARNING-Too high Vibration
+2022-05-10 16:13:16,570-root-WARNING-Too high Vibration
+2022-05-10 16:13:16,705-root-INFO-Production : 0 | Temperature : 48.0 | Vibration : 1.97
+2022-05-10 16:13:16,742-root-WARNING-Too high Vibration
+2022-05-10 16:13:16,904-root-WARNING-Too high Vibration
+2022-05-10 16:13:17,076-root-WARNING-Too high Vibration
+2022-05-10 16:13:17,244-root-WARNING-Too high Vibration
+2022-05-10 16:13:17,412-root-WARNING-Too high Vibration
+2022-05-10 16:13:17,586-root-WARNING-Too high Vibration
+2022-05-10 16:13:17,770-root-WARNING-Too high Vibration
+2022-05-10 16:13:17,947-root-WARNING-Too high Vibration
+2022-05-10 16:13:18,107-root-WARNING-Too high Vibration
+2022-05-10 16:13:18,278-root-WARNING-Too high Vibration
+2022-05-10 16:13:18,433-root-WARNING-Too high Vibration
+2022-05-10 16:13:18,599-root-WARNING-Too high Vibration
+2022-05-10 16:13:18,764-root-WARNING-Too high Vibration
+2022-05-10 16:13:18,917-root-WARNING-Too high Vibration
+2022-05-10 16:13:19,087-root-WARNING-Too high Vibration
+2022-05-10 16:13:19,287-root-WARNING-Too high Vibration
+2022-05-10 16:13:19,440-root-WARNING-Too high Vibration
+2022-05-10 16:13:19,589-root-WARNING-Too high Vibration
+2022-05-10 16:13:19,735-root-WARNING-Too high Vibration
+2022-05-10 16:13:19,889-root-WARNING-Too high Vibration
+2022-05-10 16:13:20,014-root-INFO-Production : 0 | Temperature : 48.0 | Vibration : 1.97
+2022-05-10 16:13:20,046-root-WARNING-Too high Vibration
+2022-05-10 16:13:20,206-root-WARNING-Too high Vibration
+2022-05-10 16:13:20,371-root-WARNING-Too high Vibration
+2022-05-10 16:13:20,538-root-WARNING-Too high Vibration
+2022-05-10 16:13:20,712-root-WARNING-Too high Vibration
+2022-05-10 16:13:20,870-root-WARNING-Too high Vibration
+2022-05-10 16:13:21,036-root-WARNING-Too high Vibration
+2022-05-10 16:13:21,202-root-WARNING-Too high Vibration
+2022-05-10 16:13:21,371-root-WARNING-Too high Vibration
+2022-05-10 16:13:21,547-root-WARNING-Too high Vibration
+2022-05-10 16:13:21,714-root-WARNING-Too high Vibration
+2022-05-10 16:13:21,877-root-WARNING-Too high Vibration
+2022-05-10 16:13:22,040-root-WARNING-Too high Vibration
+2022-05-10 16:13:22,206-root-WARNING-Too high Vibration
+2022-05-10 16:13:22,372-root-WARNING-Too high Vibration
+2022-05-10 16:13:22,536-root-WARNING-Too high Vibration
+2022-05-10 16:13:22,708-root-WARNING-Too high Vibration
+2022-05-10 16:13:22,882-root-WARNING-Too high Vibration
+2022-05-10 16:13:23,051-root-WARNING-Too high Vibration
+2022-05-10 16:13:23,227-root-WARNING-Too high Vibration
+2022-05-10 16:13:23,354-root-INFO-Production : 0 | Temperature : 48.0 | Vibration : 1.97
+2022-05-10 16:13:23,384-root-WARNING-Too high Vibration
+2022-05-10 16:13:23,540-root-WARNING-Too high Vibration
+2022-05-10 16:13:23,703-root-WARNING-Too high Vibration
+2022-05-10 16:13:23,878-root-WARNING-Too high Vibration
+2022-05-10 16:13:24,050-root-WARNING-Too high Vibration
+2022-05-10 16:13:24,213-root-WARNING-Too high Vibration
+2022-05-10 16:13:24,377-root-WARNING-Too high Vibration
+2022-05-10 16:13:24,545-root-WARNING-Too high Vibration
+2022-05-10 16:13:24,702-root-WARNING-Too high Vibration
+2022-05-10 16:13:24,892-root-WARNING-Too high Vibration
+2022-05-10 16:13:25,044-root-WARNING-Too high Vibration
+2022-05-10 16:13:25,208-root-WARNING-Too high Vibration
+2022-05-10 16:13:25,387-root-WARNING-Too high Vibration
+2022-05-10 16:13:25,541-root-WARNING-Too high Vibration
+2022-05-10 16:13:25,701-root-WARNING-Too high Vibration
+2022-05-10 16:13:25,889-root-WARNING-Too high Vibration
+2022-05-10 16:13:26,075-root-WARNING-Too high Vibration
+2022-05-10 16:13:26,246-root-WARNING-Too high Vibration
+2022-05-10 16:13:26,407-root-WARNING-Too high Vibration
+2022-05-10 16:13:26,550-root-WARNING-Too high Vibration
+2022-05-10 16:13:26,690-root-INFO-Production : 0 | Temperature : 47.9 | Vibration : 1.97
+2022-05-10 16:13:26,722-root-WARNING-Too high Vibration
+2022-05-10 16:13:26,886-root-WARNING-Too high Vibration
+2022-05-10 16:13:27,045-root-WARNING-Too high Vibration
+2022-05-10 16:13:27,201-root-WARNING-Too high Vibration
+2022-05-10 16:13:27,373-root-WARNING-Too high Vibration
+2022-05-10 16:13:27,545-root-WARNING-Too high Vibration
+2022-05-10 16:13:27,722-root-WARNING-Too high Vibration
+2022-05-10 16:13:27,900-root-WARNING-Too high Vibration
+2022-05-10 16:13:28,068-root-WARNING-Too high Vibration
+2022-05-10 16:13:28,243-root-WARNING-Too high Vibration
+2022-05-10 16:13:28,419-root-WARNING-Too high Vibration
+2022-05-10 16:13:28,570-root-WARNING-Too high Vibration
+2022-05-10 16:13:28,727-root-WARNING-Too high Vibration
+2022-05-10 16:13:28,904-root-WARNING-Too high Vibration
+2022-05-10 16:13:29,078-root-WARNING-Too high Vibration
+2022-05-10 16:13:29,253-root-WARNING-Too high Vibration
+2022-05-10 16:13:29,429-root-WARNING-Too high Vibration
+2022-05-10 16:13:29,606-root-WARNING-Too high Vibration
+2022-05-10 16:13:29,781-root-WARNING-Too high Vibration
+2022-05-10 16:13:29,926-root-WARNING-Too high Vibration
+2022-05-10 16:13:30,040-root-INFO-Production : 0 | Temperature : 48.0 | Vibration : 1.97
+2022-05-10 16:13:30,069-root-WARNING-Too high Vibration
+2022-05-10 16:13:30,235-root-WARNING-Too high Vibration
+2022-05-10 16:13:30,413-root-WARNING-Too high Vibration
+2022-05-10 16:13:30,599-root-WARNING-Too high Vibration
+2022-05-10 16:13:30,792-root-WARNING-Too high Vibration
+2022-05-10 16:13:30,983-root-WARNING-Too high Vibration
+2022-05-10 16:13:31,149-root-WARNING-Too high Vibration
+2022-05-10 16:13:31,293-root-WARNING-Too high Vibration
+2022-05-10 16:13:31,461-root-WARNING-Too high Vibration
+2022-05-10 16:13:31,648-root-WARNING-Too high Vibration
+2022-05-10 16:13:31,829-root-WARNING-Too high Vibration
+2022-05-10 16:13:31,991-root-WARNING-Too high Vibration
+2022-05-10 16:13:32,142-root-WARNING-Too high Vibration
+2022-05-10 16:13:32,286-root-WARNING-Too high Vibration
+2022-05-10 16:13:32,433-root-WARNING-Too high Vibration
+2022-05-10 16:13:32,621-root-WARNING-Too high Vibration
+2022-05-10 16:13:32,774-root-WARNING-Too high Vibration
+2022-05-10 16:13:32,943-root-WARNING-Too high Vibration
+2022-05-10 16:13:33,108-root-WARNING-Too high Vibration
+2022-05-10 16:13:33,277-root-WARNING-Too high Vibration
+2022-05-10 16:13:33,418-root-INFO-Production : 0 | Temperature : 48.1 | Vibration : 1.97
+2022-05-10 16:13:33,456-root-WARNING-Too high Vibration
+2022-05-10 16:13:33,618-root-WARNING-Too high Vibration
+2022-05-10 16:13:33,761-root-WARNING-Too high Vibration
+2022-05-10 16:13:33,904-root-WARNING-Too high Vibration
+2022-05-10 16:13:34,085-root-WARNING-Too high Vibration
+2022-05-10 16:13:34,282-root-WARNING-Too high Vibration
+2022-05-10 16:13:34,461-root-WARNING-Too high Vibration
+2022-05-10 16:13:34,642-root-WARNING-Too high Vibration
+2022-05-10 16:13:34,807-root-WARNING-Too high Vibration
+2022-05-10 16:13:34,977-root-WARNING-Too high Vibration
+2022-05-10 16:13:35,126-root-WARNING-Too high Vibration
+2022-05-10 16:13:35,274-root-WARNING-Too high Vibration
+2022-05-10 16:13:35,439-root-WARNING-Too high Vibration
+2022-05-10 16:13:35,638-root-WARNING-Too high Vibration
+2022-05-10 16:13:35,813-root-WARNING-Too high Vibration
+2022-05-10 16:13:35,979-root-WARNING-Too high Vibration
+2022-05-10 16:13:36,126-root-WARNING-Too high Vibration
+2022-05-10 16:13:36,271-root-WARNING-Too high Vibration
+2022-05-10 16:13:36,440-root-WARNING-Too high Vibration
+2022-05-10 16:13:36,610-root-WARNING-Too high Vibration
+2022-05-10 16:13:36,747-root-INFO-Production : 0 | Temperature : 48.1 | Vibration : 1.97
+2022-05-10 16:13:36,776-root-WARNING-Too high Vibration
+2022-05-10 16:13:36,920-root-WARNING-Too high Vibration
+2022-05-10 16:13:37,065-root-WARNING-Too high Vibration
+2022-05-10 16:13:37,218-root-WARNING-Too high Vibration
+2022-05-10 16:13:37,372-root-WARNING-Too high Vibration
+2022-05-10 16:13:37,541-root-WARNING-Too high Vibration
+2022-05-10 16:13:37,699-root-WARNING-Too high Vibration
+2022-05-10 16:13:37,865-root-WARNING-Too high Vibration
+2022-05-10 16:13:38,033-root-WARNING-Too high Vibration
+2022-05-10 16:13:38,211-root-WARNING-Too high Vibration
+2022-05-10 16:13:38,380-root-WARNING-Too high Vibration
+2022-05-10 16:13:38,565-root-WARNING-Too high Vibration
+2022-05-10 16:13:38,735-root-WARNING-Too high Vibration
+2022-05-10 16:13:38,901-root-WARNING-Too high Vibration
+2022-05-10 16:13:39,058-root-WARNING-Too high Vibration
+2022-05-10 16:13:39,209-root-WARNING-Too high Vibration
+2022-05-10 16:13:39,397-root-WARNING-Too high Vibration
+2022-05-10 16:13:39,583-root-WARNING-Too high Vibration
+2022-05-10 16:13:39,745-root-WARNING-Too high Vibration
+2022-05-10 16:13:39,901-root-WARNING-Too high Vibration
+2022-05-10 16:13:40,017-root-INFO-Production : 0 | Temperature : 48.2 | Vibration : 1.96
+2022-05-10 16:13:40,045-root-WARNING-Too high Vibration
+2022-05-10 16:13:40,198-root-WARNING-Too high Vibration
+2022-05-10 16:13:40,374-root-WARNING-Too high Vibration
+2022-05-10 16:13:40,544-root-WARNING-Too high Vibration
+2022-05-10 16:13:40,724-root-WARNING-Too high Vibration
+2022-05-10 16:13:40,894-root-WARNING-Too high Vibration
+2022-05-10 16:13:41,037-root-WARNING-Too high Vibration
+2022-05-10 16:13:41,199-root-WARNING-Too high Vibration
+2022-05-10 16:13:41,370-root-WARNING-Too high Vibration
+2022-05-10 16:13:41,567-root-WARNING-Too high Vibration
+2022-05-10 16:13:41,719-root-WARNING-Too high Vibration
+2022-05-10 16:13:41,882-root-WARNING-Too high Vibration
+2022-05-10 16:13:42,039-root-WARNING-Too high Vibration
+2022-05-10 16:13:42,198-root-WARNING-Too high Vibration
+2022-05-10 16:13:42,364-root-WARNING-Too high Vibration
+2022-05-10 16:13:42,536-root-WARNING-Too high Vibration
+2022-05-10 16:13:42,701-root-WARNING-Too high Vibration
+2022-05-10 16:13:42,865-root-WARNING-Too high Vibration
+2022-05-10 16:13:43,032-root-WARNING-Too high Vibration
+2022-05-10 16:13:43,200-root-WARNING-Too high Vibration
+2022-05-10 16:13:43,331-root-INFO-Production : 0 | Temperature : 48.2 | Vibration : 1.96
+2022-05-10 16:13:43,365-root-WARNING-Too high Vibration
+2022-05-10 16:13:43,531-root-WARNING-Too high Vibration
+2022-05-10 16:13:43,723-root-WARNING-Too high Vibration
+2022-05-10 16:13:43,909-root-WARNING-Too high Vibration
+2022-05-10 16:13:44,086-root-WARNING-Too high Vibration
+2022-05-10 16:13:44,265-root-WARNING-Too high Vibration
+2022-05-10 16:13:44,465-root-WARNING-Too high Vibration
+2022-05-10 16:13:44,651-root-WARNING-Too high Vibration
+2022-05-10 16:13:44,841-root-WARNING-Too high Vibration
+2022-05-10 16:13:45,037-root-WARNING-Too high Vibration
+2022-05-10 16:13:45,193-root-WARNING-Too high Vibration
+2022-05-10 16:13:45,341-root-WARNING-Too high Vibration
+2022-05-10 16:13:45,506-root-WARNING-Too high Vibration
+2022-05-10 16:13:45,678-root-WARNING-Too high Vibration
+2022-05-10 16:13:45,936-root-WARNING-Too high Vibration
+2022-05-10 16:13:46,128-root-WARNING-Too high Vibration
+2022-05-10 16:13:46,322-root-WARNING-Too high Vibration
+2022-05-10 16:13:46,507-root-WARNING-Too high Vibration
+2022-05-10 16:13:46,741-root-WARNING-Too high Vibration
+2022-05-10 16:13:46,943-root-WARNING-Too high Vibration
+2022-05-10 16:13:47,111-root-INFO-Production : 0 | Temperature : 48.3 | Vibration : 1.96
+2022-05-10 16:13:47,155-root-WARNING-Too high Vibration
+2022-05-10 16:13:47,325-root-WARNING-Too high Vibration
+2022-05-10 16:13:47,490-root-WARNING-Too high Vibration
+2022-05-10 16:13:47,638-root-WARNING-Too high Vibration
+2022-05-10 16:13:47,818-root-WARNING-Too high Vibration
+2022-05-10 16:13:47,986-root-WARNING-Too high Vibration
+2022-05-10 16:13:48,168-root-WARNING-Too high Vibration
+2022-05-10 16:13:48,370-root-WARNING-Too high Vibration
+2022-05-10 16:13:48,551-root-WARNING-Too high Vibration
+2022-05-10 16:13:48,732-root-WARNING-Too high Vibration
+2022-05-10 16:13:48,877-root-WARNING-Too high Vibration
+2022-05-10 16:13:49,022-root-WARNING-Too high Vibration
+2022-05-10 16:13:49,175-root-WARNING-Too high Vibration
+2022-05-10 16:13:49,376-root-WARNING-Too high Vibration
+2022-05-10 16:13:49,592-root-WARNING-Too high Vibration
+2022-05-10 16:13:49,807-root-WARNING-Too high Vibration
+2022-05-10 16:13:49,993-root-WARNING-Too high Vibration
+2022-05-10 16:13:50,179-root-WARNING-Too high Vibration
+2022-05-10 16:13:50,362-root-WARNING-Too high Vibration
+2022-05-10 16:13:50,539-root-WARNING-Too high Vibration
+2022-05-10 16:13:50,677-root-INFO-Production : 0 | Temperature : 48.4 | Vibration : 1.96
+2022-05-10 16:13:50,713-root-WARNING-Too high Vibration
+2022-05-10 16:13:50,862-root-WARNING-Too high Vibration
+2022-05-10 16:13:51,009-root-WARNING-Too high Vibration
+2022-05-10 16:13:51,159-root-WARNING-Too high Vibration
+2022-05-10 16:13:51,341-root-WARNING-Too high Vibration
+2022-05-10 16:13:51,519-root-WARNING-Too high Vibration
+2022-05-10 16:13:51,690-root-WARNING-Too high Vibration
+2022-05-10 16:13:51,835-root-WARNING-Too high Vibration
+2022-05-10 16:13:51,978-root-WARNING-Too high Vibration
+2022-05-10 16:13:52,122-root-WARNING-Too high Vibration
+2022-05-10 16:13:52,284-root-WARNING-Too high Vibration
+2022-05-10 16:13:52,472-root-WARNING-Too high Vibration
+2022-05-10 16:13:52,644-root-WARNING-Too high Vibration
+2022-05-10 16:13:52,805-root-WARNING-Too high Vibration
+2022-05-10 16:13:52,971-root-WARNING-Too high Vibration
+2022-05-10 16:13:53,124-root-WARNING-Too high Vibration
+2022-05-10 16:13:53,305-root-WARNING-Too high Vibration
+2022-05-10 16:13:53,475-root-WARNING-Too high Vibration
+2022-05-10 16:13:53,636-root-WARNING-Too high Vibration
+2022-05-10 16:13:53,795-root-WARNING-Too high Vibration
+2022-05-10 16:13:53,927-root-INFO-Production : 0 | Temperature : 48.4 | Vibration : 1.96
+2022-05-10 16:13:53,965-root-WARNING-Too high Vibration
+2022-05-10 16:13:54,160-root-WARNING-Too high Vibration
+2022-05-10 16:13:54,341-root-WARNING-Too high Vibration
+2022-05-10 16:13:54,504-root-WARNING-Too high Vibration
+2022-05-10 16:13:54,647-root-WARNING-Too high Vibration
+2022-05-10 16:13:54,800-root-WARNING-Too high Vibration
+2022-05-10 16:13:54,998-root-WARNING-Too high Vibration
+2022-05-10 16:13:55,175-root-WARNING-Too high Vibration
+2022-05-10 16:13:55,353-root-WARNING-Too high Vibration
+2022-05-10 16:13:55,543-root-WARNING-Too high Vibration
+2022-05-10 16:13:55,722-root-WARNING-Too high Vibration
+2022-05-10 16:13:55,880-root-WARNING-Too high Vibration
+2022-05-10 16:13:56,027-root-WARNING-Too high Vibration
+2022-05-10 16:13:56,184-root-WARNING-Too high Vibration
+2022-05-10 16:13:56,365-root-WARNING-Too high Vibration
+2022-05-10 16:13:56,552-root-WARNING-Too high Vibration
+2022-05-10 16:13:56,727-root-WARNING-Too high Vibration
+2022-05-10 16:13:56,903-root-WARNING-Too high Vibration
+2022-05-10 16:13:57,083-root-WARNING-Too high Vibration
+2022-05-10 16:13:57,260-root-WARNING-Too high Vibration
+2022-05-10 16:13:57,405-root-INFO-Production : 0 | Temperature : 48.5 | Vibration : 1.96
+2022-05-10 16:13:57,434-root-WARNING-Too high Vibration
+2022-05-10 16:13:57,581-root-WARNING-Too high Vibration
+2022-05-10 16:13:57,744-root-WARNING-Too high Vibration
+2022-05-10 16:13:57,925-root-WARNING-Too high Vibration
+2022-05-10 16:13:58,093-root-WARNING-Too high Vibration
+2022-05-10 16:13:58,239-root-WARNING-Too high Vibration
+2022-05-10 16:13:58,399-root-WARNING-Too high Vibration
+2022-05-10 16:13:58,577-root-WARNING-Too high Vibration
+2022-05-10 16:13:58,759-root-WARNING-Too high Vibration
+2022-05-10 16:13:58,941-root-WARNING-Too high Vibration
+2022-05-10 16:13:59,118-root-WARNING-Too high Vibration
+2022-05-10 16:13:59,288-root-WARNING-Too high Vibration
+2022-05-10 16:13:59,449-root-WARNING-Too high Vibration
+2022-05-10 16:13:59,596-root-WARNING-Too high Vibration
+2022-05-10 16:13:59,741-root-WARNING-Too high Vibration
+2022-05-10 16:13:59,885-root-WARNING-Too high Vibration
+2022-05-10 16:14:00,028-root-WARNING-Too high Vibration
+2022-05-10 16:14:00,198-root-WARNING-Too high Vibration
+2022-05-10 16:14:00,352-root-WARNING-Too high Vibration
+2022-05-10 16:14:00,495-root-WARNING-Too high Vibration
+2022-05-10 16:14:00,628-root-INFO-Production : 0 | Temperature : 48.6 | Vibration : 1.95
+2022-05-10 16:14:00,660-root-WARNING-Too high Vibration
+2022-05-10 16:14:00,827-root-WARNING-Too high Vibration
+2022-05-10 16:14:00,995-root-WARNING-Too high Vibration
+2022-05-10 16:14:01,160-root-WARNING-Too high Vibration
+2022-05-10 16:14:01,327-root-WARNING-Too high Vibration
+2022-05-10 16:14:01,498-root-WARNING-Too high Vibration
+2022-05-10 16:14:01,676-root-WARNING-Too high Vibration
+2022-05-10 16:14:01,875-root-WARNING-Too high Vibration
+2022-05-10 16:14:02,059-root-WARNING-Too high Vibration
+2022-05-10 16:14:02,232-root-WARNING-Too high Vibration
+2022-05-10 16:14:02,381-root-WARNING-Too high Vibration
+2022-05-10 16:14:02,536-root-WARNING-Too high Vibration
+2022-05-10 16:14:02,732-root-WARNING-Too high Vibration
+2022-05-10 16:14:02,888-root-WARNING-Too high Vibration
+2022-05-10 16:14:03,067-root-WARNING-Too high Vibration
+2022-05-10 16:14:03,211-root-WARNING-Too high Vibration
+2022-05-10 16:14:03,373-root-WARNING-Too high Vibration
+2022-05-10 16:14:03,550-root-WARNING-Too high Vibration
+2022-05-10 16:14:03,725-root-WARNING-Too high Vibration
+2022-05-10 16:14:03,897-root-WARNING-Too high Vibration
+2022-05-10 16:14:04,036-root-INFO-Production : 0 | Temperature : 48.6 | Vibration : 1.95
+2022-05-10 16:14:04,072-root-WARNING-Too high Vibration
+2022-05-10 16:14:04,232-root-WARNING-Too high Vibration
+2022-05-10 16:14:04,399-root-WARNING-Too high Vibration
+2022-05-10 16:14:04,581-root-WARNING-Too high Vibration
+2022-05-10 16:14:04,744-root-WARNING-Too high Vibration
+2022-05-10 16:14:04,900-root-WARNING-Too high Vibration
+2022-05-10 16:14:05,099-root-WARNING-Too high Vibration
+2022-05-10 16:14:05,298-root-WARNING-Too high Vibration
+2022-05-10 16:14:05,492-root-WARNING-Too high Vibration
+2022-05-10 16:14:05,669-root-WARNING-Too high Vibration
+2022-05-10 16:14:05,855-root-WARNING-Too high Vibration
+2022-05-10 16:14:06,028-root-WARNING-Too high Vibration
+2022-05-10 16:14:06,207-root-WARNING-Too high Vibration
+2022-05-10 16:14:06,367-root-WARNING-Too high Vibration
+2022-05-10 16:14:06,562-root-WARNING-Too high Vibration
+2022-05-10 16:14:06,754-root-WARNING-Too high Vibration
+2022-05-10 16:14:06,959-root-WARNING-Too high Vibration
+2022-05-10 16:14:07,143-root-WARNING-Too high Vibration
+2022-05-10 16:14:07,316-root-WARNING-Too high Vibration
+2022-05-10 16:14:07,481-root-WARNING-Too high Vibration
+2022-05-10 16:14:07,628-root-INFO-Production : 0 | Temperature : 48.6 | Vibration : 1.95
+2022-05-10 16:14:07,664-root-WARNING-Too high Vibration
+2022-05-10 16:14:07,860-root-WARNING-Too high Vibration
+2022-05-10 16:14:08,026-root-WARNING-Too high Vibration
+2022-05-10 16:14:08,171-root-WARNING-Too high Vibration
+2022-05-10 16:14:08,319-root-WARNING-Too high Vibration
+2022-05-10 16:14:08,474-root-WARNING-Too high Vibration
+2022-05-10 16:14:08,651-root-WARNING-Too high Vibration
+2022-05-10 16:14:08,842-root-WARNING-Too high Vibration
+2022-05-10 16:14:09,009-root-WARNING-Too high Vibration
+2022-05-10 16:14:09,160-root-WARNING-Too high Vibration
+2022-05-10 16:14:09,314-root-WARNING-Too high Vibration
+2022-05-10 16:14:09,465-root-WARNING-Too high Vibration
+2022-05-10 16:14:09,615-root-WARNING-Too high Vibration
+2022-05-10 16:14:09,804-root-WARNING-Too high Vibration
+2022-05-10 16:14:09,960-root-WARNING-Too high Vibration
+2022-05-10 16:14:10,121-root-WARNING-Too high Vibration
+2022-05-10 16:14:10,307-root-WARNING-Too high Vibration
+2022-05-10 16:14:10,452-root-WARNING-Too high Vibration
+2022-05-10 16:14:10,603-root-WARNING-Too high Vibration
+2022-05-10 16:14:10,757-root-WARNING-Too high Vibration
+2022-05-10 16:14:10,893-root-INFO-Production : 0 | Temperature : 48.6 | Vibration : 1.95
+2022-05-10 16:14:10,928-root-WARNING-Too high Vibration
+2022-05-10 16:14:11,091-root-WARNING-Too high Vibration
+2022-05-10 16:14:11,268-root-WARNING-Too high Vibration
+2022-05-10 16:14:11,431-root-WARNING-Too high Vibration
+2022-05-10 16:14:11,579-root-WARNING-Too high Vibration
+2022-05-10 16:14:11,727-root-WARNING-Too high Vibration
+2022-05-10 16:14:11,891-root-WARNING-Too high Vibration
+2022-05-10 16:14:12,072-root-WARNING-Too high Vibration
+2022-05-10 16:14:12,257-root-WARNING-Too high Vibration
+2022-05-10 16:14:12,404-root-WARNING-Too high Vibration
+2022-05-10 16:14:12,558-root-WARNING-Too high Vibration
+2022-05-10 16:14:12,726-root-WARNING-Too high Vibration
+2022-05-10 16:14:12,927-root-WARNING-Too high Vibration
+2022-05-10 16:14:13,097-root-WARNING-Too high Vibration
+2022-05-10 16:14:13,256-root-WARNING-Too high Vibration
+2022-05-10 16:14:13,402-root-WARNING-Too high Vibration
+2022-05-10 16:14:13,562-root-WARNING-Too high Vibration
+2022-05-10 16:14:13,744-root-WARNING-Too high Vibration
+2022-05-10 16:14:13,891-root-WARNING-Too high Vibration
+2022-05-10 16:14:14,057-root-WARNING-Too high Vibration
+2022-05-10 16:14:14,199-root-INFO-Production : 0 | Temperature : 48.7 | Vibration : 1.95
+2022-05-10 16:14:14,238-root-WARNING-Too high Vibration
+2022-05-10 16:14:14,396-root-WARNING-Too high Vibration
+2022-05-10 16:14:14,561-root-WARNING-Too high Vibration
+2022-05-10 16:14:14,727-root-WARNING-Too high Vibration
+2022-05-10 16:14:14,908-root-WARNING-Too high Vibration
+2022-05-10 16:14:15,057-root-WARNING-Too high Vibration
+2022-05-10 16:14:15,225-root-WARNING-Too high Vibration
+2022-05-10 16:14:15,399-root-WARNING-Too high Vibration
+2022-05-10 16:14:15,564-root-WARNING-Too high Vibration
+2022-05-10 16:14:15,727-root-WARNING-Too high Vibration
+2022-05-10 16:14:15,891-root-WARNING-Too high Vibration
+2022-05-10 16:14:16,059-root-WARNING-Too high Vibration
+2022-05-10 16:14:16,224-root-WARNING-Too high Vibration
+2022-05-10 16:14:16,396-root-WARNING-Too high Vibration
+2022-05-10 16:14:16,561-root-WARNING-Too high Vibration
+2022-05-10 16:14:16,727-root-WARNING-Too high Vibration
+2022-05-10 16:14:16,890-root-WARNING-Too high Vibration
+2022-05-10 16:14:17,058-root-WARNING-Too high Vibration
+2022-05-10 16:14:17,231-root-WARNING-Too high Vibration
+2022-05-10 16:14:17,392-root-WARNING-Too high Vibration
+2022-05-10 16:14:17,525-root-INFO-Production : 0 | Temperature : 48.8 | Vibration : 1.95
+2022-05-10 16:14:17,557-root-WARNING-Too high Vibration
+2022-05-10 16:14:17,723-root-WARNING-Too high Vibration
+2022-05-10 16:14:17,890-root-WARNING-Too high Vibration
+2022-05-10 16:14:18,072-root-WARNING-Too high Vibration
+2022-05-10 16:14:18,228-root-WARNING-Too high Vibration
+2022-05-10 16:14:18,392-root-WARNING-Too high Vibration
+2022-05-10 16:14:18,562-root-WARNING-Too high Vibration
+2022-05-10 16:14:18,725-root-WARNING-Too high Vibration
+2022-05-10 16:14:18,903-root-WARNING-Too high Vibration
+2022-05-10 16:14:19,058-root-WARNING-Too high Vibration
+2022-05-10 16:14:19,223-root-WARNING-Too high Vibration
+2022-05-10 16:14:19,391-root-WARNING-Too high Vibration
+2022-05-10 16:14:19,556-root-WARNING-Too high Vibration
+2022-05-10 16:14:19,729-root-WARNING-Too high Vibration
+2022-05-10 16:14:19,890-root-WARNING-Too high Vibration
+2022-05-10 16:14:20,058-root-WARNING-Too high Vibration
+2022-05-10 16:14:20,223-root-WARNING-Too high Vibration
+2022-05-10 16:14:20,389-root-WARNING-Too high Vibration
+2022-05-10 16:14:20,565-root-WARNING-Too high Vibration
+2022-05-10 16:14:20,728-root-WARNING-Too high Vibration
+2022-05-10 16:14:20,856-root-INFO-Production : 0 | Temperature : 48.9 | Vibration : 1.95
+2022-05-10 16:14:20,890-root-WARNING-Too high Vibration
+2022-05-10 16:14:21,057-root-WARNING-Too high Vibration
+2022-05-10 16:14:21,226-root-WARNING-Too high Vibration
+2022-05-10 16:14:21,395-root-WARNING-Too high Vibration
+2022-05-10 16:14:21,557-root-WARNING-Too high Vibration
+2022-05-10 16:14:21,722-root-WARNING-Too high Vibration
+2022-05-10 16:14:21,889-root-WARNING-Too high Vibration
+2022-05-10 16:14:22,056-root-WARNING-Too high Vibration
+2022-05-10 16:14:22,231-root-WARNING-Too high Vibration
+2022-05-10 16:14:22,396-root-WARNING-Too high Vibration
+2022-05-10 16:14:22,556-root-WARNING-Too high Vibration
+2022-05-10 16:14:22,724-root-WARNING-Too high Vibration
+2022-05-10 16:14:22,890-root-WARNING-Too high Vibration
+2022-05-10 16:14:23,063-root-WARNING-Too high Vibration
+2022-05-10 16:14:23,232-root-WARNING-Too high Vibration
+2022-05-10 16:14:23,389-root-WARNING-Too high Vibration
+2022-05-10 16:14:23,558-root-WARNING-Too high Vibration
+2022-05-10 16:14:23,722-root-WARNING-Too high Vibration
+2022-05-10 16:14:23,895-root-WARNING-Too high Vibration
+2022-05-10 16:14:24,069-root-WARNING-Too high Vibration
+2022-05-10 16:14:24,189-root-INFO-Production : 0 | Temperature : 49.0 | Vibration : 1.94
+2022-05-10 16:14:24,222-root-WARNING-Too high Vibration
+2022-05-10 16:14:24,389-root-WARNING-Too high Vibration
+2022-05-10 16:14:24,555-root-WARNING-Too high Vibration
+2022-05-10 16:14:24,722-root-WARNING-Too high Vibration
+2022-05-10 16:14:24,895-root-WARNING-Too high Vibration
+2022-05-10 16:14:25,057-root-WARNING-Too high Vibration
+2022-05-10 16:14:25,223-root-WARNING-Too high Vibration
+2022-05-10 16:14:25,390-root-WARNING-Too high Vibration
+2022-05-10 16:14:25,557-root-WARNING-Too high Vibration
+2022-05-10 16:14:25,724-root-WARNING-Too high Vibration
+2022-05-10 16:14:25,888-root-WARNING-Too high Vibration
+2022-05-10 16:14:26,055-root-WARNING-Too high Vibration
+2022-05-10 16:14:26,222-root-WARNING-Too high Vibration
+2022-05-10 16:14:26,390-root-WARNING-Too high Vibration
+2022-05-10 16:14:26,555-root-WARNING-Too high Vibration
+2022-05-10 16:14:26,722-root-WARNING-Too high Vibration
+2022-05-10 16:14:26,888-root-WARNING-Too high Vibration
+2022-05-10 16:14:27,054-root-WARNING-Too high Vibration
+2022-05-10 16:14:27,227-root-WARNING-Too high Vibration
+2022-05-10 16:14:27,388-root-WARNING-Too high Vibration
+2022-05-10 16:14:27,523-root-INFO-Production : 0 | Temperature : 49.0 | Vibration : 1.94
+2022-05-10 16:14:27,555-root-WARNING-Too high Vibration
+2022-05-10 16:14:27,723-root-WARNING-Too high Vibration
+2022-05-10 16:14:27,890-root-WARNING-Too high Vibration
+2022-05-10 16:14:28,062-root-WARNING-Too high Vibration
+2022-05-10 16:14:28,222-root-WARNING-Too high Vibration
+2022-05-10 16:14:28,389-root-WARNING-Too high Vibration
+2022-05-10 16:14:28,556-root-WARNING-Too high Vibration
+2022-05-10 16:14:28,722-root-WARNING-Too high Vibration
+2022-05-10 16:14:28,911-root-WARNING-Too high Vibration
+2022-05-10 16:14:29,058-root-WARNING-Too high Vibration
+2022-05-10 16:14:29,227-root-WARNING-Too high Vibration
+2022-05-10 16:14:29,390-root-WARNING-Too high Vibration
+2022-05-10 16:14:29,556-root-WARNING-Too high Vibration
+2022-05-10 16:14:29,729-root-WARNING-Too high Vibration
+2022-05-10 16:14:29,888-root-WARNING-Too high Vibration
+2022-05-10 16:14:30,056-root-WARNING-Too high Vibration
+2022-05-10 16:14:30,226-root-WARNING-Too high Vibration
+2022-05-10 16:14:30,388-root-WARNING-Too high Vibration
+2022-05-10 16:14:30,569-root-WARNING-Too high Vibration
+2022-05-10 16:14:30,729-root-WARNING-Too high Vibration
+2022-05-10 16:14:30,854-root-INFO-Production : 0 | Temperature : 49.2 | Vibration : 1.94
+2022-05-10 16:14:30,895-root-WARNING-Too high Vibration
+2022-05-10 16:14:31,056-root-WARNING-Too high Vibration
+2022-05-10 16:14:31,220-root-WARNING-Too high Vibration
+2022-05-10 16:14:31,405-root-WARNING-Too high Vibration
+2022-05-10 16:14:31,554-root-WARNING-Too high Vibration
+2022-05-10 16:14:31,724-root-WARNING-Too high Vibration
+2022-05-10 16:14:31,887-root-WARNING-Too high Vibration
+2022-05-10 16:14:32,059-root-WARNING-Too high Vibration
+2022-05-10 16:14:32,222-root-WARNING-Too high Vibration
+2022-05-10 16:14:32,390-root-WARNING-Too high Vibration
+2022-05-10 16:14:32,554-root-WARNING-Too high Vibration
+2022-05-10 16:14:32,733-root-WARNING-Too high Vibration
+2022-05-10 16:14:32,887-root-WARNING-Too high Vibration
+2022-05-10 16:14:33,072-root-WARNING-Too high Vibration
+2022-05-10 16:14:33,226-root-WARNING-Too high Vibration
+2022-05-10 16:14:33,388-root-WARNING-Too high Vibration
+2022-05-10 16:14:33,563-root-WARNING-Too high Vibration
+2022-05-10 16:14:33,720-root-WARNING-Too high Vibration
+2022-05-10 16:14:33,909-root-WARNING-Too high Vibration
+2022-05-10 16:14:34,059-root-WARNING-Too high Vibration
+2022-05-10 16:14:34,192-root-INFO-Production : 0 | Temperature : 49.2 | Vibration : 1.94
+2022-05-10 16:14:34,229-root-WARNING-Too high Vibration
+2022-05-10 16:14:34,387-root-WARNING-Too high Vibration
+2022-05-10 16:14:34,558-root-WARNING-Too high Vibration
+2022-05-10 16:14:34,725-root-WARNING-Too high Vibration
+2022-05-10 16:14:34,894-root-WARNING-Too high Vibration
+2022-05-10 16:14:35,053-root-WARNING-Too high Vibration
+2022-05-10 16:14:35,220-root-WARNING-Too high Vibration
+2022-05-10 16:14:35,386-root-WARNING-Too high Vibration
+2022-05-10 16:14:35,557-root-WARNING-Too high Vibration
+2022-05-10 16:14:35,720-root-WARNING-Too high Vibration
+2022-05-10 16:14:35,893-root-WARNING-Too high Vibration
+2022-05-10 16:14:36,060-root-WARNING-Too high Vibration
+2022-05-10 16:14:36,223-root-WARNING-Too high Vibration
+2022-05-10 16:14:36,393-root-WARNING-Too high Vibration
+2022-05-10 16:14:36,553-root-WARNING-Too high Vibration
+2022-05-10 16:14:36,720-root-WARNING-Too high Vibration
+2022-05-10 16:14:36,886-root-WARNING-Too high Vibration
+2022-05-10 16:14:37,059-root-WARNING-Too high Vibration
+2022-05-10 16:14:37,222-root-WARNING-Too high Vibration
+2022-05-10 16:14:37,389-root-WARNING-Too high Vibration
+2022-05-10 16:14:37,519-root-INFO-Production : 0 | Temperature : 49.3 | Vibration : 1.93
+2022-05-10 16:14:37,554-root-WARNING-Too high Vibration
+2022-05-10 16:14:37,719-root-WARNING-Too high Vibration
+2022-05-10 16:14:37,894-root-WARNING-Too high Vibration
+2022-05-10 16:14:38,057-root-WARNING-Too high Vibration
+2022-05-10 16:14:38,219-root-WARNING-Too high Vibration
+2022-05-10 16:14:38,386-root-WARNING-Too high Vibration
+2022-05-10 16:14:38,552-root-WARNING-Too high Vibration
+2022-05-10 16:14:38,719-root-WARNING-Too high Vibration
+2022-05-10 16:14:38,895-root-WARNING-Too high Vibration
+2022-05-10 16:14:39,052-root-WARNING-Too high Vibration
+2022-05-10 16:14:39,219-root-WARNING-Too high Vibration
+2022-05-10 16:14:39,385-root-WARNING-Too high Vibration
+2022-05-10 16:14:39,552-root-WARNING-Too high Vibration
+2022-05-10 16:14:39,733-root-WARNING-Too high Vibration
+2022-05-10 16:14:39,900-root-WARNING-Too high Vibration
+2022-05-10 16:14:40,067-root-WARNING-Too high Vibration
+2022-05-10 16:14:40,263-root-WARNING-Too high Vibration
+2022-05-10 16:14:40,429-root-WARNING-Too high Vibration
+2022-05-10 16:14:40,590-root-WARNING-Too high Vibration
+2022-05-10 16:14:40,761-root-WARNING-Too high Vibration
+2022-05-10 16:14:40,897-root-INFO-Production : 0 | Temperature : 49.5 | Vibration : 1.93
+2022-05-10 16:14:40,929-root-WARNING-Too high Vibration
+2022-05-10 16:14:41,093-root-WARNING-Too high Vibration
+2022-05-10 16:14:41,271-root-WARNING-Too high Vibration
+2022-05-10 16:14:41,432-root-WARNING-Too high Vibration
+2022-05-10 16:14:41,593-root-WARNING-Too high Vibration
+2022-05-10 16:14:41,758-root-WARNING-Too high Vibration
+2022-05-10 16:14:41,927-root-WARNING-Too high Vibration
+2022-05-10 16:14:42,097-root-WARNING-Too high Vibration
+2022-05-10 16:14:42,246-root-WARNING-Too high Vibration
+2022-05-10 16:14:42,395-root-WARNING-Too high Vibration
+2022-05-10 16:14:42,551-root-WARNING-Too high Vibration
+2022-05-10 16:14:42,719-root-WARNING-Too high Vibration
+2022-05-10 16:14:42,894-root-WARNING-Too high Vibration
+2022-05-10 16:14:43,059-root-WARNING-Too high Vibration
+2022-05-10 16:14:43,227-root-WARNING-Too high Vibration
+2022-05-10 16:14:43,385-root-WARNING-Too high Vibration
+2022-05-10 16:14:43,552-root-WARNING-Too high Vibration
+2022-05-10 16:14:43,719-root-WARNING-Too high Vibration
+2022-05-10 16:14:43,885-root-WARNING-Too high Vibration
+2022-05-10 16:14:44,054-root-WARNING-Too high Vibration
+2022-05-10 16:14:44,184-root-INFO-Production : 0 | Temperature : 49.5 | Vibration : 1.93
+2022-05-10 16:14:44,218-root-WARNING-Too high Vibration
+2022-05-10 16:14:44,384-root-WARNING-Too high Vibration
+2022-05-10 16:14:44,552-root-WARNING-Too high Vibration
+2022-05-10 16:14:44,720-root-WARNING-Too high Vibration
+2022-05-10 16:14:44,898-root-WARNING-Too high Vibration
+2022-05-10 16:14:45,074-root-WARNING-Too high Vibration
+2022-05-10 16:14:45,243-root-WARNING-Too high Vibration
+2022-05-10 16:14:45,417-root-WARNING-Too high Vibration
+2022-05-10 16:14:45,578-root-WARNING-Too high Vibration
+2022-05-10 16:14:45,738-root-WARNING-Too high Vibration
+2022-05-10 16:14:45,894-root-WARNING-Too high Vibration
+2022-05-10 16:14:46,057-root-WARNING-Too high Vibration
+2022-05-10 16:14:46,218-root-WARNING-Too high Vibration
+2022-05-10 16:14:46,384-root-WARNING-Too high Vibration
+2022-05-10 16:14:46,551-root-WARNING-Too high Vibration
+2022-05-10 16:14:46,718-root-WARNING-Too high Vibration
+2022-05-10 16:14:46,889-root-WARNING-Too high Vibration
+2022-05-10 16:14:47,051-root-WARNING-Too high Vibration
+2022-05-10 16:14:47,226-root-WARNING-Too high Vibration
+2022-05-10 16:14:47,391-root-WARNING-Too high Vibration
+2022-05-10 16:14:47,521-root-INFO-Production : 0 | Temperature : 49.5 | Vibration : 1.93
+2022-05-10 16:14:47,553-root-WARNING-Too high Vibration
+2022-05-10 16:14:47,724-root-WARNING-Too high Vibration
+2022-05-10 16:14:47,890-root-WARNING-Too high Vibration
+2022-05-10 16:14:48,052-root-WARNING-Too high Vibration
+2022-05-10 16:14:48,219-root-WARNING-Too high Vibration
+2022-05-10 16:14:48,385-root-WARNING-Too high Vibration
+2022-05-10 16:14:48,554-root-WARNING-Too high Vibration
+2022-05-10 16:14:48,717-root-WARNING-Too high Vibration
+2022-05-10 16:14:48,884-root-WARNING-Too high Vibration
+2022-05-10 16:14:49,050-root-WARNING-Too high Vibration
+2022-05-10 16:14:49,219-root-WARNING-Too high Vibration
+2022-05-10 16:14:49,393-root-WARNING-Too high Vibration
+2022-05-10 16:14:49,550-root-WARNING-Too high Vibration
+2022-05-10 16:14:49,718-root-WARNING-Too high Vibration
+2022-05-10 16:14:49,885-root-WARNING-Too high Vibration
+2022-05-10 16:14:50,052-root-WARNING-Too high Vibration
+2022-05-10 16:14:50,225-root-WARNING-Too high Vibration
+2022-05-10 16:14:50,395-root-WARNING-Too high Vibration
+2022-05-10 16:14:50,573-root-WARNING-Too high Vibration
+2022-05-10 16:14:50,736-root-WARNING-Too high Vibration
+2022-05-10 16:14:50,853-root-INFO-Production : 0 | Temperature : 49.5 | Vibration : 1.93
+2022-05-10 16:14:50,883-root-WARNING-Too high Vibration
+2022-05-10 16:14:51,054-root-WARNING-Too high Vibration
+2022-05-10 16:14:51,217-root-WARNING-Too high Vibration
+2022-05-10 16:14:51,386-root-WARNING-Too high Vibration
+2022-05-10 16:14:51,550-root-WARNING-Too high Vibration
+2022-05-10 16:14:51,718-root-WARNING-Too high Vibration
+2022-05-10 16:14:51,887-root-WARNING-Too high Vibration
+2022-05-10 16:14:52,051-root-WARNING-Too high Vibration
+2022-05-10 16:14:52,225-root-WARNING-Too high Vibration
+2022-05-10 16:14:52,393-root-WARNING-Too high Vibration
+2022-05-10 16:14:52,549-root-WARNING-Too high Vibration
+2022-05-10 16:14:52,716-root-WARNING-Too high Vibration
+2022-05-10 16:14:52,883-root-WARNING-Too high Vibration
+2022-05-10 16:14:53,049-root-WARNING-Too high Vibration
+2022-05-10 16:14:53,217-root-WARNING-Too high Vibration
+2022-05-10 16:14:53,383-root-WARNING-Too high Vibration
+2022-05-10 16:14:53,552-root-WARNING-Too high Vibration
+2022-05-10 16:14:53,716-root-WARNING-Too high Vibration
+2022-05-10 16:14:53,884-root-WARNING-Too high Vibration
+2022-05-10 16:14:54,062-root-WARNING-Too high Vibration
+2022-05-10 16:14:54,183-root-INFO-Production : 0 | Temperature : 49.6 | Vibration : 1.93
+2022-05-10 16:14:54,216-root-WARNING-Too high Vibration
+2022-05-10 16:14:54,386-root-WARNING-Too high Vibration
+2022-05-10 16:14:54,550-root-WARNING-Too high Vibration
+2022-05-10 16:14:54,716-root-WARNING-Too high Vibration
+2022-05-10 16:14:54,888-root-WARNING-Too high Vibration
+2022-05-10 16:14:55,053-root-WARNING-Too high Vibration
+2022-05-10 16:14:55,216-root-WARNING-Too high Vibration
+2022-05-10 16:14:55,382-root-WARNING-Too high Vibration
+2022-05-10 16:14:55,549-root-WARNING-Too high Vibration
+2022-05-10 16:14:55,716-root-WARNING-Too high Vibration
+2022-05-10 16:14:55,892-root-WARNING-Too high Vibration
+2022-05-10 16:14:56,051-root-WARNING-Too high Vibration
+2022-05-10 16:14:56,216-root-WARNING-Too high Vibration
+2022-05-10 16:14:56,382-root-WARNING-Too high Vibration
+2022-05-10 16:14:56,549-root-WARNING-Too high Vibration
+2022-05-10 16:14:56,720-root-WARNING-Too high Vibration
+2022-05-10 16:14:56,893-root-WARNING-Too high Vibration
+2022-05-10 16:14:57,053-root-WARNING-Too high Vibration
+2022-05-10 16:14:57,215-root-WARNING-Too high Vibration
+2022-05-10 16:14:57,382-root-WARNING-Too high Vibration
+2022-05-10 16:14:57,515-root-INFO-Production : 0 | Temperature : 49.8 | Vibration : 1.92
+2022-05-10 16:14:57,548-root-WARNING-Too high Vibration
+2022-05-10 16:14:57,715-root-WARNING-Too high Vibration
+2022-05-10 16:14:57,895-root-WARNING-Too high Vibration
+2022-05-10 16:14:58,070-root-WARNING-Too high Vibration
+2022-05-10 16:14:58,227-root-WARNING-Too high Vibration
+2022-05-10 16:14:58,382-root-WARNING-Too high Vibration
+2022-05-10 16:14:58,549-root-WARNING-Too high Vibration
+2022-05-10 16:14:58,716-root-WARNING-Too high Vibration
+2022-05-10 16:14:58,890-root-WARNING-Too high Vibration
+2022-05-10 16:14:59,055-root-WARNING-Too high Vibration
+2022-05-10 16:14:59,218-root-WARNING-Too high Vibration
+2022-05-10 16:14:59,382-root-WARNING-Too high Vibration
+2022-05-10 16:14:59,548-root-WARNING-Too high Vibration
+2022-05-10 16:14:59,715-root-WARNING-Too high Vibration
+2022-05-10 16:14:59,896-root-WARNING-Too high Vibration
+2022-05-10 16:15:00,072-root-WARNING-Too high Vibration
+2022-05-10 16:15:00,248-root-WARNING-Too high Vibration
+2022-05-10 16:15:00,398-root-WARNING-Too high Vibration
+2022-05-10 16:15:00,549-root-WARNING-Too high Vibration
+2022-05-10 16:15:00,716-root-WARNING-Too high Vibration
+2022-05-10 16:15:00,850-root-INFO-Production : 0 | Temperature : 49.8 | Vibration : 1.92
+2022-05-10 16:15:00,882-root-WARNING-Too high Vibration
+2022-05-10 16:15:01,062-root-WARNING-Too high Vibration
+2022-05-10 16:15:01,214-root-WARNING-Too high Vibration
+2022-05-10 16:15:01,381-root-WARNING-Too high Vibration
+2022-05-10 16:15:01,548-root-WARNING-Too high Vibration
+2022-05-10 16:15:01,715-root-WARNING-Too high Vibration
+2022-05-10 16:15:01,899-root-WARNING-Too high Vibration
+2022-05-10 16:15:02,056-root-WARNING-Too high Vibration
+2022-05-10 16:15:02,216-root-WARNING-Too high Vibration
+2022-05-10 16:15:02,384-root-WARNING-Too high Vibration
+2022-05-10 16:15:02,551-root-WARNING-Too high Vibration
+2022-05-10 16:15:02,730-root-WARNING-Too high Vibration
+2022-05-10 16:15:02,907-root-WARNING-Too high Vibration
+2022-05-10 16:15:03,078-root-WARNING-Too high Vibration
+2022-05-10 16:15:03,220-root-WARNING-Too high Vibration
+2022-05-10 16:15:03,381-root-WARNING-Too high Vibration
+2022-05-10 16:15:03,547-root-WARNING-Too high Vibration
+2022-05-10 16:15:03,714-root-WARNING-Too high Vibration
+2022-05-10 16:15:03,883-root-WARNING-Too high Vibration
+2022-05-10 16:15:04,048-root-WARNING-Too high Vibration
+2022-05-10 16:15:04,182-root-INFO-Production : 0 | Temperature : 49.8 | Vibration : 1.92
+2022-05-10 16:15:04,215-root-WARNING-Too high Vibration
+2022-05-10 16:15:04,382-root-WARNING-Too high Vibration
+2022-05-10 16:15:04,548-root-WARNING-Too high Vibration
+2022-05-10 16:15:04,721-root-WARNING-Too high Vibration
+2022-05-10 16:15:04,881-root-WARNING-Too high Vibration
+2022-05-10 16:15:05,049-root-WARNING-Too high Vibration
+2022-05-10 16:15:05,214-root-WARNING-Too high Vibration
+2022-05-10 16:15:05,383-root-WARNING-Too high Vibration
+2022-05-10 16:15:05,558-root-WARNING-Too high Vibration
+2022-05-10 16:15:05,714-root-WARNING-Too high Vibration
+2022-05-10 16:15:05,880-root-WARNING-Too high Vibration
+2022-05-10 16:15:06,047-root-WARNING-Too high Vibration
+2022-05-10 16:15:06,223-root-WARNING-Too high Vibration
+2022-05-10 16:15:06,381-root-WARNING-Too high Vibration
+2022-05-10 16:15:06,547-root-WARNING-Too high Vibration
+2022-05-10 16:15:06,713-root-WARNING-Too high Vibration
+2022-05-10 16:15:06,880-root-WARNING-Too high Vibration
+2022-05-10 16:15:07,053-root-WARNING-Too high Vibration
+2022-05-10 16:15:07,214-root-WARNING-Too high Vibration
+2022-05-10 16:15:07,380-root-WARNING-Too high Vibration
+2022-05-10 16:15:07,513-root-INFO-Production : 0 | Temperature : 49.7 | Vibration : 1.93
+2022-05-10 16:15:07,550-root-WARNING-Too high Vibration
+2022-05-10 16:15:07,713-root-WARNING-Too high Vibration
+2022-05-10 16:15:07,887-root-WARNING-Too high Vibration
+2022-05-10 16:15:08,046-root-WARNING-Too high Vibration
+2022-05-10 16:15:08,213-root-WARNING-Too high Vibration
+2022-05-10 16:15:08,381-root-WARNING-Too high Vibration
+2022-05-10 16:15:08,546-root-WARNING-Too high Vibration
+2022-05-10 16:15:08,718-root-WARNING-Too high Vibration
+2022-05-10 16:15:08,885-root-WARNING-Too high Vibration
+2022-05-10 16:15:09,047-root-WARNING-Too high Vibration
+2022-05-10 16:15:09,213-root-WARNING-Too high Vibration
+2022-05-10 16:15:09,379-root-WARNING-Too high Vibration
+2022-05-10 16:15:09,558-root-WARNING-Too high Vibration
+2022-05-10 16:15:09,713-root-WARNING-Too high Vibration
+2022-05-10 16:15:09,879-root-WARNING-Too high Vibration
+2022-05-10 16:15:10,046-root-WARNING-Too high Vibration
+2022-05-10 16:15:10,213-root-WARNING-Too high Vibration
+2022-05-10 16:15:10,391-root-WARNING-Too high Vibration
+2022-05-10 16:15:10,558-root-WARNING-Too high Vibration
+2022-05-10 16:15:10,712-root-WARNING-Too high Vibration
+2022-05-10 16:15:10,848-root-INFO-Production : 0 | Temperature : 49.7 | Vibration : 1.92
+2022-05-10 16:15:10,879-root-WARNING-Too high Vibration
+2022-05-10 16:15:11,046-root-WARNING-Too high Vibration
+2022-05-10 16:15:11,212-root-WARNING-Too high Vibration
+2022-05-10 16:15:11,391-root-WARNING-Too high Vibration
+2022-05-10 16:15:11,556-root-WARNING-Too high Vibration
+2022-05-10 16:15:11,712-root-WARNING-Too high Vibration
+2022-05-10 16:15:11,879-root-WARNING-Too high Vibration
+2022-05-10 16:15:12,045-root-WARNING-Too high Vibration
+2022-05-10 16:15:12,212-root-WARNING-Too high Vibration
+2022-05-10 16:15:12,386-root-WARNING-Too high Vibration
+2022-05-10 16:15:12,546-root-WARNING-Too high Vibration
+2022-05-10 16:15:12,712-root-WARNING-Too high Vibration
+2022-05-10 16:15:12,879-root-WARNING-Too high Vibration
+2022-05-10 16:15:13,049-root-WARNING-Too high Vibration
+2022-05-10 16:15:13,234-root-WARNING-Too high Vibration
+2022-05-10 16:15:13,409-root-WARNING-Too high Vibration
+2022-05-10 16:15:13,570-root-WARNING-Too high Vibration
+2022-05-10 16:15:13,722-root-WARNING-Too high Vibration
+2022-05-10 16:15:13,879-root-WARNING-Too high Vibration
+2022-05-10 16:15:14,052-root-WARNING-Too high Vibration
+2022-05-10 16:15:14,204-root-INFO-Production : 0 | Temperature : 49.6 | Vibration : 1.93
+2022-05-10 16:15:14,245-root-WARNING-Too high Vibration
+2022-05-10 16:15:14,406-root-WARNING-Too high Vibration
+2022-05-10 16:15:14,552-root-WARNING-Too high Vibration
+2022-05-10 16:15:14,712-root-WARNING-Too high Vibration
+2022-05-10 16:15:14,880-root-WARNING-Too high Vibration
+2022-05-10 16:15:15,056-root-WARNING-Too high Vibration
+2022-05-10 16:15:23,723-root-WARNING-Camera is not detected!
+2022-05-10 16:15:23,746-root-WARNING-Too high Vibration
+2022-05-10 16:15:23,887-root-WARNING-Too high Vibration
+2022-05-10 16:15:24,035-root-WARNING-Too high Vibration
+2022-05-10 16:15:24,183-root-WARNING-Too high Vibration
+2022-05-10 16:15:24,334-root-WARNING-Too high Vibration
+2022-05-10 16:15:24,465-root-WARNING-Too high Vibration
+2022-05-10 16:15:24,595-root-WARNING-Too high Vibration
+2022-05-10 16:15:24,724-root-WARNING-Too high Vibration
+2022-05-10 16:15:24,854-root-WARNING-Too high Vibration
+2022-05-10 16:15:24,983-root-WARNING-Too high Vibration
+2022-05-10 16:15:25,125-root-WARNING-Too high Vibration
+2022-05-10 16:15:25,269-root-WARNING-Too high Vibration
+2022-05-10 16:15:25,398-root-WARNING-Too high Vibration
+2022-05-10 16:15:25,527-root-WARNING-Too high Vibration
+2022-05-10 16:15:25,656-root-WARNING-Too high Vibration
+2022-05-10 16:15:25,786-root-WARNING-Too high Vibration
+2022-05-10 16:15:25,915-root-WARNING-Too high Vibration
+2022-05-10 16:15:26,066-root-WARNING-Too high Vibration
+2022-05-10 16:15:26,197-root-WARNING-Too high Vibration
+2022-05-10 16:15:26,328-root-WARNING-Too high Vibration
+2022-05-10 16:15:26,432-root-INFO-Production : 0 | Temperature : 49.7 | Vibration : 1.93
+2022-05-10 16:15:26,459-root-WARNING-Too high Vibration
+2022-05-10 16:15:26,589-root-WARNING-Too high Vibration
+2022-05-10 16:15:26,721-root-WARNING-Too high Vibration
+2022-05-10 16:15:26,863-root-WARNING-Too high Vibration
+2022-05-10 16:15:27,009-root-WARNING-Too high Vibration
+2022-05-10 16:15:27,152-root-WARNING-Too high Vibration
+2022-05-10 16:15:27,296-root-WARNING-Too high Vibration
+2022-05-10 16:15:27,442-root-WARNING-Too high Vibration
+2022-05-10 16:15:27,586-root-WARNING-Too high Vibration
+2022-05-10 16:15:27,733-root-WARNING-Too high Vibration
+2022-05-10 16:15:27,914-root-WARNING-Too high Vibration
+2022-05-10 16:15:28,060-root-WARNING-Too high Vibration
+2022-05-10 16:15:28,206-root-WARNING-Too high Vibration
+2022-05-10 16:15:28,336-root-WARNING-Too high Vibration
+2022-05-10 16:15:28,474-root-WARNING-Too high Vibration
+2022-05-10 16:15:28,604-root-WARNING-Too high Vibration
+2022-05-10 16:15:28,734-root-WARNING-Too high Vibration
+2022-05-10 16:15:28,868-root-WARNING-Too high Vibration
+2022-05-10 16:15:29,038-root-WARNING-Too high Vibration
+2022-05-10 16:15:29,168-root-WARNING-Too high Vibration
+2022-05-10 16:15:29,272-root-INFO-Production : 0 | Temperature : 49.6 | Vibration : 1.93
+2022-05-10 16:15:29,298-root-WARNING-Too high Vibration
+2022-05-10 16:15:54,930-root-INFO-Production : 0 | Temperature : 35.9 | Vibration : 0.00
+2022-05-10 16:15:58,263-root-INFO-Production : 0 | Temperature : 35.8 | Vibration : 0.00
+2022-05-10 16:16:01,603-root-INFO-Production : 0 | Temperature : 35.8 | Vibration : 0.00
+2022-05-10 16:16:04,930-root-INFO-Production : 0 | Temperature : 35.8 | Vibration : 0.00
+2022-05-10 16:16:08,265-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.01
+2022-05-10 16:16:11,610-root-INFO-Production : 0 | Temperature : 35.6 | Vibration : 0.00
+2022-05-10 16:16:14,926-root-INFO-Production : 0 | Temperature : 35.8 | Vibration : 0.00
+2022-05-10 16:16:18,259-root-INFO-Production : 0 | Temperature : 35.8 | Vibration : 0.00
+2022-05-10 16:16:21,593-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.01
+2022-05-10 16:16:24,931-root-INFO-Production : 0 | Temperature : 35.6 | Vibration : 0.00
+2022-05-10 16:16:28,270-root-INFO-Production : 0 | Temperature : 35.5 | Vibration : 0.00
+2022-05-10 16:16:31,590-root-INFO-Production : 0 | Temperature : 35.6 | Vibration : 0.00
+2022-05-10 16:16:34,922-root-INFO-Production : 0 | Temperature : 35.6 | Vibration : 0.01
+2022-05-10 16:16:38,255-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.00
+2022-05-10 16:16:41,592-root-INFO-Production : 0 | Temperature : 35.6 | Vibration : 0.00
+2022-05-10 16:16:44,920-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.00
+2022-05-10 16:16:48,254-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.00
+2022-05-10 16:16:51,587-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.00
+2022-05-10 16:17:31,231-root-INFO-Production : 0 | Temperature : 37.0 | Vibration : 0.01
+2022-05-10 16:17:34,700-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.01
+2022-05-10 16:17:38,032-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.01
+2022-05-10 16:17:41,609-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:17:45,134-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:17:48,722-root-INFO-Production : 0 | Temperature : 36.8 | Vibration : 0.00
+2022-05-10 16:18:04,282-root-INFO-Production : 0 | Temperature : 36.7 | Vibration : 0.01
+2022-05-10 16:18:07,581-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:10,914-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:14,254-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:17,611-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.01
+2022-05-10 16:18:20,913-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:24,244-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:27,589-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:30,913-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:34,294-root-INFO-Production : 0 | Temperature : 36.8 | Vibration : 0.00
+2022-05-10 16:18:37,629-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.01
+2022-05-10 16:18:40,981-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.01
+2022-05-10 16:18:44,319-root-INFO-Production : 0 | Temperature : 36.8 | Vibration : 0.00
+2022-05-10 16:18:47,687-root-INFO-Production : 0 | Temperature : 36.8 | Vibration : 0.00
+2022-05-10 16:18:50,991-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:54,240-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:18:57,613-root-INFO-Production : 0 | Temperature : 36.7 | Vibration : 0.00
+2022-05-10 16:19:00,931-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.01
+2022-05-10 16:19:04,276-root-INFO-Production : 0 | Temperature : 36.9 | Vibration : 0.00
+2022-05-10 16:19:07,591-root-INFO-Production : 0 | Temperature : 36.6 | Vibration : 0.00
+2022-05-10 16:19:10,902-root-INFO-Production : 0 | Temperature : 36.6 | Vibration : 0.00
+2022-05-10 16:19:14,246-root-INFO-Production : 0 | Temperature : 36.3 | Vibration : 0.00
+2022-05-10 16:19:17,577-root-INFO-Production : 0 | Temperature : 36.2 | Vibration : 0.00
+2022-05-10 16:19:20,980-root-INFO-Production : 0 | Temperature : 36.2 | Vibration : 0.01
+2022-05-10 16:19:24,296-root-INFO-Production : 0 | Temperature : 36.1 | Vibration : 0.01
+2022-05-10 16:19:27,768-root-INFO-Production : 0 | Temperature : 36.1 | Vibration : 0.01
+2022-05-10 16:19:31,182-root-INFO-Production : 0 | Temperature : 35.9 | Vibration : 0.01
+2022-05-10 16:19:34,691-root-INFO-Production : 0 | Temperature : 35.9 | Vibration : 0.00
+2022-05-10 16:19:38,050-root-INFO-Production : 0 | Temperature : 36.0 | Vibration : 0.00
+2022-05-10 16:19:41,484-root-INFO-Production : 0 | Temperature : 36.0 | Vibration : 0.00
+2022-05-10 16:19:44,859-root-INFO-Production : 0 | Temperature : 36.0 | Vibration : 0.01
+2022-05-10 16:19:48,264-root-INFO-Production : 0 | Temperature : 35.9 | Vibration : 0.00
+2022-05-10 16:19:51,639-root-INFO-Production : 0 | Temperature : 35.9 | Vibration : 0.01
+2022-05-10 16:19:55,062-root-INFO-Production : 0 | Temperature : 36.0 | Vibration : 0.00
+2022-05-10 16:19:58,389-root-INFO-Production : 0 | Temperature : 35.9 | Vibration : 0.01
+2022-05-10 16:20:01,723-root-INFO-Production : 0 | Temperature : 35.8 | Vibration : 0.00
+2022-05-10 16:20:15,630-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.00
+2022-05-10 16:20:18,963-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.01
+2022-05-10 16:20:22,326-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.00
+2022-05-10 16:20:25,608-root-INFO-Production : 0 | Temperature : 35.8 | Vibration : 0.00
+2022-05-10 16:20:28,933-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.00
+2022-05-10 16:20:32,330-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.01
+2022-05-10 16:20:35,698-root-INFO-Production : 0 | Temperature : 35.7 | Vibration : 0.00
+2022-05-10 16:20:38,942-root-INFO-Production : 0 | Temperature : 35.6 | Vibration : 0.00
+2022-05-10 16:24:04,874-root-INFO-Production : 0 | Temperature : 37.6 | Vibration : 0.00
+2022-05-10 16:24:08,205-root-INFO-Production : 0 | Temperature : 37.9 | Vibration : 0.00
+2022-05-10 16:24:11,537-root-INFO-Production : 0 | Temperature : 37.8 | Vibration : 0.00
+2022-05-10 16:24:14,892-root-INFO-Production : 0 | Temperature : 37.8 | Vibration : 0.01
+2022-05-10 16:24:18,229-root-INFO-Production : 0 | Temperature : 37.8 | Vibration : 0.01
+2022-05-10 16:24:21,535-root-INFO-Production : 0 | Temperature : 37.9 | Vibration : 0.00
+2022-05-10 16:24:24,869-root-INFO-Production : 0 | Temperature : 37.8 | Vibration : 0.00
+2022-05-10 16:24:28,200-root-INFO-Production : 0 | Temperature : 37.9 | Vibration : 0.00
+2022-05-10 16:24:31,545-root-INFO-Production : 0 | Temperature : 37.8 | Vibration : 0.00
+2022-05-10 16:24:34,865-root-INFO-Production : 0 | Temperature : 37.9 | Vibration : 0.00
+2022-05-10 16:24:38,244-root-INFO-Production : 0 | Temperature : 37.9 | Vibration : 0.00
+2022-05-10 16:24:41,641-root-INFO-Production : 0 | Temperature : 37.8 | Vibration : 0.00
+2022-05-10 16:24:45,497-root-INFO-Production : 0 | Temperature : 37.8 | Vibration : 0.00
+2022-05-10 16:37:19,303-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:22,635-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:25,968-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:29,301-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:32,633-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:35,988-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:37:39,299-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:42,631-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:46,026-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:49,553-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.01
+2022-05-10 16:37:52,802-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:56,325-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:37:59,703-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.01
+2022-05-10 16:38:02,997-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:38:06,328-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:38:09,663-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:38:21,270-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:22,964-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:23,280-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:23,535-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:23,759-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:23,845-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:38:23,970-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:24,188-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:24,412-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:24,630-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:24,806-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:25,006-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:25,211-Stream-ERROR-Exception on / [GET]
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/lib/python3/dist-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/lib/python3/dist-packages/flask/app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/pi/realtime_monitoring/Stream.py", line 276, in in_index
+    return render_template('in_index.html', in_ipaddr = ipaddr)
+NameError: name 'ipaddr' is not defined
+2022-05-10 16:38:27,177-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:38:30,512-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:38:33,842-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:38:37,178-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:38:40,505-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:38:43,842-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:38:47,174-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:38:50,506-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:38:53,845-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:38:57,180-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:00,514-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:03,848-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:39:07,210-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:39:10,526-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:13,831-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:17,165-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:20,499-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:39:23,833-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:27,163-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:30,509-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:39:33,828-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:39:37,180-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:40,499-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:43,837-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:47,172-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:50,491-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:53,824-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:39:57,158-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:40:00,489-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:03,831-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:40:07,155-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:10,488-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:26,091-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:29,424-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:32,765-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:36,096-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:39,422-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:40:42,777-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:46,099-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:49,423-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:52,752-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:40:56,087-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:41:11,125-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:41:14,462-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:41:17,792-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:41:21,120-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:41:24,456-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:41:27,785-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:41:31,118-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:41:34,455-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:41:51,763-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:41:54,976-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:41:58,316-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:42:01,868-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:42:05,240-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:42:08,741-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:42:11,990-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:42:15,525-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:42:19,059-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:42:22,511-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:42:25,918-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:42:29,347-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.01
+2022-05-10 16:42:33,048-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:42:36,643-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:42:40,221-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:42:43,730-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:42:47,350-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:42:50,875-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:42:54,552-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.01
+2022-05-10 16:42:58,121-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:43:01,778-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:43:05,772-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:43:20,680-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:43:24,274-root-INFO-Production : 0 | Temperature : 37.1 | Vibration : 0.00
+2022-05-10 16:43:27,504-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:43:31,013-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:43:34,634-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:43:38,189-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:43:41,606-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:43:45,038-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:43:48,514-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:43:51,815-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:43:55,424-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:43:59,085-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:44:02,426-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:44:05,875-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:44:09,140-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:44:12,437-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:44:15,762-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:44:19,148-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:44:34,691-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:44:38,018-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:44:41,364-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:44:44,813-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:44:48,183-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:44:51,570-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:44:54,854-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:44:58,195-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:45:01,611-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:45:05,057-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:45:08,458-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:45:11,725-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:45:15,159-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:45:18,910-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:45:22,458-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:45:26,314-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:45:29,982-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:45:33,550-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:45:37,420-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:45:41,091-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:45:44,725-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:45:48,700-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:45:52,526-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:45:56,845-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:46:01,153-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01
+2022-05-10 16:46:04,905-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:46:08,746-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.01
+2022-05-10 16:46:11,966-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:46:15,646-root-INFO-Production : 0 | Temperature : 37.3 | Vibration : 0.00
+2022-05-10 16:46:19,437-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:46:22,873-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.00
+2022-05-10 16:46:26,975-root-INFO-Production : 0 | Temperature : 37.2 | Vibration : 0.01

@@ -12,6 +12,10 @@ import logging
 import RPi.GPIO as GPIO
 import os
 import requests
+#data visualize
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.image as img
 
 
 #ADC module import
@@ -19,16 +23,20 @@ import board
 import busio
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
-
-# Create the I2C bus
-i2c = busio.I2C(board.SCL, board.SDA)
+i2c_flag = 'Y'
+try:
+    # Create the I2C bus
+    i2c = busio.I2C(board.SCL, board.SDA)
                                                                    
-# Create the ADC object using the I2C bus
-ads = ADS.ADS1115(i2c)
+    # Create the ADC object using the I2C bus
+    ads = ADS.ADS1115(i2c)
 
-# Create single-ended input on channel 0
-V0 = AnalogIn(ads, ADS.P0)
-V1 = AnalogIn(ads, ADS.P1)
+    # Create single-ended input on channel 0
+    V0 = AnalogIn(ads, ADS.P0)
+    V1 = AnalogIn(ads, ADS.P1)
+except:
+    i2c_flag='N'
+    print('Remote I/O error!')
 
 #initial
 img_w = 640
@@ -174,10 +182,11 @@ app = Flask(__name__)
 
 def captureFrames():
     global video_frame, thread_lock
-
+    camera_flag = ''
     # Video capturing
     cap = cv2.VideoCapture(0)
-
+        
+    
     # Set Video Size
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, img_w)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, img_h)
@@ -186,23 +195,37 @@ def captureFrames():
         #warning img create
         global check, c_cnt
         
-        ret, frame = cap.read()
         
-        if not ret:
+        ret, frame = cap.read()
+        frame = cv2.flip(frame, 0)
+        if frame is None:
             frame = n_img
             cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
             if c_cnt == 0:
                 logger1.warning('Camera is not detected!')
                 c_cnt += 1
-                    
+            
+        VibV = 0.0; temp = 0.0; 
         #calculates
         time=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        if i2c_flag != 'Y':
+            tempR=1000/(1-(V0.value)/(26555))
+            temp=round(706.6*(tempR**(-0.1541))-146,2)
         
-        tempR=1000/(1-(V0.value)/(26555))
-        temp=round(706.6*(tempR**(-0.1541))-146,2)
-        
-        VibV=V1.value/26555*3.3
-        VibV=round(abs(0.58-round(VibV,2)),2)
+            VibV=V1.value/26555*3.3
+            VibV=round(abs(0.58-round(VibV,2)),2)
+            cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness,cv2.LINE_AA)
+            cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness,cv2.LINE_AA)
+            '''
+            cv2.putText(frame,'RPM',L_RPMT,font,fontscale,white,thickness,cv2.LINE_AA)
+            if checkR==0:
+                cv2.putText(frame,'0',L_RPM,font,fontscale,white,thickness)
+            else:
+                cv2.putText(frame,str(RPM),L_RPM,font,fontscale,white,thickness)
+            ''' 
+            cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
+            cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
+         
         
         #save sensor data
         data_dic = {'product':product_number, 'temperature':temp, 'vibration':VibV}
@@ -212,19 +235,7 @@ def captureFrames():
         
         cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness,cv2.LINE_AA)
         cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness,cv2.LINE_AA)
-        
-        cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness,cv2.LINE_AA)
-        cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness,cv2.LINE_AA)
-        '''
-        cv2.putText(frame,'RPM',L_RPMT,font,fontscale,white,thickness,cv2.LINE_AA)
-        if checkR==0:
-            cv2.putText(frame,'0',L_RPM,font,fontscale,white,thickness)
-        else:
-            cv2.putText(frame,str(RPM),L_RPM,font,fontscale,white,thickness)
-        ''' 
-        cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
-        cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
-        
+           
         #warning
         global n
         
@@ -283,29 +294,92 @@ def ex_index():
 #log file open
 @app.route('/log/today')
 def today_log()->str:
-    f = open(log_path1,'r')
-    fl = f.readlines()
-    f_out = []
-    for i in range(len(fl)):
-        if 'root' in fl[i]:
-            f_out.append(fl[i])
+    with open(log_path1,'r') as fp:
+      fl = fp.readlines()[::-1]
+      select = ':' #일자 정하기?
+      f_out = []
+      for i in range(len(fl)):
+        if 'root' in fl[i] and select in fl[i]:
+          f_out.append(fl[i])
         else:
-            pass
-    f_out.reverse()
-    return "</br>".join(f_out)
+          pass
+        #데이터 정제
+        date = []
+        time = []
+        product_num = []
+        Temperature = []
+        Vibration = []
+        inform = []
+        for line in f_out:
+          if 'INFO' in line:
+           words = line.split()
+           date.append(words[0])
+           time.append(words[1].split(',')[0])
+           product_num.append(words[3])
+           Temperature.append(words[7])
+           Vibration.append(words[-1])
+           inform.append('-')
+          else:
+            words = line.split()
+            date.append(words[0])
+            time.append(words[1].split(',')[0])
+            product_num.append('-')
+            Temperature.append('-')
+            Vibration.append('-')
+    
+            info= " ".join(words[1:])
+            info = info.split('-')
+            info = "-".join(info[2:])
+            inform.append(info)
+    date_time = zip(date, time) 
+    today_dict = {'Time':date_time, 'Num.': product_num, 'Temperature': Temperature, 'Vibration': Vibration, 'information': inform}
+    df = pd.DataFrame(today_dict)
+    return df.to_html(header='true')
     
 @app.route('/log/all')
 def all_log()->str:
-    f = open(log_path2,'r')
-    fl = f.readlines()
-    f_out = []
-    for i in range(len(fl)):
-        if 'root' in fl[i]:
-            f_out.append(fl[i])
+    with open(log_path2,'r') as fp:
+      fl = fp.readlines()[::-1]
+      fl = fl[:]
+      select = ':' #일자 정하기?
+      f_out = []
+      for i in range(len(fl)):
+        if 'root' in fl[i] and select in fl[i]:
+          f_out.append(fl[i])
         else:
-            pass
-    f_out.reverse()
-    return "</br>".join(f_out)
+          pass
+        #데이터 정제
+        date = []
+        time = []
+        product_num = []
+        Temperature = []
+        Vibration = []
+        inform = []
+        for line in f_out:
+          if 'INFO' in line:
+           words = line.split()
+           date.append(words[0])
+           time.append(words[1].split(',')[0])
+           product_num.append(words[3])
+           Temperature.append(words[7])
+           Vibration.append(words[-1])
+           inform.append('-')
+          else:
+            words = line.split()
+            date.append(words[0])
+            time.append(words[1].split(',')[0])
+            product_num.append('-')
+            Temperature.append('-')
+            Vibration.append('-')
+    
+            info= " ".join(words[1:])
+            info = info.split('-')
+            info = "-".join(info[2:])
+            inform.append(info)
+    date_time = zip(date, time) 
+    all_dict = {'Time':date_time, 'Num.': product_num, 'Temperature': Temperature, 'Vibration': Vibration, 'information': inform}
+    df_a = pd.DataFrame(all_dict)
+    return df_a.to_html(header='true')
 
 # check to see if this is the main thread of execution
 if __name__ == '__main__':
