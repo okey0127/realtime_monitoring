@@ -27,11 +27,24 @@
 	</div>
 	<div style="text-align:center">
 		<h3></h3>
-		<td>	
+		<table>
+		<tr>		
+			<td rowspan='2' align = 'right' style="width:60%">
 			<a target="_blank" href="javascript:void(0);" onclick="Video_open();">
-				<img src={{ipaddr['video']}} title="새창에서 영상 열기" style="width:50%">
+				<img src={{ipaddr['video']}} title="새창에서 영상 열기" >
 			</a>
-		</td>
+			</td>
+			<td align = 'left' style="width:30%">
+			<img src={{ipaddr['temp']}} style="width:60%">
+			</td>
+		</tr>
+		<tr>
+			<td align = 'left' style="width:30%">
+			<img src={{ipaddr['vib']}} style="width:60%">
+			</td>
+			<td></td>
+		</tr>
+		</table>
 	</div>
 	<td>
 	    <button onclick="Today_log()">Today log</button>

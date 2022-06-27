@@ -184,7 +184,7 @@ def captureFrames():
     global video_frame, thread_lock
     camera_flag = ''
     # Video capturing
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(-1)
         
     
     # Set Video Size
@@ -208,7 +208,7 @@ def captureFrames():
         VibV = 0.0; temp = 0.0; 
         #calculates
         time=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        if i2c_flag != 'Y':
+        if i2c_flag != 'N':
             tempR=1000/(1-(V0.value)/(26555))
             temp=round(706.6*(tempR**(-0.1541))-146,2)
         
