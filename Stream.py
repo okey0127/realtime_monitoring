@@ -1,21 +1,28 @@
-# edit: 22.05.10
+# edit: 22.06.25
 
 import cv2
 import time
 import threading
-from flask import Response, Flask, render_template
+from flask import Response, Flask, render_template, request, redirect, session, send_file
+from flask import abort, jsonify, url_for, Blueprint, make_response
 import numpy as np
 import datetime
 import math
 import time
-import logging
+import schedule
+import json
+
 import RPi.GPIO as GPIO
 import os
+import io
+import base64
+
 import requests
 #data visualize
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.image as img
+from matplotlib.figure import Figure
 
 
 #ADC module import
@@ -23,6 +30,22 @@ import board
 import busio
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
+
+
+#initial
+img_w = 640
+img_h = 480
+product_number = 0
+timeC=0
+check=0
+n=0
+c_cnt = 0
+
+information = '-'
+#RPM=0
+#checkR=0
+
+#setting ADC module
 i2c_flag = 'Y'
 try:
     # Create the I2C bus
@@ -36,19 +59,12 @@ try:
     V1 = AnalogIn(ads, ADS.P1)
 except:
     i2c_flag='N'
-    print('Remote I/O error!')
-
-#initial
-img_w = 640
-img_h = 480
-product_number = 0
-timeC=0
-check=0
-n=0
-c_cnt = 0
-data_dic={} #save ip and sensor data
-#RPM=0
-#checkR=0
+    information = 'Remote I/O error!'
+    
+x_list = [x for x in range(60)]
+vib_data = [0]*60
+temp_data = [0]*60
+time_data = [0]*60
 
 n_img=np.zeros((img_h,img_w,3),np.uint8)
 img2=np.zeros((img_h,img_w,3),np.uint8)
@@ -95,33 +111,12 @@ L_VibT=(center_x+150,center_y-200)
 #set path
 now_dir = os.path.dirname(os.path.abspath(__file__))
 day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-log_path1 = f'{now_dir}/log/{day}server.log'
-log_path2 = f'{now_dir}/log/server.log'
+log_path1 = f'{now_dir}/log/{day}server.csv'
+log_path2 = f'{now_dir}/log/server.csv'
 
 #if not exist log folder -> create log folter
 if not os.path.exists(now_dir+'/log'):
     os.mkdir(now_dir+'/log')
-    
-logger1=logging.getLogger()
-#logger2=logging.getLogger()
-
-logger1.setLevel(logging.INFO)
-#logger2.setLevel(logging.INFO)
-
-formatter1 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
-#formatter2 = logging.Formatter('%(asctime)s-%(name)s-%(levelname)s-%(message)s')
-
-day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-file_handler1=logging.FileHandler(log_path1)
-file_handler2=logging.FileHandler(log_path2)
-file_handler1.setFormatter(formatter1)
-file_handler2.setFormatter(formatter1)
-logger1.addHandler(file_handler1)
-logger1.addHandler(file_handler2)
-
-#remove werkzeug messages from logging
-log = logging.getLogger('werkzeug')
-log.setLevel(logging.ERROR)
 
 #get ip
 URL = 'https://icanhazip.com'
@@ -130,13 +125,17 @@ ex_ip = respons.text.strip()
 ex_video_ip = 'http://'+ex_ip+':8080/video'
 ex_log_all_ip = 'http://'+ex_ip+':8080/log/all'
 ex_log_today_ip = 'http://'+ex_ip+':8080/log/today'
+ex_temp_ip = 'http://'+ex_ip+':8080/temp_graph'
+ex_vib_ip = 'http://'+ex_ip+':8080/vib_graph'
+
 in_ip = os.popen('hostname -I').read().strip()
 in_video_ip = 'http://'+in_ip+':8080/video'
 in_log_all_ip = 'http://'+in_ip+':8080/log/all'
 in_log_today_ip = 'http://'+in_ip+':8080/log/today'
-
-in_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':in_video_ip, 'log_all':in_log_all_ip, 'log_today':in_log_today_ip}
-ex_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':ex_video_ip, 'log_all':ex_log_all_ip, 'log_today':ex_log_today_ip}
+in_temp_ip = 'http://'+in_ip+':8080/temp_graph'
+in_vib_ip = 'http://'+in_ip+':8080/vib_graph'
+in_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':in_video_ip, 'log_all':in_log_all_ip, 'log_today':in_log_today_ip, 'temp':in_temp_ip, 'vib':in_vib_ip}
+ex_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':ex_video_ip, 'log_all':ex_log_all_ip, 'log_today':ex_log_today_ip, 'temp':ex_temp_ip, 'vib':ex_vib_ip}
 
 #text
 thickness =2
@@ -170,12 +169,41 @@ def count_RPM(channel) :
         RPM=0
     timeC=time.time()
 '''
+
+def modify_inform(a):
+    global information
+    if information == '-':
+        information = a
+    else:
+        information += (', ' + a)
+
+data_dic = {}
+time_list = []
+temp_list = []
+vib_list = []
+def save_all_data():
+    #save log data as CSV
+    global data_dic
+    if data_dic != {}:
+        df = pd.DataFrame([data_dic])
+        df.to_csv(log_path1, mode='a', index=False, header = False)
+        df.to_csv(log_path2, mode='a', index=False, header = False)
+        time_list.append(data_dic['time'])
+        temp_list.append(data_dic['temperature'])
+        vib_list.append(data_dic['vibration'])
+        if len(time_list) > 60:
+            time_list.pop(0)
+            temp_list.pop(0)
+            vib_list.pop(0)
+        
+schedule.every(1).seconds.do(save_all_data)
 #set proximity sensor
 #product counter
 proximity_pin = 18
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(proximity_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(proximity_pin, GPIO.FALLING, callback=add_product, bouncetime=1000)
+
 
 #declare Flask Server
 app = Flask(__name__)
@@ -184,8 +212,7 @@ def captureFrames():
     global video_frame, thread_lock
     camera_flag = ''
     # Video capturing
-    cap = cv2.VideoCapture(-1)
-        
+    cap = cv2.VideoCapture(-1)   
     
     # Set Video Size
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, img_w)
@@ -193,22 +220,37 @@ def captureFrames():
     
     while True:
         #warning img create
-        global check, c_cnt
+        global check, c_cnt, check_first
+        global information
+        global data_dic
         
+        time=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
+        time_hms=str(datetime.datetime.now().strftime('%H:%M:%S'))
         
         ret, frame = cap.read()
-        frame = cv2.flip(frame, 0)
-        if frame is None:
-            frame = n_img
-            cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
-            if c_cnt == 0:
-                logger1.warning('Camera is not detected!')
-                c_cnt += 1
-            
-        VibV = 0.0; temp = 0.0; 
-        #calculates
-        time=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        if i2c_flag != 'N':
+        #frame = cv2.flip(frame, 0)
+        if c_cnt == 0: 
+            if frame is None:
+                frame = n_img
+                cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
+                modify_inform('Camera is not detected!')               
+            VibV = 0.0; temp = 0.0;
+            data_dic = {'date':time_ymd, 'time':time_hms, 'product': '-', 'temperature':'-', 'vibration':'-', 'information': information}        
+            c_cnt += 1
+        
+        #if no previous cvs file, 'header = True' command exe (mode != 'a')
+        df = pd.DataFrame([data_dic])
+        if not os.path.exists(log_path1):
+            df.to_csv(log_path1, index=False, header = True)
+        if not os.path.exists(log_path2):
+            df.to_csv(log_path2, index=False, header = True)
+        if information != '-':
+            save_all_data()
+        
+        information = '-'
+        #filter
+        if i2c_flag == 'Y':
             tempR=1000/(1-(V0.value)/(26555))
             temp=round(706.6*(tempR**(-0.1541))-146,2)
         
@@ -225,38 +267,75 @@ def captureFrames():
             ''' 
             cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
             cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
-         
-        
-        #save sensor data
-        data_dic = {'product':product_number, 'temperature':temp, 'vibration':VibV}
     
-        #filter
-        cv2.putText(frame,time,L_time,font,fontscale,white,thickness,cv2.LINE_AA)
         
+        cv2.putText(frame,time,L_time,font,fontscale,white,thickness,cv2.LINE_AA)
         cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness,cv2.LINE_AA)
         cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness,cv2.LINE_AA)
-           
+        
         #warning
         global n
         
         if temp>50 and n%5==0:
            n=n+1
            check=check+1
-           logger1.warning('Too high Temp')
+           
+           modify_inform('Too high Temp')
+           data_dic = {'date':time_ymd, 'time':time_hms, 'product':product_number, 'temperature':temp, 'vibration':VibV, 'information': information}
+           information = '-'
+           save_all_data()
            frame = img2
         elif VibV>0.5 and n%5==0:
             n=n+1
             check=check+1
-            logger1.warning('Too high Vibration')
+            
+            modify_inform('Too high Vibration')
+            data_dic = {'date':time_ymd, 'time':time_hms, 'product':product_number, 'temperature':temp, 'vibration':VibV, 'information': information}
+            information = '-'
+            save_all_data()
             frame = img3
         else:
             check=check+1
             n=n+1
-            if n%100==0:
-                logger1.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"Vibration"} : {VibV:.2f}')
-                #including RPM 
-                #logger1.info(f'{"Production"} : {product_number} | {"Temperature"} : {temp:.1f} | {"RPM"} : {RPM:.1f} | {"Vibration"} : {VibV:.2f}')
-                        
+           
+        #save All data as dictionary                
+        data_dic = {'date':time_ymd, 'time':time_hms, 'product':product_number, 'temperature':temp, 'vibration':VibV, 'information': information}
+        schedule.run_pending()
+        information = '-'
+        
+        
+                
+       
+        #global time_data
+        #global temp_data
+        #global vib_data
+        
+        #time_data.pop()
+        #temp_data.pop()
+        #vib_data.pop()
+        '''
+        #time_data.insert(0, time_hms)
+        temp_data.insert(0, temp)
+        vib_data.insert(0, vib)
+        
+        plt.figure(1)
+        temp_fileName = "temp.jpg"
+        temp_plot = plt.plot(x_list, temp_data,'ro--')
+        plt.ylabel("Temperature [°C]")
+        temp_ax = plt.gca()
+        temp_ax.axes.xaxis.set_visible(False)
+        temp_ax.grid(axis='y')
+        plt.savefig(temp_fileName)
+        
+        plt.figure(2)
+        vib_fileName = "vib.jpg"
+        vib_plot = plt.plot(x_list, vib_data,'bo--')
+        plt.ylabel("Vibration [V]")
+        vib_ax = plt.gca()
+        vib_ax.axes.xaxis.set_visible(False)
+        vib_ax.grid(axis='y')
+        plt.savefig(vib_fileName)
+        '''             
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
@@ -283,6 +362,30 @@ def encodeFrame():
 def streamFrames():
     return Response(encodeFrame(), mimetype = "multipart/x-mixed-replace; boundary=frame")
 
+@app.route('/data/temp', methods=["GET", "POST"])
+def data_temp():
+    global data_dic
+    global time_list, temp_list
+    return jsonify({'time':time_list, 'temp':temp_list})
+
+@app.route('/temp_graph')
+def temp_graph():
+    
+    return render_template('temp_graph.html')
+
+@app.route('/data/vib', methods=["GET", "POST"])
+def data_vib():
+    global data_dic
+    global time_list, vib_list
+    return jsonify({'time':time_list, 'vib':vib_list})
+
+@app.route('/vib_graph')
+def vib_graph():
+    return render_template('vib_graph.html')
+        
+
+    
+
 @app.route('/')
 def in_index():    
     return render_template('in_index.html', ipaddr = in_ipaddr)
@@ -294,92 +397,15 @@ def ex_index():
 #log file open
 @app.route('/log/today')
 def today_log()->str:
-    with open(log_path1,'r') as fp:
-      fl = fp.readlines()[::-1]
-      select = ':' #일자 정하기?
-      f_out = []
-      for i in range(len(fl)):
-        if 'root' in fl[i] and select in fl[i]:
-          f_out.append(fl[i])
-        else:
-          pass
-        #데이터 정제
-        date = []
-        time = []
-        product_num = []
-        Temperature = []
-        Vibration = []
-        inform = []
-        for line in f_out:
-          if 'INFO' in line:
-           words = line.split()
-           date.append(words[0])
-           time.append(words[1].split(',')[0])
-           product_num.append(words[3])
-           Temperature.append(words[7])
-           Vibration.append(words[-1])
-           inform.append('-')
-          else:
-            words = line.split()
-            date.append(words[0])
-            time.append(words[1].split(',')[0])
-            product_num.append('-')
-            Temperature.append('-')
-            Vibration.append('-')
-    
-            info= " ".join(words[1:])
-            info = info.split('-')
-            info = "-".join(info[2:])
-            inform.append(info)
-    date_time = zip(date, time) 
-    today_dict = {'Time':date_time, 'Num.': product_num, 'Temperature': Temperature, 'Vibration': Vibration, 'information': inform}
-    df = pd.DataFrame(today_dict)
-    return df.to_html(header='true')
+    df1 = pd.read_csv(log_path1)
+    df1 = df1.iloc[::-1]
+    return df1.to_html(header=True, index = False)
     
 @app.route('/log/all')
 def all_log()->str:
-    with open(log_path2,'r') as fp:
-      fl = fp.readlines()[::-1]
-      fl = fl[:]
-      select = ':' #일자 정하기?
-      f_out = []
-      for i in range(len(fl)):
-        if 'root' in fl[i] and select in fl[i]:
-          f_out.append(fl[i])
-        else:
-          pass
-        #데이터 정제
-        date = []
-        time = []
-        product_num = []
-        Temperature = []
-        Vibration = []
-        inform = []
-        for line in f_out:
-          if 'INFO' in line:
-           words = line.split()
-           date.append(words[0])
-           time.append(words[1].split(',')[0])
-           product_num.append(words[3])
-           Temperature.append(words[7])
-           Vibration.append(words[-1])
-           inform.append('-')
-          else:
-            words = line.split()
-            date.append(words[0])
-            time.append(words[1].split(',')[0])
-            product_num.append('-')
-            Temperature.append('-')
-            Vibration.append('-')
-    
-            info= " ".join(words[1:])
-            info = info.split('-')
-            info = "-".join(info[2:])
-            inform.append(info)
-    date_time = zip(date, time) 
-    all_dict = {'Time':date_time, 'Num.': product_num, 'Temperature': Temperature, 'Vibration': Vibration, 'information': inform}
-    df_a = pd.DataFrame(all_dict)
-    return df_a.to_html(header='true')
+    df2 = pd.read_csv(log_path2)
+    df2 = df2.iloc[::-1]
+    return df2.to_html(header=True, index = False)
 
 # check to see if this is the main thread of execution
 if __name__ == '__main__':
@@ -390,7 +416,7 @@ if __name__ == '__main__':
 
     # Start the thread
     process_thread.start()
-
+    
     # start the Flask Web Application
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
     # the host machine's localhost and is discoverable by other machines on the same network 
