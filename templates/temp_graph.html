@@ -10,57 +10,62 @@
 				width: 500px;
 			}
 		</style>
+        
 	</head>
 	<body>
-		<div class="chartBox">
+		<div class="chartBox" id="tempBox">
 		<canvas id="tempChart"></canvas>
 		</div>
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/luxon@2.4.0/build/global/luxon.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.1.0/dist/chartjs-adapter-luxon.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@2.0.0/dist/chartjs-plugin-streaming.min.js"></script>
-		<script>	
-
-		// update data
-		var getData = $.get('/data/temp');
-		getData.done(function(result) {
-			var time_list = result.time
-			var temper = result.temp
-		
-		const data = {
-				labels: time_list,
-				datasets: [{
-					label: 'Temperature',
-					data: temper,
-					backgroundColor: [
-						'rgba(255, 50, 50, 0.2)'
-		
-					],
-					borderColor: [
-						'rgba(255, 50, 50, 1)'
-					],
-					borderWidth: 1
-				}]
-			
-		};
-		// config block
-		const config = {
-			type: 'line',
-			data,
-			options: {
-				animations: false
-			}
-		};
-		// render init block
-		const tempChart = new Chart(
-			document.getElementById('tempChart'),
-			config
-		);
-		});
-		
-		setInterval('location.reload()', 1000);
-		
-
+		<script>
+            const data = {
+                    labels: [],
+                    datasets: [{
+                        label: 'Temperature',
+                        data: [],
+                        backgroundColor: [
+                            'rgba(255, 50, 50, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 50, 50, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                
+            };
+            // config block
+            const config = {
+                type: 'line',
+                data,
+                options: {
+                    animations: false
+                }
+            };
+            // render init block
+            const tempChart = new Chart(
+                document.getElementById('tempChart'),
+                config
+            );
+            
+            var auto_refresh = setInterval(function()
+            {                
+                
+                var getData = $.get('/data/temp');
+                
+                getData.done(function(result) {
+                    var time_list = result.time;
+                    var temper = result.temp;
+                    
+                    tempChart.data.datasets[0].data = temper;
+                    tempChart.data.labels = time_list;
+                });
+                tempChart.update();
+            },1000);               
+                
+        
 		</script>
  
 	</body>

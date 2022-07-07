@@ -21,17 +21,11 @@
 		<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@2.0.0/dist/chartjs-plugin-streaming.min.js"></script>
 		<script>	
 
-		// update data
-		var getData = $.get('/data/vib');
-		getData.done(function(result) {
-			var time_list = result.time
-			var vib = result.vib
-		
 		const data = {
-				labels: time_list,
+				labels: [],
 				datasets: [{
 					label: 'Vibration',
-					data: vib,
+					data: [],
 					backgroundColor: [
 						'rgba(50, 50, 255, 0.2)'
 		
@@ -56,9 +50,22 @@
 			document.getElementById('vibChart'),
 			config
 		);
-		});
 		
-		setInterval('location.reload()', 1000);
+		
+		var auto_refresh = setInterval(function()
+            {                
+                
+                var getData = $.get('/data/vib');
+                
+                getData.done(function(result) {
+                    var time_list = result.time;
+                    var vib = result.vib;
+                    
+                    vibChart.data.datasets[0].data = vib;
+                    vibChart.data.labels = time_list;
+                });
+                vibChart.update();
+            },1000);  
 		
 
 		</script>

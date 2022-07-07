@@ -188,9 +188,9 @@ def save_all_data():
         df = pd.DataFrame([data_dic])
         df.to_csv(log_path1, mode='a', index=False, header = False)
         df.to_csv(log_path2, mode='a', index=False, header = False)
-        time_list.append(data_dic['time'])
-        temp_list.append(data_dic['temperature'])
-        vib_list.append(data_dic['vibration'])
+        time_list.append(data_dic['Time'])
+        temp_list.append(data_dic['Temperature'])
+        vib_list.append(data_dic['Vibration'])
         if len(time_list) > 60:
             time_list.pop(0)
             temp_list.pop(0)
@@ -236,7 +236,7 @@ def captureFrames():
                 cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
                 modify_inform('Camera is not detected!')               
             VibV = 0.0; temp = 0.0;
-            data_dic = {'date':time_ymd, 'time':time_hms, 'product': '-', 'temperature':'-', 'vibration':'-', 'information': information}        
+            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}        
             c_cnt += 1
         
         #if no previous cvs file, 'header = True' command exe (mode != 'a')
@@ -281,7 +281,7 @@ def captureFrames():
            check=check+1
            
            modify_inform('Too high Temp')
-           data_dic = {'date':time_ymd, 'time':time_hms, 'product':product_number, 'temperature':temp, 'vibration':VibV, 'information': information}
+           data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
            information = '-'
            save_all_data()
            frame = img2
@@ -290,7 +290,7 @@ def captureFrames():
             check=check+1
             
             modify_inform('Too high Vibration')
-            data_dic = {'date':time_ymd, 'time':time_hms, 'product':product_number, 'temperature':temp, 'vibration':VibV, 'information': information}
+            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
             information = '-'
             save_all_data()
             frame = img3
@@ -299,43 +299,10 @@ def captureFrames():
             n=n+1
            
         #save All data as dictionary                
-        data_dic = {'date':time_ymd, 'time':time_hms, 'product':product_number, 'temperature':temp, 'vibration':VibV, 'information': information}
+        data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
         schedule.run_pending()
         information = '-'
-        
-        
-                
-       
-        #global time_data
-        #global temp_data
-        #global vib_data
-        
-        #time_data.pop()
-        #temp_data.pop()
-        #vib_data.pop()
-        '''
-        #time_data.insert(0, time_hms)
-        temp_data.insert(0, temp)
-        vib_data.insert(0, vib)
-        
-        plt.figure(1)
-        temp_fileName = "temp.jpg"
-        temp_plot = plt.plot(x_list, temp_data,'ro--')
-        plt.ylabel("Temperature [°C]")
-        temp_ax = plt.gca()
-        temp_ax.axes.xaxis.set_visible(False)
-        temp_ax.grid(axis='y')
-        plt.savefig(temp_fileName)
-        
-        plt.figure(2)
-        vib_fileName = "vib.jpg"
-        vib_plot = plt.plot(x_list, vib_data,'bo--')
-        plt.ylabel("Vibration [V]")
-        vib_ax = plt.gca()
-        vib_ax.axes.xaxis.set_visible(False)
-        vib_ax.grid(axis='y')
-        plt.savefig(vib_fileName)
-        '''             
+                 
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
@@ -370,7 +337,6 @@ def data_temp():
 
 @app.route('/temp_graph')
 def temp_graph():
-    
     return render_template('temp_graph.html')
 
 @app.route('/data/vib', methods=["GET", "POST"])
@@ -382,9 +348,6 @@ def data_vib():
 @app.route('/vib_graph')
 def vib_graph():
     return render_template('vib_graph.html')
-        
-
-    
 
 @app.route('/')
 def in_index():    

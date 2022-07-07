@@ -4,23 +4,21 @@
     <head>
         <meta charset="utf-8"/>
     <title> Video monitoring system </title>
-	<script>
-		
-		function Today_log(){
-			var path2 = "{{ipaddr['log_today']}}";
-			location.href = path2;
+	<script>		
+		function Today_log(){			
+			var path1 = "{{ipaddr['log_today']}}";
+			location.href = path1;
 			}
 
 		function All_log(){
-			var path2 = "{{ipaddr['log_all']}}";
-			location.href = path2;
+			var path1 = "{{ipaddr['log_all']}}";
+			location.href = path1;
 			}
 
 		function Video_open(json){
-			var path2 = "{{ipaddr['video']}}";
-			window.open(path2);
+			var path1 = "{{ipaddr['video']}}";
+			window.open(path1);
 			}
-
 	</script>
     </head>
 	<body>
@@ -29,11 +27,24 @@
 	</div>
 	<div style="text-align:center">
 		<h3></h3>
-		<td>	
+		<table>
+		<tr>		
+			<td rowspan='2' align = 'right' style="width:60%">
 			<a target="_blank" href="javascript:void(0);" onclick="Video_open();">
-				<img src={{ipaddr['video']}} title="새창에서 영상 열기" style="width:50%">
+				<img src={{ipaddr['video']}} title="새창에서 영상 열기" >
 			</a>
-		</td>
+			</td>
+			<td align = 'left' style="width:30%">
+			<object data={{ipaddr['temp']}} width="510" height="300" type="text/html"></object>
+			</td>
+		</tr>
+		<tr>
+			<td align = 'left' style="width:30%">
+			<object data={{ipaddr['vib']}} width="510" height="300" type="text/html"></object>
+			</td>
+			<td></td>
+		</tr>
+		</table>
 	</div>
 	<td>
 	    <button onclick="Today_log()">Today log</button>
@@ -41,8 +52,9 @@
 	</td>
 	<details>
 		<summary>외부 접속 주소</summary>
-		<p>{{ipaddr['ex_ip']}}:8080</p>
+		<p>{{ipaddr['ex_ip']}}:8080/ex</p>
 		<p>외부 네트워크에서 접속하기 위해서는 포트 포워딩이 필요합니다.</p>
 	</details>
     </body>    
 </html>
+
