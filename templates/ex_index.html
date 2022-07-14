@@ -47,8 +47,9 @@
 		</table>
 	</div>
 	<td>
-	    <button onclick="Today_log()">Today log</button>
-	    <button onclick="All_log()">All log</button>
+	    <form method="GET" action='/log'>
+			<input type="date" name="search_date"> <input type="submit" value="log">
+	    </form>
 	</td>
 	<details>
 		<summary>외부 접속 주소</summary>

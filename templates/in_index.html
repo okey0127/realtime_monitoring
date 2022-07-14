@@ -3,6 +3,7 @@
 <html>
     <head>
         <meta charset="utf-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title> Video monitoring system </title>
 	<script>		
 		function Today_log(){			
@@ -19,6 +20,20 @@
 			var path1 = "{{ipaddr['video']}}";
 			window.open(path1);
 			}
+			
+		var auto_refresh = setInterval(function()
+        {                
+            
+            var getData = $.get('/data/info');
+            
+            getData.done(function(result) {
+                var time = result.time;
+                var info = result.info;
+                var str = 'INFO: ' + '[' + time +'] ' + info;
+				document.getElementById('Information').innerHTML = str;
+            });
+        },1000); 
+            
 	</script>
     </head>
 	<body>
@@ -46,15 +61,28 @@
 		</tr>
 		</table>
 	</div>
+	<div id='Information' align='center'> </div>
 	<td>
-	    <button onclick="Today_log()">Today log</button>
-	    <button onclick="All_log()">All log</button>
+	    <form method="GET" action='/log'>
+			<input type="date" name="search_date"> <input type="submit" value="log">
+	    </form>
 	</td>
-	<details>
-		<summary>외부 접속 주소</summary>
-		<p>{{ipaddr['ex_ip']}}:8080/ex</p>
-		<p>외부 네트워크에서 접속하기 위해서는 포트 포워딩이 필요합니다.</p>
-	</details>
+	<td>
+		<details>
+			<summary>외부 접속 주소</summary>
+			<p>{{ipaddr['ex_ip']}}:8080/ex</p>
+			<p>외부 네트워크에서 접속하기 위해서는 포트 포워딩이 필요합니다.</p>
+		</details>
+		<details>
+			<summary>저장 기간 변경</summary>
+			<p>{{save_term}}일 이전의 기록은 자동 삭제됩니다. ※30일 이상의 기간만 설정 가능</p>
+			<form method="POST" action='/'>
+				<div>
+					<input type="text" name="alt_save_term"> <input type="submit" value="Enter" onclick="alert('변경 완료')">
+				</div>
+			</form>
+		</details>
+	</td>
     </body>    
 </html>
 

@@ -59,7 +59,7 @@
                 
                 getData.done(function(result) {
                     var time_list = result.time;
-                    var vib = result.vib;
+                    var vib = result.vib_list;
                     
                     vibChart.data.datasets[0].data = vib;
                     vibChart.data.labels = time_list;

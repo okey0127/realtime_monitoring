@@ -1,4 +1,4 @@
-# edit: 22.06.25
+# edit: 22.07.11
 
 import cv2
 import time
@@ -8,7 +8,6 @@ from flask import abort, jsonify, url_for, Blueprint, make_response
 import numpy as np
 import datetime
 import math
-import time
 import schedule
 import json
 
@@ -112,7 +111,6 @@ L_VibT=(center_x+150,center_y-200)
 now_dir = os.path.dirname(os.path.abspath(__file__))
 day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
 log_path1 = f'{now_dir}/log/{day}server.csv'
-log_path2 = f'{now_dir}/log/server.csv'
 
 #if not exist log folder -> create log folter
 if not os.path.exists(now_dir+'/log'):
@@ -141,6 +139,32 @@ ex_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':ex_video_ip, 'log_all':ex_log_a
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
 fontscale =1
+
+# remove old data
+
+# read save term
+#save_term = 365 #initial save_range
+def load_save_term():
+    with open('config_data.txt', 'rt') as cf:
+       save_term = cf.readline().split()[1] #read first line only
+       return save_term
+
+save_term = int(load_save_term())
+
+def delete_old_data():
+  global save_term
+  #delete old date-server.csv file
+  for f in os.listdir(now_dir+'/log'):
+    f = os.path.join(now_dir+'/log', f)
+    if os.path.isfile(f):
+      timestamp_now = datetime.datetime.now().timestamp()
+      is_old = os.stat(f).st_mtime < timestamp_now-(save_term * 24 * 60 * 60)
+      if is_old:
+        try:
+          os.remove(f)
+          print(f, 'is deleted')
+        except OSError:
+          pass #오류 무시
 
 # Image frame sent to the Flask object
 global video_frame
@@ -175,9 +199,9 @@ def modify_inform(a):
     if information == '-':
         information = a
     else:
-        information += (', ' + a)
+        information += ', ' + a
 
-data_dic = {}
+data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}        
 time_list = []
 temp_list = []
 vib_list = []
@@ -187,7 +211,6 @@ def save_all_data():
     if data_dic != {}:
         df = pd.DataFrame([data_dic])
         df.to_csv(log_path1, mode='a', index=False, header = False)
-        df.to_csv(log_path2, mode='a', index=False, header = False)
         time_list.append(data_dic['Time'])
         temp_list.append(data_dic['Temperature'])
         vib_list.append(data_dic['Vibration'])
@@ -197,6 +220,8 @@ def save_all_data():
             vib_list.pop(0)
         
 schedule.every(1).seconds.do(save_all_data)
+schedule.every(12).hours.do(delete_old_data)
+
 #set proximity sensor
 #product counter
 proximity_pin = 18
@@ -243,8 +268,6 @@ def captureFrames():
         df = pd.DataFrame([data_dic])
         if not os.path.exists(log_path1):
             df.to_csv(log_path1, index=False, header = True)
-        if not os.path.exists(log_path2):
-            df.to_csv(log_path2, index=False, header = True)
         if information != '-':
             save_all_data()
         
@@ -279,20 +302,16 @@ def captureFrames():
         if temp>50 and n%5==0:
            n=n+1
            check=check+1
-           
            modify_inform('Too high Temp')
-           data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
-           information = '-'
-           save_all_data()
+           #data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
+           #save_all_data()
            frame = img2
         elif VibV>0.5 and n%5==0:
             n=n+1
             check=check+1
-            
             modify_inform('Too high Vibration')
-            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
-            information = '-'
-            save_all_data()
+            #data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
+            #save_all_data()
             frame = img3
         else:
             check=check+1
@@ -329,11 +348,18 @@ def encodeFrame():
 def streamFrames():
     return Response(encodeFrame(), mimetype = "multipart/x-mixed-replace; boundary=frame")
 
+@app.route('/data/info', methods=["GET", "POST"])
+def data_info():
+    try:
+        global data_dic
+        return jsonify({'time':data_dic['Time'], 'info':data_dic['Information']})
+    except:
+        return '<h1> Error </h1>'
+
 @app.route('/data/temp', methods=["GET", "POST"])
 def data_temp():
-    global data_dic
     global time_list, temp_list
-    return jsonify({'time':time_list, 'temp':temp_list})
+    return jsonify({'time':time_list, 'temp_list':temp_list})
 
 @app.route('/temp_graph')
 def temp_graph():
@@ -341,35 +367,44 @@ def temp_graph():
 
 @app.route('/data/vib', methods=["GET", "POST"])
 def data_vib():
-    global data_dic
     global time_list, vib_list
-    return jsonify({'time':time_list, 'vib':vib_list})
+    return jsonify({'time':time_list, 'vib_list':vib_list})
 
 @app.route('/vib_graph')
 def vib_graph():
     return render_template('vib_graph.html')
 
-@app.route('/')
-def in_index():    
-    return render_template('in_index.html', ipaddr = in_ipaddr)
+@app.route('/', methods=['GET', 'POST'])
+def in_index():
+    global save_term
+    if request.method == 'POST':
+        save_term = int(request.form['alt_save_term'])
+        if save_term < 30:
+            save_term = 30            
+        #update save term
+        with open('config_data.txt', 'wt') as cf:
+            cf.write('save_term: {}'.format(save_term))
+        load_save_term()
+        return redirect('/')
+    return render_template('in_index.html', ipaddr = in_ipaddr, save_term = save_term)
 
-@app.route('/ex')
+@app.route('/ex', methods=["GET", "POST"])
 def ex_index():
-    return render_template('ex_index.html', ipaddr = ex_ipaddr)
+    return render_template('ex_index.html', ipaddr = ex_ipaddr, save_term = save_term)
 
 #log file open
-@app.route('/log/today')
-def today_log()->str:
-    df1 = pd.read_csv(log_path1)
-    df1 = df1.iloc[::-1]
-    return df1.to_html(header=True, index = False)
-    
-@app.route('/log/all')
-def all_log()->str:
-    df2 = pd.read_csv(log_path2)
-    df2 = df2.iloc[::-1]
-    return df2.to_html(header=True, index = False)
-
+@app.route('/log', methods=['GET', 'POST'])
+def log():
+    try:
+        if request.method == 'GET':
+            search_date = request.args.get('search_date')
+            log_path = f'{now_dir}/log/{search_date}server.csv'
+            df = pd.read_csv(log_path)
+            df = df.iloc[::-1]
+            return df.to_html(header=True, index = False, justify='center')
+    except:
+        return '<h1>Error:</h1> <p>해당 날짜에 데이터가 없습니다.</p>'
+        
 # check to see if this is the main thread of execution
 if __name__ == '__main__':
 

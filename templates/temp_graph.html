@@ -57,7 +57,7 @@
                 
                 getData.done(function(result) {
                     var time_list = result.time;
-                    var temper = result.temp;
+                    var temper = result.temp_list;
                     
                     tempChart.data.datasets[0].data = temper;
                     tempChart.data.labels = time_list;
