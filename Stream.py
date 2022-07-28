@@ -19,6 +19,7 @@ import base64
 import requests
 #data visualize
 import pandas as pd
+from RPLCD.i2c import CharLCD
 import I2C_LCD
 
 
@@ -95,16 +96,6 @@ yellow=(0,255,255)
 cyan=(255,255,0)
 magenta=(255,0,255)
 
-O = 1
-C = 261 # 도
-D = 293 # 레
-E = 329 # 미
-F = 349 # 파
-Ff = 370 # 파샵
-G = 391 # 솔
-A = 440 # 라
-B = 493 # 시
-Cc = 523 # 2옥도
 
 #position
 center_x=int(img_w/2.0)
@@ -236,8 +227,7 @@ def save_all_data():
             temp_list.pop(0)
             vib_list.pop(0)
         
-schedule.every(1).seconds.do(save_all_data)
-schedule.every(12).hours.do(delete_old_data)
+
 
 #set proximity sensor
 #product counter
@@ -247,53 +237,70 @@ GPIO.setup(proximity_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(proximity_pin, GPIO.FALLING, callback=add_product, bouncetime=1000)
 
 #lcd
-lcd=I2C_LCD.lcd()
+#lcd=I2C_LCD.lcd()
+lcd=CharLCD('PCF8574', 0x3f)
 ip_st = 0
 ip_en = 17
 
 inf_st = 0
 inf_en = 17
+
+def run_lcd():
+    global ip_st, ip_en, inf_st, inf_en, in_ip, data_dic
+    ip_addr = in_ip+':8080'
+    str_len = len(ip_addr)
+    if str_len <= 16:
+        lcd.cursor_pos=(0,0)
+        lcd.write_string(ip_addr)
+    else:
+        ip_st += 1
+        ip_en += 1
+        if ip_en > str_len +1 :
+            ip_st = 0
+            ip_en = 17
+        lcd.cursor_pos=(0,0)
+        lcd.write_string(ip_addr[ip_st:ip_en])
+    
+    lcd_inf = data_dic['Information']
+    info_len = len(lcd_inf)
+    if info_len <= 16:
+        lcd.cursor_pos=(1,0)
+        lcd.write_string(lcd_inf + ' '*(16 - info_len))
+    else:
+        inf_st += 1
+        inf_en += 1
+        if inf_en > info_len+1 :
+            inf_st = 0
+            inf_en = 17
+        lcd.cursor_pos=(1,0)
+        lcd.write_string(lcd_inf[inf_st:inf_en])
 #buzzer
 buzzer_pin = 23
 GPIO.setup(buzzer_pin, GPIO.OUT)
-#buzz = GPIO.PWM(buzzer_pin, 440)
-
-def All_buzz():
-    try:
-        GPIO.output(buzzer_pin, GPIO.HIGH)
-        time.sleep(0.7)
-        GPIO.output(buzzer_pin, GPIO.LOW)
-    except:
-        pass
-    #buzz.start(90)
-    #buzz.ChangeFrequency(Cc)
-    #time.sleep(0.5)
-    #buzz.stop()
     
 def temp_buzz():
     try:
         GPIO.output(buzzer_pin, GPIO.HIGH)
         time.sleep(0.3)
         GPIO.output(buzzer_pin, GPIO.LOW)
+        time.sleep(0.2)
     except:
         pass
-    #buzz.start(90)
-    #buzz.ChangeFrequency(Cc)
-    #time.sleep(0.3)
-    #buzz.stop()
-
+   
 def vib_buzz():
     try:
         GPIO.output(buzzer_pin, GPIO.HIGH)
         time.sleep(0.1)
         GPIO.output(buzzer_pin, GPIO.LOW)
+        time.sleep(0.4)
     except:
         pass
-    #buzz.start(90)
-    #buzz.ChangeFrequency(B)
-    #time.sleep(0.3)
-    #buzz.stop()
-    
+
+# run schedule
+schedule.every(1).seconds.do(run_lcd)
+schedule.every(1).seconds.do(save_all_data)
+schedule.every(12).hours.do(delete_old_data)
+
 #declare Flask Server
 app = Flask(__name__)
 
@@ -390,44 +397,16 @@ def captureFrames():
         elif VibV>0.5 and n%5==0:
             n=n+1
             check=check+1
-            modify_inform('Too high Vibration')
             frame = img3
         else:
             check=check+1
             n=n+1
-           
+        
         #save All data as dictionary                
         data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
         schedule.run_pending()
         information = '-'
         
-        #lcd
-        global ip_st, ip_en, inf_st, inf_en
-        ip_addr = in_ip+':8080'
-        str_len = len(ip_addr)
-        if str_len <= 16:
-            lcd.lcd_display_string(ip_addr,1)
-        else:
-            if n%2==0:
-                ip_st += 1
-                ip_en += 1
-                if ip_en > str_len +1 :
-                    ip_st = 0
-                    ip_en = 17
-            #disp_ip = ip_addr[]
-            lcd.lcd_display_string(ip_addr[ip_st:ip_en],1)
-
-        lcd_inf = data_dic['Information']
-        info_len = len(lcd_inf)
-        if info_len <= 16:
-            lcd.lcd_display_string(lcd_inf,2)
-        else:
-            inf_st += 1
-            inf_en += 1
-            if inf_en > info_len+1 :
-                inf_st = 0
-                inf_en = 17
-            lcd.lcd_display_string(lcd_inf[inf_st:inf_en],2)        
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
