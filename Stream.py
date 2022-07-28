@@ -1,4 +1,4 @@
-# edit: 22.07.11
+# edit: 22.07.28
 
 import cv2
 import time
@@ -110,8 +110,10 @@ L_RPMT=(center_x-100,center_y-180)
 L_Vib=(center_x+250,center_y-200)
 L_VibT=(center_x+150,center_y-200)
 
+# waitting for network
+time.sleep(15)
 #log
-#set path
+
 now_dir = os.path.dirname(os.path.abspath(__file__))
 day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
 log_path1 = f'{now_dir}/log/{day}server.csv'
@@ -123,16 +125,20 @@ if not os.path.exists(now_dir+'/log'):
 if not os.path.exists(now_dir+'/log/vib'):
     os.mkdir(now_dir+'/log/vib')
     
-
+#set path
 #get ip
-URL = 'https://icanhazip.com'
-respons = requests.get(URL)
-ex_ip = respons.text.strip()
-ex_video_ip = 'http://'+ex_ip+':8080/video'
-ex_log_all_ip = 'http://'+ex_ip+':8080/log/all'
-ex_log_today_ip = 'http://'+ex_ip+':8080/log/today'
-ex_temp_ip = 'http://'+ex_ip+':8080/temp_graph'
-ex_vib_ip = 'http://'+ex_ip+':8080/vib_graph'
+try:
+    URL = 'https://icanhazip.com'
+    respons = requests.get(URL)
+    ex_ip = respons.text.strip()
+    ex_video_ip = 'http://'+ex_ip+':8080/video'
+    ex_log_all_ip = 'http://'+ex_ip+':8080/log/all'
+    ex_log_today_ip = 'http://'+ex_ip+':8080/log/today'
+    ex_temp_ip = 'http://'+ex_ip+':8080/temp_graph'
+    ex_vib_ip = 'http://'+ex_ip+':8080/vib_graph'
+except:
+    lcd.cursor_pos=(0,0)
+    lcd.write_string('No internet')
 
 in_ip = os.popen('hostname -I').read().strip()
 in_video_ip = 'http://'+in_ip+':8080/video'
@@ -153,7 +159,7 @@ fontscale =1
 # read save term
 #save_term = 365 #initial save_range
 def load_save_term():
-    with open('config_data.txt', 'rt') as cf:
+    with open(now_dir+'/config_data.txt', 'rt') as cf:
        save_term = cf.readline().split()[1] #read first line only
        return save_term
 
