@@ -111,7 +111,7 @@ L_Vib=(center_x+250,center_y-200)
 L_VibT=(center_x+150,center_y-200)
 
 # waitting for network
-time.sleep(15)
+#time.sleep(15)
 #log
 
 now_dir = os.path.dirname(os.path.abspath(__file__))
@@ -224,7 +224,10 @@ def save_all_data():
     global data_dic
     if data_dic != {}:
         df = pd.DataFrame([data_dic])
-        df.to_csv(log_path1, mode='a', index=False, header = False)
+        if not os.path.exists(log_path1):
+            df.to_csv(log_path1, index=False, header = True)
+        else:
+            df.to_csv(log_path1, mode='a', index=False, header = False)
         time_list.append(data_dic['Time'])
         temp_list.append(data_dic['Temperature'])
         vib_list.append(data_dic['Vibration'])
@@ -344,8 +347,6 @@ def captureFrames():
         
         #if no previous cvs file, 'header = True' command exe (mode != 'a')
         df = pd.DataFrame([data_dic])
-        if not os.path.exists(log_path1):
-            df.to_csv(log_path1, index=False, header = True)
         if information != '-':
             save_all_data()
         
