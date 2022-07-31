@@ -4,19 +4,9 @@
     <head>
         <meta charset="utf-8"/>
     <title> Video monitoring system </title>
-	<script>		
-		function Today_log(){			
-			var path1 = "{{ipaddr['log_today']}}";
-			location.href = path1;
-			}
-
-		function All_log(){
-			var path1 = "{{ipaddr['log_all']}}";
-			location.href = path1;
-			}
-
+	<script>				
 		function Video_open(json){
-			var path1 = "{{ipaddr['video']}}";
+			var path1 = '/video';
 			window.open(path1);
 			}
 	</script>
@@ -31,16 +21,16 @@
 		<tr>		
 			<td rowspan='2' align = 'right' style="width:60%">
 			<a target="_blank" href="javascript:void(0);" onclick="Video_open();">
-				<img src={{ipaddr['video']}} title="새창에서 영상 열기" >
+				<img src='/video' title="새창에서 영상 열기" >
 			</a>
 			</td>
 			<td align = 'left' style="width:30%">
-			<object data={{ipaddr['temp']}} width="510" height="300" type="text/html"></object>
+			<object data='/temp_graph' width="510" height="300" type="text/html"></object>
 			</td>
 		</tr>
 		<tr>
 			<td align = 'left' style="width:30%">
-			<object data={{ipaddr['vib']}} width="510" height="300" type="text/html"></object>
+			<object data='/vib_graph' width="510" height="300" type="text/html"></object>
 			</td>
 			<td></td>
 		</tr>
