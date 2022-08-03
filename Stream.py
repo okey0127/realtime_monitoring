@@ -381,11 +381,11 @@ def captureFrames():
         w_flag = False
         # modify warning inform
         if temp > 50:
-           modify_inform('Too high Temperature')
+           modify_inform('high Temperature')
            w_flag = True
            temp_buzz()
         if VibV > 0.5:
-            modify_inform('Too high Vibration')
+            modify_inform('high Vibration')
             w_flag = True
             vib_buzz()
         if w_flag == True:
@@ -486,19 +486,29 @@ def in_index():
 def ex_index():
     return render_template('ex_index.html', ipaddr = ex_ipaddr, save_term = save_term)
 
+search_date = 0
 #log file open
 @app.route('/log', methods=['GET', 'POST'])
 def log():
     try:
+        global search_date
         if request.method == 'GET':
             search_date = request.args.get('search_date')
             log_path = f'{now_dir}/log/{search_date}server.csv'
             df = pd.read_csv(log_path)
             df = df.iloc[::-1]
-            return df.to_html(header=True, index = False, justify='center')
+            
+            return "<form action ='/log', method='POST'><button type='submit'>Download</button></form>"+df.to_html(header=True, index = False, justify='center')
+        elif request.method == 'POST':
+            return redirect(url_for('DownloadFile', date = search_date))
     except:
         return '<h1>Error:</h1> <p>해당 날짜에 데이터가 없습니다.</p>'
-        
+
+@app.route('/DownloadFile/<date>')
+def DownloadFile(date):
+    log_path = f'{now_dir}/log/{date}server.csv'
+    return send_file(log_path, attachment_filename=f'{date}log.csv', as_attachment=True)
+
 # check to see if this is the main thread of execution
 if __name__ == '__main__':
 
