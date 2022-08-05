@@ -127,18 +127,23 @@ if not os.path.exists(now_dir+'/log/vib'):
     
 #set path
 #get ip
-try:
-    URL = 'https://icanhazip.com'
-    respons = requests.get(URL)
-    ex_ip = respons.text.strip()
-    ex_video_ip = 'http://'+ex_ip+':8080/video'
-    ex_log_all_ip = 'http://'+ex_ip+':8080/log/all'
-    ex_log_today_ip = 'http://'+ex_ip+':8080/log/today'
-    ex_temp_ip = 'http://'+ex_ip+':8080/temp_graph'
-    ex_vib_ip = 'http://'+ex_ip+':8080/vib_graph'
-except:
-    lcd.cursor_pos=(0,0)
-    lcd.write_string('No internet')
+i_flag = 'Y'
+while True:
+    try:
+        URL = 'https://icanhazip.com'
+        respons = requests.get(URL)
+        ex_ip = respons.text.strip()
+        ex_video_ip = 'http://'+ex_ip+':8080/video'
+        ex_log_all_ip = 'http://'+ex_ip+':8080/log/all'
+        ex_log_today_ip = 'http://'+ex_ip+':8080/log/today'
+        ex_temp_ip = 'http://'+ex_ip+':8080/temp_graph'
+        ex_vib_ip = 'http://'+ex_ip+':8080/vib_graph'
+        break
+    except:
+        if i_flag == 'Y':
+            lcd.cursor_pos=(0,0)
+            lcd.write_string('No internet')
+            i_flag = 'N'
 
 in_ip = os.popen('hostname -I').read().strip()
 in_video_ip = 'http://'+in_ip+':8080/video'
