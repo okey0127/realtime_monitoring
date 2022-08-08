@@ -1,4 +1,4 @@
-# edit: 22.07.28
+# edit: 22.08.08
 
 import cv2
 import time
@@ -110,8 +110,6 @@ L_RPMT=(center_x-100,center_y-180)
 L_Vib=(center_x+250,center_y-200)
 L_VibT=(center_x+150,center_y-200)
 
-# waitting for network
-#time.sleep(15)
 #log
 
 now_dir = os.path.dirname(os.path.abspath(__file__))
@@ -127,6 +125,7 @@ if not os.path.exists(now_dir+'/log/vib'):
     
 #set path
 #get ip
+lcd=CharLCD('PCF8574', 0x3f)
 i_flag = 'Y'
 while True:
     try:
@@ -154,6 +153,43 @@ in_vib_ip = 'http://'+in_ip+':8080/vib_graph'
 in_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':in_video_ip, 'log_all':in_log_all_ip, 'log_today':in_log_today_ip, 'temp':in_temp_ip, 'vib':in_vib_ip}
 ex_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':ex_video_ip, 'log_all':ex_log_all_ip, 'log_today':ex_log_today_ip, 'temp':ex_temp_ip, 'vib':ex_vib_ip}
 
+#lcd
+#lcd=I2C_LCD.lcd()
+ip_st = 0
+ip_en = 17
+
+inf_st = 0
+inf_en = 17
+
+def run_lcd():
+    global ip_st, ip_en, inf_st, inf_en, in_ip, data_dic
+    ip_addr = in_ip+':8080'
+    str_len = len(ip_addr)
+    if str_len <= 16:
+        lcd.cursor_pos=(0,0)
+        lcd.write_string(ip_addr)
+    else:
+        ip_st += 1
+        ip_en += 1
+        if ip_en > str_len +1 :
+            ip_st = 0
+            ip_en = 17
+        lcd.cursor_pos=(0,0)
+        lcd.write_string(ip_addr[ip_st:ip_en])
+    
+    lcd_inf = data_dic['Information']
+    info_len = len(lcd_inf)
+    if info_len <= 16:
+        lcd.cursor_pos=(1,0)
+        lcd.write_string(lcd_inf + ' '*(16 - info_len))
+    else:
+        inf_st += 1
+        inf_en += 1
+        if inf_en > info_len+1 :
+            inf_st = 0
+            inf_en = 17
+        lcd.cursor_pos=(1,0)
+        lcd.write_string(lcd_inf[inf_st:inf_en])
 #text
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
@@ -250,44 +286,6 @@ proximity_pin = 18
 GPIO.setup(proximity_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.add_event_detect(proximity_pin, GPIO.FALLING, callback=add_product, bouncetime=1000)
 
-#lcd
-#lcd=I2C_LCD.lcd()
-lcd=CharLCD('PCF8574', 0x3f)
-ip_st = 0
-ip_en = 17
-
-inf_st = 0
-inf_en = 17
-
-def run_lcd():
-    global ip_st, ip_en, inf_st, inf_en, in_ip, data_dic
-    ip_addr = in_ip+':8080'
-    str_len = len(ip_addr)
-    if str_len <= 16:
-        lcd.cursor_pos=(0,0)
-        lcd.write_string(ip_addr)
-    else:
-        ip_st += 1
-        ip_en += 1
-        if ip_en > str_len +1 :
-            ip_st = 0
-            ip_en = 17
-        lcd.cursor_pos=(0,0)
-        lcd.write_string(ip_addr[ip_st:ip_en])
-    
-    lcd_inf = data_dic['Information']
-    info_len = len(lcd_inf)
-    if info_len <= 16:
-        lcd.cursor_pos=(1,0)
-        lcd.write_string(lcd_inf + ' '*(16 - info_len))
-    else:
-        inf_st += 1
-        inf_en += 1
-        if inf_en > info_len+1 :
-            inf_st = 0
-            inf_en = 17
-        lcd.cursor_pos=(1,0)
-        lcd.write_string(lcd_inf[inf_st:inf_en])
 #buzzer
 buzzer_pin = 23
 GPIO.setup(buzzer_pin, GPIO.OUT)
