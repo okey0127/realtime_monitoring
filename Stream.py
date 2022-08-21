@@ -1,4 +1,4 @@
-# edit: 22.08.08
+# edit: 22.08.21
 
 import cv2
 import time
@@ -375,8 +375,9 @@ def captureFrames():
     
         
         cv2.putText(frame,time,L_time,font,fontscale,white,thickness,cv2.LINE_AA)
-        cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness,cv2.LINE_AA)
-        cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness,cv2.LINE_AA)
+        if product_number > 0:
+            cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness,cv2.LINE_AA)
+            cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness,cv2.LINE_AA)
         
         #warning
         global n
