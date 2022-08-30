@@ -1,4 +1,4 @@
-# edit: 22.08.29
+# edit: 22.08.30
 
 import cv2
 import time
@@ -144,7 +144,12 @@ if not os.path.exists(now_dir+'/log/vib'):
     
 #set path
 #get ip
-lcd=CharLCD('PCF8574', 0x3f)
+lcd_flag = 'Y'
+try:
+    lcd=CharLCD('PCF8574', 0x3f)
+except:
+    lcd_flag = 'N'
+    
 i_flag = 'Y'
 while True:
     try:
@@ -159,8 +164,9 @@ while True:
         break
     except:
         if i_flag == 'Y':
-            lcd.cursor_pos=(0,0)
-            lcd.write_string('No internet')
+            if lcd_flag == 'Y':
+                lcd.cursor_pos=(0,0)
+                lcd.write_string('No internet')
             i_flag = 'N'
 
 in_ip = os.popen('hostname -I').read().strip()
@@ -181,34 +187,35 @@ inf_st = 0
 inf_en = 17
 
 def run_lcd():
-    global ip_st, ip_en, inf_st, inf_en, in_ip, data_dic
-    ip_addr = in_ip+':8080'
-    str_len = len(ip_addr)
-    if str_len <= 16:
-        lcd.cursor_pos=(0,0)
-        lcd.write_string(ip_addr)
-    else:
-        ip_st += 1
-        ip_en += 1
-        if ip_en > str_len +1 :
-            ip_st = 0
-            ip_en = 17
-        lcd.cursor_pos=(0,0)
-        lcd.write_string(ip_addr[ip_st:ip_en])
+    if lcd_flag == 'Y':
+        global ip_st, ip_en, inf_st, inf_en, in_ip, data_dic
+        ip_addr = in_ip+':8080'
+        str_len = len(ip_addr)
+        if str_len <= 16:
+            lcd.cursor_pos=(0,0)
+            lcd.write_string(ip_addr)
+        else:
+            ip_st += 1
+            ip_en += 1
+            if ip_en > str_len +1 :
+                ip_st = 0
+                ip_en = 17
+            lcd.cursor_pos=(0,0)
+            lcd.write_string(ip_addr[ip_st:ip_en])
     
-    lcd_inf = data_dic['Information']
-    info_len = len(lcd_inf)
-    if info_len <= 16:
-        lcd.cursor_pos=(1,0)
-        lcd.write_string(lcd_inf + ' '*(16 - info_len))
-    else:
-        inf_st += 1
-        inf_en += 1
-        if inf_en > info_len+1 :
-            inf_st = 0
-            inf_en = 17
-        lcd.cursor_pos=(1,0)
-        lcd.write_string(lcd_inf[inf_st:inf_en])
+        lcd_inf = data_dic['Information']
+        info_len = len(lcd_inf)
+        if info_len <= 16:
+            lcd.cursor_pos=(1,0)
+            lcd.write_string(lcd_inf + ' '*(16 - info_len))
+        else:
+            inf_st += 1
+            inf_en += 1
+            if inf_en > info_len+1 :
+                inf_st = 0
+                inf_en = 17
+            lcd.cursor_pos=(1,0)
+            lcd.write_string(lcd_inf[inf_st:inf_en])
 #text
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
@@ -410,9 +417,9 @@ def captureFrames():
             check=check+1
             frame = img4 
         elif temp>50 and n%5==0:
-           n=n+1
-           check=check+1
-           frame = img2
+            n=n+1
+            check=check+1
+            frame = img2
         elif VibV>10000 and n%5==0:
             n=n+1
             check=check+1
