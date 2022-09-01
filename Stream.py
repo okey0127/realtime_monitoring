@@ -1,4 +1,4 @@
-# edit: 22.08.30
+# edit: 22.09.01
 
 import cv2
 import time
@@ -52,7 +52,7 @@ def modify_inform(a):
         information += ', ' + a
         
 #setting ADC module
-i2c_flag = 'Y'
+vib_flag = 'Y'
 try:
     # Create the I2C bus
     i2c = busio.I2C(board.SCL, board.SDA)
@@ -64,15 +64,14 @@ try:
     V0 = AnalogIn(ads, ADS.P0)
     
 except:
-    i2c_flag='N'
-    information = 'Remote I/O error!'
+    vib_flag='N'
+    modify_inform('No vibration sensor')
 
 #setting temperature sensor
 temp_flag = 'Y'
 try:
     i2c_temp=board.I2C()
     mlx = adafruit_mlx90614.MLX90614(i2c_temp)
-    
 except:
     temp_flag = 'N'
     modify_inform('No temperature sensor')
@@ -374,14 +373,20 @@ def captureFrames():
         
         information = '-'
         #filter
-        if i2c_flag == 'Y':
-            VibV=V0.value
-            cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
-            cv2.putText(frame,str(V0.value),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
+        if vib_flag == 'Y':
+            try:
+                VibV=V0.value
+                cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
+                cv2.putText(frame,str(V0.value),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
+            except:
+                modify_inform('Vibration sensor is not working')
         if temp_flag == 'Y':
-            temp = round(mlx.object_temperature, 2)
-            cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness,cv2.LINE_AA)
-            cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness,cv2.LINE_AA)
+            try:
+                temp = round(mlx.object_temperature, 2)
+                cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness,cv2.LINE_AA)
+                cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness,cv2.LINE_AA)
+            except:
+                modify_inform('Temperature sensor is not working')
         if product_number > 0:
             cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness,cv2.LINE_AA)
             cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness,cv2.LINE_AA)
