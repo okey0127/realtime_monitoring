@@ -1,4 +1,4 @@
-# edit: 22.09.01
+# edit: 22.09.06
 
 import cv2
 import time
@@ -15,8 +15,8 @@ import RPi.GPIO as GPIO
 import os
 import io
 import base64
-
 import requests
+
 #data visualize
 import pandas as pd
 from RPLCD.i2c import CharLCD
@@ -25,7 +25,7 @@ import I2C_LCD
 #temperature sensor
 import adafruit_mlx90614
 
-#ADC module import
+#ADC module import(Vibration Sensor)
 import board
 import busio
 import adafruit_ads1x15.ads1115 as ADS
@@ -51,7 +51,7 @@ def modify_inform(a):
     else:
         information += ', ' + a
         
-#setting ADC module
+#setting ADC module(Vibration Sensor)
 vib_flag = 'Y'
 try:
     # Create the I2C bus
@@ -106,6 +106,7 @@ if check==0:
             n_img[i,j,2]=0
 
 #color
+black = (0,0,0)
 red=(0,0,255)
 green=(0,255,0)
 blue=(255,0,0)
@@ -376,22 +377,32 @@ def captureFrames():
         if vib_flag == 'Y':
             try:
                 VibV=V0.value
-                cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness,cv2.LINE_AA)
-                cv2.putText(frame,str(V0.value),L_Vib,font,fontscale,white,thickness,cv2.LINE_AA)
+                cv2.putText(frame,'Vibration',L_VibT,font,fontscale,black,thickness,cv2.LINE_AA)
+                cv2.putText(frame,str(V0.value),L_Vib,font,fontscale,black,thickness,cv2.LINE_AA)
+                
+                cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness-1,cv2.LINE_AA)
+                cv2.putText(frame,str(V0.value),L_Vib,font,fontscale,white,thickness-1,cv2.LINE_AA)
             except:
                 modify_inform('Vibration sensor is not working')
         if temp_flag == 'Y':
             try:
                 temp = round(mlx.object_temperature, 2)
-                cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness,cv2.LINE_AA)
-                cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness,cv2.LINE_AA)
+                cv2.putText(frame,'Temperature',L_tempT,font,fontscale,black,thickness,cv2.LINE_AA)
+                cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,black,thickness,cv2.LINE_AA)
+                
+                cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness-1,cv2.LINE_AA)
+                cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness-1,cv2.LINE_AA)
             except:
                 modify_inform('Temperature sensor is not working')
         if product_number > 0:
-            cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness,cv2.LINE_AA)
-            cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness,cv2.LINE_AA)
+            cv2.putText(frame,'Production: ',L_countT,font,fontscale,black,thickness,cv2.LINE_AA)
+            cv2.putText(frame,str(product_number),L_count,font,fontscale,black,thickness,cv2.LINE_AA)
+            
+            cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness-1,cv2.LINE_AA)
+            cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness-1,cv2.LINE_AA)
         
-        cv2.putText(frame,time,L_time,font,fontscale,white,thickness,cv2.LINE_AA)
+        cv2.putText(frame,time,L_time,font,fontscale,black,thickness,cv2.LINE_AA)
+        cv2.putText(frame,time,L_time,font,fontscale,white,thickness-1,cv2.LINE_AA)
         '''
             cv2.putText(frame,'RPM',L_RPMT,font,fontscale,white,thickness,cv2.LINE_AA)
             if checkR==0:
@@ -403,12 +414,14 @@ def captureFrames():
         global n
         
         w_flag = False
+        w_temp = 50
+        w_vib = 15000
         # modify warning inform
-        if temp > 50:
+        if temp > w_temp:
            modify_inform('high Temperature')
            w_flag = True
            temp_buzz()
-        if VibV > 10000:
+        if VibV > w_vib:
             modify_inform('high Vibration')
             w_flag = True
             vib_buzz()
@@ -417,15 +430,15 @@ def captureFrames():
             save_all_data()
             
         # modify warning video
-        if temp>50 and VibV>10000 and n%5==0:
+        if temp>w_temp and VibV>w_vib and n%5==0:
             n=n+1
             check=check+1
             frame = img4 
-        elif temp>50 and n%5==0:
+        elif temp>w_temp and n%5==0:
             n=n+1
             check=check+1
             frame = img2
-        elif VibV>10000 and n%5==0:
+        elif VibV>w_vib and n%5==0:
             n=n+1
             check=check+1
             frame = img3
