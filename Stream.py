@@ -2,7 +2,6 @@
 
 import cv2
 import time
-import threading
 from flask import Response, Flask, render_template, request, redirect, session, send_file
 from flask import abort, jsonify, url_for, Blueprint, make_response
 import numpy as np
@@ -128,7 +127,7 @@ L_RPM=(center_x+50,center_y-180)
 L_RPMT=(center_x-100,center_y-180)
 L_Vib=(center_x+250,center_y-200)
 L_VibT=(center_x+150,center_y-200)
-
+L_fps = (center_x+150,center_y+180)
 #log
 
 now_dir = os.path.dirname(os.path.abspath(__file__))
@@ -247,14 +246,6 @@ def delete_old_data():
         except OSError:
           pass #오류 무시
 
-# Image frame sent to the Flask object
-global video_frame
-video_frame = None
-
-# Use locks for thread-safe viewing of frames in multiple browsers
-global thread_lock 
-thread_lock = threading.Lock()
-
 #function
 def add_product(channel):
     global product_number
@@ -336,7 +327,6 @@ schedule.every(12).hours.do(delete_old_data)
 app = Flask(__name__)
 
 def captureFrames():
-    global video_frame, thread_lock
     camera_flag = ''
     # Video capturing
     cap = cv2.VideoCapture(-1)   
@@ -352,7 +342,7 @@ def captureFrames():
         global information
         global data_dic
         
-        time=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+        time_now=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
         time_hms=str(datetime.datetime.now().strftime('%H:%M:%S'))
         
@@ -373,6 +363,7 @@ def captureFrames():
             save_all_data()
         
         information = '-'
+        
         #filter
         if vib_flag == 'Y':
             try:
@@ -401,8 +392,9 @@ def captureFrames():
             cv2.putText(frame,'Production: ',L_countT,font,fontscale,white,thickness-1,cv2.LINE_AA)
             cv2.putText(frame,str(product_number),L_count,font,fontscale,white,thickness-1,cv2.LINE_AA)
         
-        cv2.putText(frame,time,L_time,font,fontscale,black,thickness,cv2.LINE_AA)
-        cv2.putText(frame,time,L_time,font,fontscale,white,thickness-1,cv2.LINE_AA)
+        cv2.putText(frame,time_now,L_time,font,fontscale,black,thickness,cv2.LINE_AA)
+        cv2.putText(frame,time_now,L_time,font,fontscale,white,thickness-1,cv2.LINE_AA)
+        
         '''
             cv2.putText(frame,'RPM',L_RPMT,font,fontscale,white,thickness,cv2.LINE_AA)
             if checkR==0:
@@ -451,33 +443,17 @@ def captureFrames():
         schedule.run_pending()
         information = '-'
         
-        # Create a copy of the frame and store it in the global variable,
-        # with thread safe access
-        with thread_lock:
-            video_frame = frame.copy()
+        return_key, encoded_image = cv2.imencode(".jpg", frame)
+        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encoded_image) + b'\r\n')
+
         GPIO.output(buzzer_pin, GPIO.LOW)
     
     cap.release()
     GPIO.cleanup()
 
-def encodeFrame():
-    global thread_lock
-    while True:
-        # Acquire thread_lock to access the global video_frame object
-        with thread_lock:
-            global video_frame
-            if video_frame is None:
-                continue
-            return_key, encoded_image = cv2.imencode(".jpg", video_frame)
-            if not return_key:
-                continue
-
-        # Output image as a byte array
-        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encoded_image) + b'\r\n')
-
 @app.route('/video')
 def streamFrames():
-    return Response(encodeFrame(), mimetype = "multipart/x-mixed-replace; boundary=frame")
+    return Response(captureFrames(), mimetype = "multipart/x-mixed-replace; boundary=frame")
 
 @app.route('/data/info', methods=["GET", "POST"])
 def data_info():
@@ -546,15 +522,8 @@ def DownloadFile(date):
     log_path = f'{now_dir}/log/{date}server.csv'
     return send_file(log_path, attachment_filename=f'{date}log.csv', as_attachment=True)
 
-# check to see if this is the main thread of execution
+
 if __name__ == '__main__':
-
-    # Create a thread and attach the method that captures the image frames, to it
-    process_thread = threading.Thread(target=captureFrames)
-    process_thread.daemon = True
-
-    # Start the thread
-    process_thread.start()
     
     # start the Flask Web Application
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
