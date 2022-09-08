@@ -3,55 +3,81 @@
 <html>
     <head>
         <meta charset="utf-8"/>
-    <title> Video monitoring system test</title>
-	<script>
-		var ipAddr = 'http://'+"{{ipaddr['in_ip']}}"+':8080';
-		
-		function Today_log(){
-			var route = '/log/today';			
-			var path1 = ipAddr + route;
-			var path2 = "{{ipaddr['log_today']}}";
-			location.href = path2;
-			}
-
-		function All_log(){
-			var route = '/log/all';
-			var path1 = ipAddr + route;
-			var path2 = "{{ipaddr['log_all']}}";
-			location.href = path2;
-			}
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title> Video monitoring system </title>
+	<script>		
 		function Video_open(json){
-			var path1 = ipAddr + '/video';
-			var path2 = "{{ipaddr['video']}}";
-			window.open(path2) ;
+			var path1 = '/video';
+			window.open(path1);
 			}
-
+		function Setting_open(json){
+			var path2 = '/setting';
+			window.open(path2);
+			}
+		var auto_refresh = setInterval(function()
+        {                
+            
+            var getData = $.get('/data/info');
+            
+            getData.done(function(result) {
+                var time = result.time;
+                var info = result.info;
+                var str = 'INFO: ' + '[' + time +'] ' + info;
+				document.getElementById('Information').innerHTML = str;
+            });
+        },1000); 
+            
 	</script>
     </head>
 	<body>
 	<div style="background-color:lightgrey; text-align:center">
-		<h2>Video Monitoring System Test</h2>
+		<h2>Video Monitoring System</h2>
 	</div>
 	<div style="text-align:center">
-		<h3>Part No.1</h3>
-		<td>	
+		<h3></h3>
+		<table>
+		<tr>		
+			<td rowspan='2' align = 'right' style="width:60%">
 			<a target="_blank" href="javascript:void(0);" onclick="Video_open();">
-				<img src={{ipaddr['video']}} title="새창에서 영상 열기" style="width:50%">
+				<img src='/video' title="새창에서 영상 열기" >
 			</a>
-		</td>
+			</td>
+			<td align = 'left' style="width:30%">
+			<object data='/temp_graph' width="510" height="300" type="text/html"></object>
+			</td>
+		</tr>
+		<tr>
+			<td align = 'left' style="width:30%">
+			<object data='/vib_graph' width="510" height="300" type="text/html"></object>
+			</td>
+			<td></td>
+		</tr>
+		</table>
 	</div>
+	<div id='Information' align='center'> </div>
+	<table width="100%">
+		
+		<td align='left'>
+		<form method="GET" action='/log'>
+			<input type="date" name="search_date"> <input type="submit" value="log">
+		</form>
+		</td>
+		
+		
+		<td align='right'>
+		<a target="_blank" href="javascript:void(0);" onclick="Setting_open();">
+			<img src="{{url_for('static', filename='image/setting.png')}}"/ width="50">
+		</a>
+		</td>
+		
+	</table>
 	<td>
-	    <button onclick="Today_log()">Today log</button>
-	    <button onclick="All_log()">All log</button>
+		<details>
+			<summary>외부 접속 주소</summary>
+			<p>{{ipaddr['ex_ip']}}:8080/</p>
+			<p>외부 네트워크에서 접속하기 위해서는 포트 포워딩이 필요합니다.</p>
+		</details>
 	</td>
-	<details>
-		<summary>외부 접속 주소</summary>
-		<p>{{ipaddr['ex_ip']}}:8080</p>
-		<p>외부 네트워크에서 접속하기 위해서는 포트 포워딩이 필요합니다.</p>
-	</details>
     </body>    
 </html>
 
-<!-- 스트리밍 서버 주소 "http://172.30.1.45:8080/video" -->
-<!-- 테스트 이미지 주소 "test_img.png" -->
