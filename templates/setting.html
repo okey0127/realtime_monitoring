@@ -1,0 +1,45 @@
+
+<html>
+	    <head>
+        <meta charset="utf-8"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<title> Video monitoring system setting</title>
+		<script>
+				function submit2(frm){
+				frm.action='/setting';
+				frm.submit();
+				alert("경고 온도 변경 완료");
+				return ture;
+			}
+			function submit3(frm){
+				frm.action='/setting';
+				frm.submit();
+				alert("경고 진동 변경 완료");
+				return ture;
+			}
+		</script>
+		<body>
+			<h2>저장 기간 변경</h2>
+			<p>{{save_term}}일 이전의 기록은 자동 삭제됩니다. ※30일 이상의 기간만 설정 가능</p>
+			<form method="POST" action='/setting'>
+				<div>
+					<input type="text" name="alt_save_term"> <input type="submit" value="Enter" onclick="alert('저장 기간 변경 완료')">
+				</div>
+			</form>
+			<h2>경고 온도 변경</h2>
+			<p>현재 {{w_temp}}</p>
+			<form method="POST" action='/setting'>
+				<div>
+					<input type="text" name="alt_w_temp"> <input type="button" value="Enter" onclick="return submit2(this.form);">
+				</div>
+			</form>
+			<h2>경고 진동 변경</h2>
+			<p>현재 {{w_vib}} ※범위: 0 ~ 32000</p>
+			<form method="POST" action='/setting'>
+				<div>
+					<input type="text" name="alt_w_vib"> <input type="button" value="Enter" onclick="return submit3(this.form);">
+				</div>
+			</form>
+		</body>	
+		</head>
+</html>
