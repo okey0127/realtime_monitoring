@@ -1,7 +1,8 @@
-# edit: 22.09.06
+# edit: 22.09.08
 
 import cv2
 import time
+import threading
 from flask import Response, Flask, render_template, request, redirect, session, send_file
 from flask import abort, jsonify, url_for, Blueprint, make_response
 import numpy as np
@@ -42,6 +43,14 @@ c_cnt = 0
 information = '-'
 #RPM=0
 #checkR=0
+
+# Image frame sent to the Flask object
+global video_frame
+video_frame = None
+
+# Use locks for thread-safe viewing of frames in multiple browsers
+global thread_lock 
+thread_lock = threading.Lock()
 
 def modify_inform(a):
     global information
@@ -220,19 +229,33 @@ thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
 fontscale =1
 
-# remove old data
-
-# read save term
-#save_term = 365 #initial save_range
-def load_save_term():
+config_data={}
+#load config data
+def load_config_data():
+    global config_data
     with open(now_dir+'/config_data.txt', 'rt') as cf:
-       save_term = cf.readline().split()[1] #read first line only
-       return save_term
+        config_data_source = cf.readlines()
+        config_data_list = []
+        for d in config_data_source:
+            d = d.strip('\n')
+            config_data_list.append(d.split(':'))
+    for index, value in enumerate(config_data_list):
+        config_data[value[0]] = int(value[1])
 
-save_term = int(load_save_term())
+load_config_data()
+
+#save config data
+def save_config_data():
+    global config_data
+    with open(now_dir+'/config_data.txt', 'wt') as cf:
+        for key in config_data:
+            cf.write(f'{key}:{config_data[key]}\n')
+# remove old data
+#save_term = 365 #initial save_range
 
 def delete_old_data():
-  global save_term
+  global config_data
+  save_term = config_data['save_term']
   #delete old date-server.csv file
   for f in os.listdir(now_dir+'/log'):
     f = os.path.join(now_dir+'/log', f)
@@ -286,8 +309,6 @@ def save_all_data():
             time_list.pop(0)
             temp_list.pop(0)
             vib_list.pop(0)
-        
-
 
 #set proximity sensor
 #product counter
@@ -327,6 +348,7 @@ schedule.every(12).hours.do(delete_old_data)
 app = Flask(__name__)
 
 def captureFrames():
+    global video_frame, thread_lock
     camera_flag = ''
     # Video capturing
     cap = cv2.VideoCapture(-1)   
@@ -403,11 +425,11 @@ def captureFrames():
                 cv2.putText(frame,str(RPM),L_RPM,font,fontscale,white,thickness)
         ''' 
         #warning
-        global n
+        global n, config_data
         
         w_flag = False
-        w_temp = 50
-        w_vib = 15000
+        w_temp = config_data['w_temp']
+        w_vib = config_data['w_vib']
         # modify warning inform
         if temp > w_temp:
            modify_inform('high Temperature')
@@ -443,17 +465,34 @@ def captureFrames():
         schedule.run_pending()
         information = '-'
         
-        return_key, encoded_image = cv2.imencode(".jpg", frame)
-        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encoded_image) + b'\r\n')
-
+        # Create a copy of the frame and store it in the global variable,
+        # with thread safe access
+        with thread_lock:
+            video_frame = frame.copy()
+            
         GPIO.output(buzzer_pin, GPIO.LOW)
     
     cap.release()
     GPIO.cleanup()
+    
+def encodeFrame():
+    global thread_lock
+    while True:
+        # Acquire thread_lock to access the global video_frame object
+        with thread_lock:
+            global video_frame
+            if video_frame is None:
+                continue
+            return_key, encoded_image = cv2.imencode(".jpg", video_frame)
+            if not return_key:
+                continue
 
+        # Output image as a byte array
+        yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encoded_image) + b'\r\n')
+        
 @app.route('/video')
 def streamFrames():
-    return Response(captureFrames(), mimetype = "multipart/x-mixed-replace; boundary=frame")
+    return Response(encodeFrame(), mimetype = "multipart/x-mixed-replace; boundary=frame")
 
 @app.route('/data/info', methods=["GET", "POST"])
 def data_info():
@@ -481,23 +520,9 @@ def data_vib():
 def vib_graph():
     return render_template('vib_graph.html')
 
-@app.route('/', methods=['GET', 'POST'])
-def in_index():
-    global save_term
-    if request.method == 'POST':
-        save_term = int(request.form['alt_save_term'])
-        if save_term < 30:
-            save_term = 30            
-        #update save term
-        with open('config_data.txt', 'wt') as cf:
-            cf.write('save_term: {}'.format(save_term))
-        load_save_term()
-        return redirect('/')
-    return render_template('in_index.html', ipaddr = in_ipaddr, save_term = save_term)
-
-@app.route('/ex', methods=["GET", "POST"])
-def ex_index():
-    return render_template('ex_index.html', ipaddr = ex_ipaddr, save_term = save_term)
+@app.route('/')
+def index():
+    return render_template('index.html', ipaddr = in_ipaddr)
 
 search_date = 0
 #log file open
@@ -522,8 +547,58 @@ def DownloadFile(date):
     log_path = f'{now_dir}/log/{date}server.csv'
     return send_file(log_path, attachment_filename=f'{date}log.csv', as_attachment=True)
 
-
+@app.route('/setting', methods=['GET', 'POST'])
+def Settingpage():
+    global config_data, data_dic, information
+    if request.method == 'POST':
+        #update save term
+        try:
+            save_term = int(request.form['alt_save_term'])
+            if save_term < 30:
+                save_term = 30            
+            config_data['save_term'] = save_term
+            save_config_data()
+            load_config_data()
+            ip = request.remote_addr
+            modify_inform(f'{ip}:저장기간을 {config_data["save_term"]}로 수정')
+            data_dic['Information'] = information
+            save_all_data()
+            return redirect('/setting')
+        except:
+            pass
+        try:
+            w_temp = int(request.form['alt_w_temp'])
+            config_data['w_temp'] = w_temp
+            save_config_data()
+            load_config_data()
+            ip = request.remote_addr
+            modify_inform(f'{ip}:경고 온도를 {config_data["w_temp"]}로 수정')
+            data_dic['Information'] = information
+            save_all_data()
+            return redirect('/setting')
+        except:
+            pass
+        try:
+            w_vib = int(request.form['alt_w_vib'])
+            config_data['w_vib'] = w_vib
+            save_config_data()
+            load_config_data()
+            ip = request.remote_addr
+            modify_inform(f'{ip}:경고 진동을 {config_data["w_vib"]}로 수정')
+            data_dic['Information'] = information
+            save_all_data()
+            return redirect('/setting')
+        except:
+            pass
+    return render_template('setting.html', save_term = config_data['save_term'], w_temp = config_data['w_temp'], w_vib=config_data['w_vib'])
+    
 if __name__ == '__main__':
+    # Create a thread and attach the method that captures the image frames, to it
+    process_thread = threading.Thread(target=captureFrames)
+    process_thread.daemon = True
+
+    # Start the thread
+    process_thread.start()
     
     # start the Flask Web Application
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
