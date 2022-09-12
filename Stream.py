@@ -320,17 +320,22 @@ GPIO.add_event_detect(proximity_pin, GPIO.FALLING, callback=add_product, bouncet
 #buzzer
 buzzer_pin = 23
 GPIO.setup(buzzer_pin, GPIO.OUT)
-    
+
+global pre_t_time
+pre_t_time = None
+global pre_v_time
+pre_v_time = None
+
 def temp_buzz():
     try:
         GPIO.output(buzzer_pin, GPIO.HIGH)
         time.sleep(0.3)
         GPIO.output(buzzer_pin, GPIO.LOW)
-        time.sleep(0.2)
     except:
         pass
    
 def vib_buzz():
+    global pre_v_time
     try:
         GPIO.output(buzzer_pin, GPIO.HIGH)
         time.sleep(0.1)
@@ -366,7 +371,7 @@ def captureFrames():
         
         time_now=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
-        time_hms=str(datetime.datetime.now().strftime('%H:%M:%S'))
+        time_hms=str(datetime.datetime.now().strftime('%H:%M:%S.%f'))
         
         ret, frame = cap.read()
         #frame = cv2.flip(frame, 0)
