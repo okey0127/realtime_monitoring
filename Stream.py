@@ -436,11 +436,13 @@ def captureFrames():
         # modify warning inform
         if temp > w_temp:
             modify_inform('high Temperature')
-            temp_buzz()   
+            temp_buzz()
+            w_flag = True
         if VibV > w_vib:
             modify_inform('high Vibration')
             vib_buzz()
-        if w_flag == True:
+            w_flag = True
+        if w_flag:
             data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
             save_all_data()
         
