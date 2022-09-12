@@ -1,4 +1,4 @@
-# edit: 22.09.08
+# edit: 22.09.12
 
 import cv2
 import time
@@ -301,8 +301,9 @@ def save_all_data():
         if not os.path.exists(log_path1):
             df.to_csv(log_path1, index=False, header = True)
         else:
+            os.system(f'sudo chmod 777 {log_path1}')
             df.to_csv(log_path1, mode='a', index=False, header = False)
-        time_list.append(data_dic['Time'])
+        time_list.append(str(datetime.datetime.now().strftime('%H:%M:%S')))
         temp_list.append(data_dic['Temperature'])
         vib_list.append(data_dic['Vibration'])
         if len(time_list) > 60:
@@ -321,28 +322,24 @@ GPIO.add_event_detect(proximity_pin, GPIO.FALLING, callback=add_product, bouncet
 buzzer_pin = 23
 GPIO.setup(buzzer_pin, GPIO.OUT)
 
-global pre_t_time
-pre_t_time = None
-global pre_v_time
-pre_v_time = None
-
 def temp_buzz():
     try:
         GPIO.output(buzzer_pin, GPIO.HIGH)
         time.sleep(0.3)
         GPIO.output(buzzer_pin, GPIO.LOW)
+        time.sleep(0.2)
     except:
         pass
-   
+
 def vib_buzz():
-    global pre_v_time
     try:
         GPIO.output(buzzer_pin, GPIO.HIGH)
         time.sleep(0.1)
         GPIO.output(buzzer_pin, GPIO.LOW)
-        time.sleep(0.4)
+        time.sleep(0.2)
     except:
         pass
+
 
 # run schedule
 schedule.every(1).seconds.do(run_lcd)
@@ -431,23 +428,22 @@ def captureFrames():
         ''' 
         #warning
         global n, config_data
-        
+        #warning temperature, warning vibration
         w_flag = False
         w_temp = config_data['w_temp']
         w_vib = config_data['w_vib']
+        
         # modify warning inform
         if temp > w_temp:
-           modify_inform('high Temperature')
-           w_flag = True
-           temp_buzz()
+            modify_inform('high Temperature')
+            temp_buzz()   
         if VibV > w_vib:
             modify_inform('high Vibration')
-            w_flag = True
             vib_buzz()
         if w_flag == True:
             data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
             save_all_data()
-            
+        
         # modify warning video
         if temp>w_temp and VibV>w_vib and n%5==0:
             n=n+1
