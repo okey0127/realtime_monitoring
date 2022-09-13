@@ -291,7 +291,7 @@ vib_list = []
 def save_all_data():
     #save log data as CSV
     global data_dic
-    if data_dic != {}:
+    if data_dic != {} and data_dic['Date'] != NaN:
         df = pd.DataFrame([data_dic])
         if not os.path.exists(log_path1):
             df.to_csv(log_path1, index=False, header = True)
