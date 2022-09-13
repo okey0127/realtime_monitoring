@@ -399,7 +399,7 @@ def captureData():
         
         #save All data as dictionary                
         data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
-        schedule.run_pending()
+        
         information = '-'
     
 def captureFrames():
@@ -486,6 +486,7 @@ def captureFrames():
             check=check+1
             n=n+1
         
+        schedule.run_pending()
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
