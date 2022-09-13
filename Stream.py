@@ -350,6 +350,7 @@ def captureData():
     while True:
         global information
         global data_dic, d_cnt, config_data
+        global vib_flag, temp_flag
         
         time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
         time_hms=str(datetime.datetime.now().strftime('%H:%M:%S.%f'))
@@ -369,11 +370,13 @@ def captureData():
                 VibV=V0.value
             except:
                 modify_inform('Vibration sensor is not working')
+                vib_flag = 'N'
         if temp_flag == 'Y':
             try:
                 temp = round(mlx.object_temperature, 2)
             except:
                 modify_inform('Temperature sensor is not working')
+                temp_flag = 'N'
             
         #warning temperature, warning vibration
         w_flag = False
@@ -409,11 +412,10 @@ def captureFrames():
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, img_h)
     
     while True:
-        
-        #warning img create
         global check, c_cnt
         global information
         global data_dic
+        global vib_flag, temp_flag
         
         time_now=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         
@@ -429,26 +431,20 @@ def captureFrames():
         
         #filter
         if vib_flag == 'Y':
-            try:
-                VibV=data_dic['Vibration']
-                cv2.putText(frame,'Vibration',L_VibT,font,fontscale,black,thickness,cv2.LINE_AA)
-                cv2.putText(frame,str(VibV),L_Vib,font,fontscale,black,thickness,cv2.LINE_AA)
+             VibV=data_dic['Vibration']
+             cv2.putText(frame,'Vibration',L_VibT,font,fontscale,black,thickness,cv2.LINE_AA)
+             cv2.putText(frame,str(VibV),L_Vib,font,fontscale,black,thickness,cv2.LINE_AA)
                 
-                cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness-1,cv2.LINE_AA)
-                cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness-1,cv2.LINE_AA)
-            except:
-                pass
+             cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness-1,cv2.LINE_AA)
+             cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness-1,cv2.LINE_AA)
                 
         if temp_flag == 'Y':
-            try:
-                temp = data_dic['Temperature']
-                cv2.putText(frame,'Temperature',L_tempT,font,fontscale,black,thickness,cv2.LINE_AA)
-                cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,black,thickness,cv2.LINE_AA)
-                
-                cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness-1,cv2.LINE_AA)
-                cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness-1,cv2.LINE_AA)
-            except:
-                pass
+            temp = data_dic['Temperature']
+            cv2.putText(frame,'Temperature',L_tempT,font,fontscale,black,thickness,cv2.LINE_AA)
+            cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,black,thickness,cv2.LINE_AA)
+          
+            cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness-1,cv2.LINE_AA)
+            cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness-1,cv2.LINE_AA)
                 
         if product_number > 0:
             cv2.putText(frame,'Production: ',L_countT,font,fontscale,black,thickness,cv2.LINE_AA)
