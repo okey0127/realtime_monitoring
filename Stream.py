@@ -94,24 +94,23 @@ img2=np.zeros((img_h,img_w,3),np.uint8)
 img3=np.zeros((img_h,img_w,3),np.uint8)
 img4=np.zeros((img_h,img_w,3),np.uint8)
 
-if check==0:
-    for i in range(0,img_h-1):
-        for j in range(0,img_w-1):
-            img2[i,j,0]=60
-            img2[i,j,1]=60
-            img2[i,j,2]=255
+for i in range(0,img_h-1):
+    for j in range(0,img_w-1):
+        img2[i,j,0]=60
+        img2[i,j,1]=60
+        img2[i,j,2]=255
                     
-            img3[i,j,0]=60
-            img3[i,j,1]=60
-            img3[i,j,2]=60
+        img3[i,j,0]=60
+        img3[i,j,1]=60
+        img3[i,j,2]=60
             
-            img4[i,j,0]=128
-            img4[i,j,1]=0
-            img4[i,j,2]=128
+        img4[i,j,0]=128
+        img4[i,j,1]=0
+        img4[i,j,2]=128
                     
-            n_img[i,j,0]=0
-            n_img[i,j,1]=0
-            n_img[i,j,2]=0
+        n_img[i,j,0]=0
+        n_img[i,j,1]=0
+        n_img[i,j,2]=0
 
 #color
 black = (0,0,0)
