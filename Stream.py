@@ -1,4 +1,4 @@
-# edit: 22.09.12
+# edit: 22.09.13
 
 import cv2
 import time
@@ -344,6 +344,60 @@ schedule.every(12).hours.do(delete_old_data)
 #declare Flask Server
 app = Flask(__name__)
 
+global d_cnt
+d_cnt = 0
+def captureData():
+    while True:
+        global information
+        global data_dic, d_cnt, config_data
+        
+        time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
+        time_hms=str(datetime.datetime.now().strftime('%H:%M:%S.%f'))
+        
+        if d_cnt == 0:
+            VibV = 0.0; temp = 0.0;
+            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}
+            d_cnt += 1
+        
+        if information != '-':
+            save_all_data()
+        
+        information = '-'
+        #Capture Data
+        if vib_flag == 'Y':
+            try:
+                VibV=V0.value
+            except:
+                modify_inform('Vibration sensor is not working')
+        if temp_flag == 'Y':
+            try:
+                temp = round(mlx.object_temperature, 2)
+            except:
+                modify_inform('Temperature sensor is not working')
+            
+        #warning temperature, warning vibration
+        w_flag = False
+        w_temp = config_data['w_temp']
+        w_vib = config_data['w_vib']
+        
+        # modify warning inform
+        if temp > w_temp:
+            modify_inform('high Temperature')
+            temp_buzz()
+            w_flag = True
+        if VibV > w_vib:
+            modify_inform('high Vibration')
+            vib_buzz()
+            w_flag = True
+        if w_flag:
+            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
+            save_all_data()
+        
+        #save All data as dictionary                
+        data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
+        schedule.run_pending()
+        information = '-'
+    
 def captureFrames():
     global video_frame, thread_lock
     camera_flag = ''
@@ -357,13 +411,11 @@ def captureFrames():
     while True:
         
         #warning img create
-        global check, c_cnt, check_first
+        global check, c_cnt
         global information
         global data_dic
         
         time_now=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
-        time_hms=str(datetime.datetime.now().strftime('%H:%M:%S.%f'))
         
         ret, frame = cap.read()
         #frame = cv2.flip(frame, 0)
@@ -372,38 +424,32 @@ def captureFrames():
                 frame = n_img
                 cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
                 modify_inform('Camera is not detected!')               
-            VibV = 0.0; temp = 0.0;
-            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}        
             c_cnt += 1
         
-        #if no previous cvs file, 'header = True' command exe (mode != 'a')
-        df = pd.DataFrame([data_dic])
-        if information != '-':
-            save_all_data()
-        
-        information = '-'
         
         #filter
         if vib_flag == 'Y':
             try:
-                VibV=V0.value
+                VibV=data_dic['Vibration']
                 cv2.putText(frame,'Vibration',L_VibT,font,fontscale,black,thickness,cv2.LINE_AA)
-                cv2.putText(frame,str(V0.value),L_Vib,font,fontscale,black,thickness,cv2.LINE_AA)
+                cv2.putText(frame,str(VibV),L_Vib,font,fontscale,black,thickness,cv2.LINE_AA)
                 
                 cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness-1,cv2.LINE_AA)
-                cv2.putText(frame,str(V0.value),L_Vib,font,fontscale,white,thickness-1,cv2.LINE_AA)
+                cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness-1,cv2.LINE_AA)
             except:
-                modify_inform('Vibration sensor is not working')
+                pass
+                
         if temp_flag == 'Y':
             try:
-                temp = round(mlx.object_temperature, 2)
+                temp = data_dic['Temperature']
                 cv2.putText(frame,'Temperature',L_tempT,font,fontscale,black,thickness,cv2.LINE_AA)
                 cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,black,thickness,cv2.LINE_AA)
                 
                 cv2.putText(frame,'Temperature',L_tempT,font,fontscale,white,thickness-1,cv2.LINE_AA)
                 cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,white,thickness-1,cv2.LINE_AA)
             except:
-                modify_inform('Temperature sensor is not working')
+                pass
+                
         if product_number > 0:
             cv2.putText(frame,'Production: ',L_countT,font,fontscale,black,thickness,cv2.LINE_AA)
             cv2.putText(frame,str(product_number),L_count,font,fontscale,black,thickness,cv2.LINE_AA)
@@ -423,24 +469,9 @@ def captureFrames():
         ''' 
         #warning
         global n, config_data
-        #warning temperature, warning vibration
-        w_flag = False
+
         w_temp = config_data['w_temp']
         w_vib = config_data['w_vib']
-        
-        # modify warning inform
-        if temp > w_temp:
-            modify_inform('high Temperature')
-            temp_buzz()
-            w_flag = True
-        if VibV > w_vib:
-            modify_inform('high Vibration')
-            vib_buzz()
-            w_flag = True
-        if w_flag:
-            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
-            save_all_data()
-        
         # modify warning video
         if temp>w_temp and VibV>w_vib and n%5==0:
             n=n+1
@@ -458,19 +489,13 @@ def captureFrames():
             check=check+1
             n=n+1
         
-        #save All data as dictionary                
-        data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
-        schedule.run_pending()
-        information = '-'
-        
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
             video_frame = frame.copy()
             
-        GPIO.output(buzzer_pin, GPIO.LOW)
-    
     cap.release()
+    GPIO.output(buzzer_pin, GPIO.LOW)
     GPIO.cleanup()
     
 def encodeFrame():
@@ -595,8 +620,13 @@ if __name__ == '__main__':
     process_thread = threading.Thread(target=captureFrames)
     process_thread.daemon = True
 
+    #Cpature Data thread
+    data_thread = threading.Thread(target=captureData)
+    data_thread.daemon = True
+    
     # Start the thread
     process_thread.start()
+    data_thread.start()
     
     # start the Flask Web Application
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
