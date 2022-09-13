@@ -359,9 +359,8 @@ def captureData():
             VibV = 0.0; temp = 0.0;
             data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}
             d_cnt += 1
-        
-        if information != '-':
-            save_all_data()
+            if information != '-':
+                save_all_data()
         
         information = '-'
         #Capture Data
