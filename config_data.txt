@@ -1,1 +1,3 @@
-save_term: 365
+save_term:365
+w_temp:50
+w_vib:15000
