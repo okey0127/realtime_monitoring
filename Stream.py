@@ -146,8 +146,6 @@ vib_path = f'{now_dir}/log/vib/{day}vib.csv'
 #if not exist log folder -> create log folter
 if not os.path.exists(now_dir+'/log'):
     os.mkdir(now_dir+'/log')
-if not os.path.exists(now_dir+'/log/vib'):
-    os.mkdir(now_dir+'/log/vib')
     
 #set path
 #get ip
@@ -272,8 +270,6 @@ def delete_old_data():
 def add_product(channel):
     global product_number
     product_number += 1
-    #logger1.info(f'Proudction : {product_number}')
-    #logger2.info(f'Proudction : {product_number}')
     
 '''
 def count_RPM(channel) :
