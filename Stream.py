@@ -293,8 +293,6 @@ def save_all_data():
     global data_dic
     if data_dic != {}:
         df = pd.DataFrame([data_dic])
-        if sum(df.isnull().sum()) > 0:
-            return 0
         if not os.path.exists(log_path1):
             df.to_csv(log_path1, index=False, header = True)
         else:
@@ -399,7 +397,7 @@ def captureData():
         
         #save All data as dictionary                
         data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
-        
+        schedule.run_pending()
         information = '-'
     
 def captureFrames():
@@ -486,7 +484,6 @@ def captureFrames():
             check=check+1
             n=n+1
         
-        schedule.run_pending()
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
@@ -555,6 +552,9 @@ def log():
             search_date = request.args.get('search_date')
             log_path = f'{now_dir}/log/{search_date}server.csv'
             df = pd.read_csv(log_path)
+            if sum(df.isnull().sum()) > 0:
+                df = df.dropna()
+                df.to_csv(log_path, index=False, header = True)
             df = df.iloc[::-1]
             
             return "<form action ='/log', method='POST'><button type='submit'>Download</button></form>"+df.to_html(header=True, index = False, justify='center')
