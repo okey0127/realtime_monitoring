@@ -183,7 +183,7 @@ inf_en = 17
 
 def run_lcd():
     if lcd_flag == 'Y':
-        global ip_st, ip_en, inf_st, inf_en, in_ip, ex_ip, data_dic, i_flag
+        global ip_st, ip_en, inf_st, inf_en, in_ip, ex_ip, data_dic, i_flag, ipaddr
         if in_ip == '':
             in_ip = os.popen('hostname -I').read().strip()
         ip_addr = in_ip+':8080'
