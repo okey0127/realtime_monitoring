@@ -198,8 +198,9 @@ def run_lcd():
             ex_ip = 'No internet'
         ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip}
         if i_flag == 'N':
+            lcd.clear()
             lcd.cursor_pos=(0,0)
-            lcd.write_string('No internet    ')
+            lcd.write_string('No internet')
         else:
             if str_len <= 16:
                 lcd.cursor_pos=(0,0)
