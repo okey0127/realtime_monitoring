@@ -1,4 +1,4 @@
-# edit: 22.09.13
+# edit: 22.09.20
 
 import cv2
 import time
@@ -156,32 +156,22 @@ except:
     lcd_flag = 'N'
     
 i_flag = 'Y'
-while True:
-    try:
-        URL = 'https://icanhazip.com'
-        respons = requests.get(URL)
-        ex_ip = respons.text.strip()
-        ex_video_ip = 'http://'+ex_ip+':8080/video'
-        ex_log_all_ip = 'http://'+ex_ip+':8080/log/all'
-        ex_log_today_ip = 'http://'+ex_ip+':8080/log/today'
-        ex_temp_ip = 'http://'+ex_ip+':8080/temp_graph'
-        ex_vib_ip = 'http://'+ex_ip+':8080/vib_graph'
-        break
-    except:
-        if i_flag == 'Y':
-            if lcd_flag == 'Y':
-                lcd.cursor_pos=(0,0)
-                lcd.write_string('No internet')
-            i_flag = 'N'
 
+global ex_ip
+try:
+    URL = 'https://icanhazip.com'
+    respons = requests.get(URL)
+    ex_ip = respons.text.strip()
+except:
+    i_flag = 'N'
+    if lcd_flag == 'Y':
+        lcd.cursor_pos=(0,0)
+        lcd.write_string('No internet')
+    ex_ip = 'No internet'
+        
 in_ip = os.popen('hostname -I').read().strip()
-in_video_ip = 'http://'+in_ip+':8080/video'
-in_log_all_ip = 'http://'+in_ip+':8080/log/all'
-in_log_today_ip = 'http://'+in_ip+':8080/log/today'
-in_temp_ip = 'http://'+in_ip+':8080/temp_graph'
-in_vib_ip = 'http://'+in_ip+':8080/vib_graph'
-in_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':in_video_ip, 'log_all':in_log_all_ip, 'log_today':in_log_today_ip, 'temp':in_temp_ip, 'vib':in_vib_ip}
-ex_ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip, 'video':ex_video_ip, 'log_all':ex_log_all_ip, 'log_today':ex_log_today_ip, 'temp':ex_temp_ip, 'vib':ex_vib_ip}
+ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip}
+
 
 #lcd
 #lcd=I2C_LCD.lcd()
@@ -193,20 +183,35 @@ inf_en = 17
 
 def run_lcd():
     if lcd_flag == 'Y':
-        global ip_st, ip_en, inf_st, inf_en, in_ip, data_dic
+        global ip_st, ip_en, inf_st, inf_en, in_ip, ex_ip, data_dic, i_flag
+        if in_ip == '':
+            in_ip = os.popen('hostname -I').read().strip()
         ip_addr = in_ip+':8080'
         str_len = len(ip_addr)
-        if str_len <= 16:
+        try:
+            URL = 'https://icanhazip.com'
+            respons = requests.get(URL)
+            ex_ip = respons.text.strip()
+            i_flag = 'Y'
+        except:
+            i_flag = 'N'
+            ex_ip = 'No internet'
+        ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip}
+        if i_flag == 'N':
             lcd.cursor_pos=(0,0)
-            lcd.write_string(ip_addr)
+            lcd.write_string('No internet    ')
         else:
-            ip_st += 1
-            ip_en += 1
-            if ip_en > str_len +1 :
-                ip_st = 0
-                ip_en = 17
-            lcd.cursor_pos=(0,0)
-            lcd.write_string(ip_addr[ip_st:ip_en])
+            if str_len <= 16:
+                lcd.cursor_pos=(0,0)
+                lcd.write_string(ip_addr)
+            else:
+                ip_st += 1
+                ip_en += 1
+                if ip_en > str_len +1 :
+                    ip_st = 0
+                    ip_en = 17
+                lcd.cursor_pos=(0,0)
+                lcd.write_string(ip_addr[ip_st:ip_en])
     
         lcd_inf = data_dic['Information']
         info_len = len(lcd_inf)
@@ -288,10 +293,11 @@ data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibratio
 time_list = []
 temp_list = []
 vib_list = []
+
 def save_all_data():
     #save log data as CSV
     global data_dic
-    if data_dic != {}:
+    if data_dic != {} and len(data_dic['Date'])<11:
         df = pd.DataFrame([data_dic])
         if not os.path.exists(log_path1):
             df.to_csv(log_path1, index=False, header = True)
@@ -540,7 +546,7 @@ def vib_graph():
 
 @app.route('/')
 def index():
-    return render_template('index.html', ipaddr = in_ipaddr)
+    return render_template('index.html', ipaddr = ipaddr)
 
 search_date = 0
 #log file open
@@ -552,9 +558,6 @@ def log():
             search_date = request.args.get('search_date')
             log_path = f'{now_dir}/log/{search_date}server.csv'
             df = pd.read_csv(log_path)
-            if sum(df.isnull().sum()) > 0:
-                df = df.dropna()
-                df.to_csv(log_path, index=False, header = True)
             df = df.iloc[::-1]
             
             return "<form action ='/log', method='POST'><button type='submit'>Download</button></form>"+df.to_html(header=True, index = False, justify='center')
