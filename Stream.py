@@ -621,7 +621,7 @@ if __name__ == '__main__':
     process_thread = threading.Thread(target=captureFrames)
     process_thread.daemon = True
 
-    #Cpature Data thread
+    # Capature Data thread
     data_thread = threading.Thread(target=captureData)
     data_thread.daemon = True
     
