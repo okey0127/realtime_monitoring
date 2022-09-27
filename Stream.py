@@ -376,12 +376,14 @@ def captureData():
             except:
                 modify_inform('Vibration sensor is not working')
                 vib_flag = 'N'
+                VibV = '-'
         if temp_flag == 'Y':
             try:
                 temp = round(mlx.object_temperature, 2)
             except:
                 modify_inform('Temperature sensor is not working')
                 temp_flag = 'N'
+                temp = '-'
             
         #warning temperature, warning vibration
         w_flag = False
