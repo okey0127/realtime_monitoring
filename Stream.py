@@ -272,7 +272,6 @@ def delete_old_data():
         except OSError:
           pass #오류 무시
 
-#function
 def add_product(channel):
     global product_number
     product_number += 1
