@@ -1,4 +1,4 @@
-# edit: 22.09.20
+# edit: 22.09.28
 
 import cv2
 import time
@@ -136,42 +136,46 @@ L_RPMT=(center_x-100,center_y-180)
 L_Vib=(center_x+250,center_y-200)
 L_VibT=(center_x+150,center_y-200)
 L_fps = (center_x+150,center_y+180)
-#log
 
+#log
 now_dir = os.path.dirname(os.path.abspath(__file__))
-day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-log_path1 = f'{now_dir}/log/{day}server.csv'
-vib_path = f'{now_dir}/log/vib/{day}vib.csv'
 
 #if not exist log folder -> create log folter
 if not os.path.exists(now_dir+'/log'):
     os.mkdir(now_dir+'/log')
     
-#set path
 #get ip
-lcd_flag = 'Y'
-try:
-    lcd=CharLCD('PCF8574', 0x3f)
-except:
-    lcd_flag = 'N'
+def try_lcd():
+    global lcd, lcd_flag
+    try:
+        lcd=CharLCD('PCF8574', 0x3f)
+        lcd_flag = 'Y'
+    except:
+        lcd_flag = 'N'
+
+try_lcd()
+
+global i_flag
+global ipaddr
+
+def get_ip():
+    global i_flag, ipaddr
+    try:
+        URL = 'https://icanhazip.com'
+        respons = requests.get(URL)
+        ex_ip = respons.text.strip()
+        i_flag = 'Y'
+    except:
+        i_flag = 'N'
+        if lcd_flag == 'Y':
+            lcd.clear()
+            lcd.cursor_pos=(0,0)
+            lcd.write_string('No internet')
+        ex_ip = 'No internet'
+    in_ip = os.popen('hostname -I').read().strip()
+    ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip}
     
-i_flag = 'Y'
-
-global ex_ip
-try:
-    URL = 'https://icanhazip.com'
-    respons = requests.get(URL)
-    ex_ip = respons.text.strip()
-except:
-    i_flag = 'N'
-    if lcd_flag == 'Y':
-        lcd.cursor_pos=(0,0)
-        lcd.write_string('No internet')
-    ex_ip = 'No internet'
-        
-in_ip = os.popen('hostname -I').read().strip()
-ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip}
-
+get_ip()
 
 #lcd
 #lcd=I2C_LCD.lcd()
@@ -182,51 +186,41 @@ inf_st = 0
 inf_en = 17
 
 def run_lcd():
-    if lcd_flag == 'Y':
-        global ip_st, ip_en, inf_st, inf_en, in_ip, ex_ip, data_dic, i_flag, ipaddr
-        if in_ip == '':
-            in_ip = os.popen('hostname -I').read().strip()
-        ip_addr = in_ip+':8080'
-        str_len = len(ip_addr)
-        try:
-            URL = 'https://icanhazip.com'
-            respons = requests.get(URL)
-            ex_ip = respons.text.strip()
-            i_flag = 'Y'
-        except:
-            i_flag = 'N'
-            ex_ip = 'No internet'
-        ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip}
-        if i_flag == 'N':
-            lcd.clear()
-            lcd.cursor_pos=(0,0)
-            lcd.write_string('No internet')
-        else:
-            if str_len <= 16:
-                lcd.cursor_pos=(0,0)
-                lcd.write_string(ip_addr)
-            else:
-                ip_st += 1
-                ip_en += 1
-                if ip_en > str_len +1 :
-                    ip_st = 0
-                    ip_en = 17
-                lcd.cursor_pos=(0,0)
-                lcd.write_string(ip_addr[ip_st:ip_en])
+    global ip_st, ip_en, inf_st, inf_en, data_dic, i_flag, ipaddr, lcd_flag
+    try_lcd()
+    try:
+        if lcd_flag == 'Y':
+            get_ip()
+            ip_addr = ipaddr['in_ip']+':8080'
+            str_len = len(ip_addr)
+            if i_flag == 'Y':
+                if str_len <= 16:
+                    lcd.cursor_pos=(0,0)
+                    lcd.write_string(ip_addr)
+                else:
+                    ip_st += 1
+                    ip_en += 1
+                    if ip_en > str_len +1 :
+                        ip_st = 0
+                        ip_en = 17
+                    lcd.cursor_pos=(0,0)
+                    lcd.write_string(ip_addr[ip_st:ip_en])
     
-        lcd_inf = data_dic['Information']
-        info_len = len(lcd_inf)
-        if info_len <= 16:
-            lcd.cursor_pos=(1,0)
-            lcd.write_string(lcd_inf + ' '*(16 - info_len))
-        else:
-            inf_st += 1
-            inf_en += 1
-            if inf_en > info_len+1 :
-                inf_st = 0
-                inf_en = 17
-            lcd.cursor_pos=(1,0)
-            lcd.write_string(lcd_inf[inf_st:inf_en])
+            lcd_inf = data_dic['Information']
+            info_len = len(lcd_inf)
+            if info_len <= 16:
+                lcd.cursor_pos=(1,0)
+                lcd.write_string(lcd_inf + ' '*(16 - info_len))
+            else:
+                inf_st += 1
+                inf_en += 1
+                if inf_en > info_len+1 :
+                    inf_st = 0
+                    inf_en = 17
+                lcd.cursor_pos=(1,0)
+                lcd.write_string(lcd_inf[inf_st:inf_en])
+    except:
+        pass
 #text
 thickness =2
 font=cv2.FONT_HERSHEY_PLAIN
@@ -296,14 +290,17 @@ vib_list = []
 
 def save_all_data():
     #save log data as CSV
-    global data_dic, c_cnt
-    if data_dic != {} and c_cnt > 0:
+    global data_dic, c_cnt, i_flag
+    get_ip()
+    day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+    log_path = f'{now_dir}/log/{day}server.csv'
+    if data_dic != {} and i_flag == 'Y':
         df = pd.DataFrame([data_dic])
-        if not os.path.exists(log_path1):
-            df.to_csv(log_path1, index=False, header = True)
+        if not os.path.exists(log_path):
+            df.to_csv(log_path, index=False, header = True)
         else:
-            os.system(f'sudo chmod 777 {log_path1}')
-            df.to_csv(log_path1, mode='a', index=False, header = False)
+            os.system(f'sudo chmod 777 {log_path}')
+            df.to_csv(log_path, mode='a', index=False, header = False)
         time_list.append(str(datetime.datetime.now().strftime('%H:%M:%S')))
         temp_list.append(data_dic['Temperature'])
         vib_list.append(data_dic['Vibration'])
