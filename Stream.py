@@ -157,14 +157,17 @@ try_lcd()
 
 global i_flag
 global ipaddr
+global i_cnt
+i_cnt = 0
 
 def get_ip():
-    global i_flag, ipaddr
+    global i_flag, ipaddr, i_cnt
     try:
         URL = 'https://icanhazip.com'
         respons = requests.get(URL)
         ex_ip = respons.text.strip()
         i_flag = 'Y'
+        i_cnt = 1
     except:
         i_flag = 'N'
         if lcd_flag == 'Y':
@@ -288,18 +291,27 @@ time_list = []
 temp_list = []
 vib_list = []
 
+global s_cnt
+s_cnt = 0
 def save_all_data():
     #save log data as CSV
-    global data_dic, c_cnt, i_flag
+    global data_dic, information, i_cnt, s_cnt
     get_ip()
     day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
     log_path = f'{now_dir}/log/{day}server.csv'
-    if data_dic != {} and i_flag == 'Y':
+    # 처음 부팅 시 인터넷이 될 경우에만 로그에 저장 이후 끊어진 경우
+    if data_dic['Date'] == day and i_cnt == 1:
         df = pd.DataFrame([data_dic])
         if not os.path.exists(log_path):
             df.to_csv(log_path, index=False, header = True)
         else:
             os.system(f'sudo chmod 777 {log_path}')
+            # 처음 부팅 시 쓰레기 값이 있는 행을 삭제
+            if s_cnt == 0:
+                data_ = pd.read_csv(log_path)
+                data_.dropna(axis = 0)
+                data_.to_csv(log_path, index=False, header = True)
+                s_cnt = 1
             df.to_csv(log_path, mode='a', index=False, header = False)
         time_list.append(str(datetime.datetime.now().strftime('%H:%M:%S')))
         temp_list.append(data_dic['Temperature'])
@@ -308,6 +320,9 @@ def save_all_data():
             time_list.pop(0)
             temp_list.pop(0)
             vib_list.pop(0)
+    else:
+        if len(data_dic['Information']) > 1:
+            data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}
 
 #set proximity sensor
 #product counter
@@ -360,7 +375,6 @@ def captureData():
         
         if d_cnt == 0:
             VibV = 0.0; temp = 0.0;
-            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}
             d_cnt += 1
             if information != '-':
                 save_all_data()
