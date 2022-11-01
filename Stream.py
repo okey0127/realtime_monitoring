@@ -1,4 +1,4 @@
-# edit: 22.09.28
+# edit: 22.11.01
 
 import cv2
 import time
@@ -190,7 +190,6 @@ inf_en = 17
 
 def run_lcd():
     global ip_st, ip_en, inf_st, inf_en, data_dic, i_flag, ipaddr, lcd_flag
-    try_lcd()
     try:
         if lcd_flag == 'Y':
             get_ip()
@@ -222,6 +221,8 @@ def run_lcd():
                     inf_en = 17
                 lcd.cursor_pos=(1,0)
                 lcd.write_string(lcd_inf[inf_st:inf_en])
+        else:
+            try_lcd()
     except:
         pass
 #text
@@ -299,14 +300,12 @@ def save_all_data():
     get_ip()
     day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
     log_path = f'{now_dir}/log/{day}server.csv'
-    # 처음 부팅 시 인터넷이 될 경우에만 로그에 저장 이후 끊어진 경우
     if data_dic['Date'] == day and i_cnt == 1:
         df = pd.DataFrame([data_dic])
         if not os.path.exists(log_path):
             df.to_csv(log_path, index=False, header = True)
         else:
             os.system(f'sudo chmod 777 {log_path}')
-            # 처음 부팅 시 쓰레기 값이 있는 행을 삭제
             if s_cnt == 0:
                 data_ = pd.read_csv(log_path)
                 data_.dropna(axis = 0)
@@ -353,9 +352,16 @@ def vib_buzz():
     except:
         pass
 
-
+def buzz_loop():
+    global wv_flag, wt_flag
+    if wv_flag:
+        vib_buzz()
+    if wt_flag:
+        temp_buzz()
+        
 # run schedule
 schedule.every(1).seconds.do(run_lcd)
+schedule.every(0.1).seconds.do(buzz_loop)
 schedule.every(1).seconds.do(save_all_data)
 schedule.every(12).hours.do(delete_old_data)
 
@@ -364,53 +370,57 @@ app = Flask(__name__)
 
 global d_cnt
 d_cnt = 0
+global wt_flag, wv_flag
+
 def captureData():
     while True:
         global information
         global data_dic, d_cnt, config_data
         global vib_flag, temp_flag
+        global wt_flag, wv_flag
         
         time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
         time_hms=str(datetime.datetime.now().strftime('%H:%M:%S.%f'))
         
+        # run only in the first loop
         if d_cnt == 0:
             VibV = 0.0; temp = 0.0;
             d_cnt += 1
             if information != '-':
                 save_all_data()
         
+        #warning temperature, warning vibration
+        wt_flag = False
+        wv_flag = False
+        w_temp = config_data['w_temp']
+        w_vib = config_data['w_vib']
+    
         information = '-'
+        
         #Capture Data
         if vib_flag == 'Y':
             try:
-                VibV=V0.value
+                VibV= V0.value /(pow(2,15)/10000)
+                if VibV > w_vib:
+                    modify_inform('high Vibration')
+                    wv_flag = True
             except:
                 modify_inform('Vibration sensor is not working')
                 vib_flag = 'N'
                 VibV = '-'
+                
         if temp_flag == 'Y':
             try:
                 temp = round(mlx.object_temperature, 2)
+                if temp > w_temp:
+                    modify_inform('high Temperature')
+                    wt_flag = True
             except:
                 modify_inform('Temperature sensor is not working')
                 temp_flag = 'N'
                 temp = '-'
-            
-        #warning temperature, warning vibration
-        w_flag = False
-        w_temp = config_data['w_temp']
-        w_vib = config_data['w_vib']
-        
-        # modify warning inform
-        if temp > w_temp:
-            modify_inform('high Temperature')
-            temp_buzz()
-            w_flag = True
-        if VibV > w_vib:
-            modify_inform('high Vibration')
-            vib_buzz()
-            w_flag = True
-        if w_flag:
+                
+        if wv_flag or wt_flag:
             data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
             save_all_data()
         
@@ -511,7 +521,7 @@ def captureFrames():
     cap.release()
     GPIO.output(buzzer_pin, GPIO.LOW)
     GPIO.cleanup()
-    
+
 def encodeFrame():
     global thread_lock
     while True:
@@ -531,27 +541,19 @@ def encodeFrame():
 def streamFrames():
     return Response(encodeFrame(), mimetype = "multipart/x-mixed-replace; boundary=frame")
 
-@app.route('/data/info', methods=["GET", "POST"])
+@app.route('/data', methods=["GET", "POST"])
 def data_info():
-    try:
+    #try:
         global data_dic
-        return jsonify({'time':data_dic['Time'], 'info':data_dic['Information']})
-    except:
-        return '<h1> Error </h1>'
-
-@app.route('/data/temp', methods=["GET", "POST"])
-def data_temp():
-    global time_list, temp_list
-    return jsonify({'time':time_list, 'temp_list':temp_list})
+        global time_list, temp_list, vib_list
+        time = data_dic['Time'].split('.')[0]
+        return jsonify({'time':time, 'time_list':time_list,'info':data_dic['Information'], 'temp_list':temp_list, 'vib_list':vib_list})
+    #except:
+    #    return '<h1> Error </h1>'
 
 @app.route('/temp_graph')
 def temp_graph():
     return render_template('temp_graph.html')
-
-@app.route('/data/vib', methods=["GET", "POST"])
-def data_vib():
-    global time_list, vib_list
-    return jsonify({'time':time_list, 'vib_list':vib_list})
 
 @app.route('/vib_graph')
 def vib_graph():
