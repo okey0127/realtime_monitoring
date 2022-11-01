@@ -461,10 +461,10 @@ def captureFrames():
         if vib_flag == 'Y':
              VibV=data_dic['Vibration']
              cv2.putText(frame,'Vibration',L_VibT,font,fontscale,black,thickness,cv2.LINE_AA)
-             cv2.putText(frame,str(VibV),L_Vib,font,fontscale,black,thickness,cv2.LINE_AA)
+             cv2.putText(frame,str(round(VibV,2)),L_Vib,font,fontscale,black,thickness,cv2.LINE_AA)
                 
              cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness-1,cv2.LINE_AA)
-             cv2.putText(frame,str(VibV),L_Vib,font,fontscale,white,thickness-1,cv2.LINE_AA)
+             cv2.putText(frame,str(round(VibV,2)),L_Vib,font,fontscale,white,thickness-1,cv2.LINE_AA)
                 
         if temp_flag == 'Y':
             temp = data_dic['Temperature']
