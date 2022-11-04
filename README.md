@@ -27,7 +27,7 @@
 * jquery.js \
  ▷ 데이터 리스트 페이지에서 원하는 데이터 읽어오기
 
-* 부팅 시 코드 자동실행
+## 부팅 시 코드 자동실행(Raspbian)
 in terminal
 > sudo nano /etc/profile.d/bash_completion.sh
 > 
