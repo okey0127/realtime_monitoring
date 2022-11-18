@@ -18,7 +18,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.1.0/dist/chartjs-adapter-luxon.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@2.0.0/dist/chartjs-plugin-streaming.min.js"></script>
 		<script>	
-
 		const data = {
 				labels: [],
 				datasets: [{
@@ -26,26 +25,21 @@
 					data: [],
 					backgroundColor: ['rgba(50, 50, 255, 0.2)'],
 					borderColor: ['rgba(50, 50, 255, 1)'],
-					borderWidth: 1
-				}]
+					borderWidth: 1}]
 		};
 		// config block
 		const config = {
 			type: 'line',
 			data,
-			options: {
-				animations: false
-			}
+			options: {animations: false}
 		};
 		// render init block
 		const vibChart = new Chart(
 			document.getElementById('vibChart'),
 			config
 		);
-		
 		var auto_refresh = setInterval(function(){                
                 var getData = $.get('/data');
-                
                 getData.done(function(result) {
                     var time_list = result.time_list;
                     var vib = result.vib_list;
