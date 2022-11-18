@@ -6,9 +6,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<style type="text/css">
-			.chartBox{
-				width: 500px;
-			}
+			.chartBox{width: 500px;}
 		</style>
 	</head>
 	<body>
@@ -26,16 +24,10 @@
 				datasets: [{
 					label: 'Vibration',
 					data: [],
-					backgroundColor: [
-						'rgba(50, 50, 255, 0.2)'
-		
-					],
-					borderColor: [
-						'rgba(50, 50, 255, 1)'
-					],
+					backgroundColor: ['rgba(50, 50, 255, 0.2)'],
+					borderColor: ['rgba(50, 50, 255, 1)'],
 					borderWidth: 1
 				}]
-			
 		};
 		// config block
 		const config = {
@@ -51,10 +43,7 @@
 			config
 		);
 		
-		
-		var auto_refresh = setInterval(function()
-            {                
-                
+		var auto_refresh = setInterval(function(){                
                 var getData = $.get('/data');
                 
                 getData.done(function(result) {
@@ -66,10 +55,6 @@
                 });
                 vibChart.update();
             },1000);  
-		
-
 		</script>
- 
 	</body>
-
 </html>
