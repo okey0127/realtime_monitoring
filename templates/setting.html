@@ -22,21 +22,24 @@
 			<p>{{save_term}}일 이전의 기록은 자동 삭제됩니다. ※30일 이상의 기간만 설정 가능</p>
 			<form method="POST" action='/setting'>
 				<div>
-					<input type="text" name="alt_save_term"> <input type="submit" value="Enter" onclick="alert('저장 기간 변경 완료')">
+					<input type="text" name="alt_save_term"> 
+					<input type="submit" value="Enter" onclick="alert('저장 기간 변경 완료')">
 				</div>
 			</form>
 			<h2>경고 온도 변경</h2>
 			<p>현재 {{w_temp}}</p>
 			<form method="POST" action='/setting'>
 				<div>
-					<input type="text" name="alt_w_temp"> <input type="button" value="Enter" onclick="return submit2(this.form);">
+					<input type="text" name="alt_w_temp"> 
+					<input type="button" value="Enter" onclick="return submit2(this.form);">
 				</div>
 			</form>
 			<h2>경고 진동 변경</h2>
 			<p>현재 {{w_vib}} ※범위: 0 ~ 10000</p>
 			<form method="POST" action='/setting'>
 				<div>
-					<input type="text" name="alt_w_vib"> <input type="button" value="Enter" onclick="return submit3(this.form);">
+					<input type="text" name="alt_w_vib"> 
+					<input type="button" value="Enter" onclick="return submit3(this.form);">
 				</div>
 			</form>
 		</body>	
