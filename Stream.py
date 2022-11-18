@@ -10,7 +10,6 @@ import datetime
 import math
 import schedule
 import json
-
 import RPi.GPIO as GPIO
 import os
 import io
@@ -31,7 +30,7 @@ import busio
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
 
-#initial
+# initial
 img_w = 640
 img_h = 480
 product_number = 0
@@ -39,10 +38,25 @@ timeC=0
 check=0
 n=0
 c_cnt = 0
-
 information = '-'
-#RPM=0
-#checkR=0
+
+# 영상 글꼴
+thickness = 2
+font=cv2.FONT_HERSHEY_PLAIN
+fontscale = 1
+
+# 영상 텍스트 위치
+center_x=int(img_w/2.0)
+center_y=int(img_h/2.0)
+L_time=(center_x-300,center_y+200)
+L_count=(center_x-200,center_y-200)
+L_countT=(center_x-300,center_y-200)
+L_temp=(center_x+50,center_y-200)
+L_tempT=(center_x-100,center_y-200)
+L_RPM=(center_x+50,center_y-180)
+L_RPMT=(center_x-100,center_y-180)
+L_Vib=(center_x+250,center_y-200)
+L_VibT=(center_x+150,center_y-200)
 
 # Image frame sent to the Flask object
 global video_frame
@@ -52,43 +66,7 @@ video_frame = None
 global thread_lock 
 thread_lock = threading.Lock()
 
-def modify_inform(a):
-    global information
-    if information == '-':
-        information = a
-    else:
-        information += ', ' + a
-        
-#setting ADC module(Vibration Sensor)
-vib_flag = 'Y'
-try:
-    # Create the I2C bus
-    i2c = busio.I2C(board.SCL, board.SDA)
-                                                                   
-    # Create the ADC object using the I2C bus
-    ads = ADS.ADS1115(i2c)
-
-    # Create single-ended input on channel 0
-    V0 = AnalogIn(ads, ADS.P0)
-    
-except:
-    vib_flag='N'
-    modify_inform('No vibration sensor')
-
-#setting temperature sensor
-temp_flag = 'Y'
-try:
-    i2c_temp=board.I2C()
-    mlx = adafruit_mlx90614.MLX90614(i2c_temp)
-except:
-    temp_flag = 'N'
-    modify_inform('No temperature sensor')
-
-x_list = [x for x in range(60)]
-vib_data = [0]*60
-temp_data = [0]*60
-time_data = [0]*60
-
+# 문제 발생시 송출할 화면 생성(고온: 빨강, 충격: 회색, 동시 발생: 보라)
 n_img=np.zeros((img_h,img_w,3),np.uint8)
 img2=np.zeros((img_h,img_w,3),np.uint8)
 img3=np.zeros((img_h,img_w,3),np.uint8)
@@ -112,7 +90,7 @@ for i in range(0,img_h-1):
         n_img[i,j,1]=0
         n_img[i,j,2]=0
 
-#color
+# Colors
 black = (0,0,0)
 red=(0,0,255)
 green=(0,255,0)
@@ -122,39 +100,14 @@ yellow=(0,255,255)
 cyan=(255,255,0)
 magenta=(255,0,255)
 
-
-#position
-center_x=int(img_w/2.0)
-center_y=int(img_h/2.0)
-L_time=(center_x-300,center_y+200)
-L_count=(center_x-200,center_y-200)
-L_countT=(center_x-300,center_y-200)
-L_temp=(center_x+50,center_y-200)
-L_tempT=(center_x-100,center_y-200)
-L_RPM=(center_x+50,center_y-180)
-L_RPMT=(center_x-100,center_y-180)
-L_Vib=(center_x+250,center_y-200)
-L_VibT=(center_x+150,center_y-200)
-L_fps = (center_x+150,center_y+180)
-
-#log
+# 파일 경로 가져오기
 now_dir = os.path.dirname(os.path.abspath(__file__))
 
-#if not exist log folder -> create log folter
+# if not exist log folder -> create log folter
 if not os.path.exists(now_dir+'/log'):
     os.mkdir(now_dir+'/log')
-    
-#get ip
-def try_lcd():
-    global lcd, lcd_flag
-    try:
-        lcd=CharLCD('PCF8574', 0x3f)
-        lcd_flag = 'Y'
-    except:
-        lcd_flag = 'N'
 
-try_lcd()
-
+## Get IP ##
 global i_flag
 global ipaddr
 global i_cnt
@@ -177,17 +130,24 @@ def get_ip():
         ex_ip = 'No internet'
     in_ip = os.popen('hostname -I').read().strip()
     ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip}
-    
 get_ip()
 
-#lcd
-#lcd=I2C_LCD.lcd()
+## LCD ##
+# Setting LCD
+def try_lcd():
+    global lcd, lcd_flag
+    try:
+        lcd=CharLCD('PCF8574', 0x3f)
+        lcd_flag = 'Y'
+    except:
+        lcd_flag = 'N'
+try_lcd()
+
+# LCD 동작 함수 
 ip_st = 0
 ip_en = 17
-
 inf_st = 0
 inf_en = 17
-
 def run_lcd():
     global ip_st, ip_en, inf_st, inf_en, data_dic, i_flag, ipaddr, lcd_flag
     try:
@@ -225,13 +185,9 @@ def run_lcd():
             try_lcd()
     except:
         pass
-#text
-thickness =2
-font=cv2.FONT_HERSHEY_PLAIN
-fontscale =1
 
+## load config data ##
 config_data={}
-#load config data
 def load_config_data():
     global config_data
     with open(now_dir+'/config_data.txt', 'rt') as cf:
@@ -245,15 +201,14 @@ def load_config_data():
 
 load_config_data()
 
-#save config data
+## save config data ##
 def save_config_data():
     global config_data
     with open(now_dir+'/config_data.txt', 'wt') as cf:
         for key in config_data:
             cf.write(f'{key}:{config_data[key]}\n')
-# remove old data
-#save_term = 365 #initial save_range
 
+## remove old data ##
 def delete_old_data():
   global config_data
   save_term = config_data['save_term']
@@ -270,23 +225,80 @@ def delete_old_data():
         except OSError:
           pass #오류 무시
 
+
+# information 수정 함수
+def modify_inform(a):
+    global information
+    if information == '-':
+        information = a
+    else:
+        information += ', ' + a
+        
+## setting ADC module(Vibration Sensor) ##
+vib_flag = 'Y'
+try:
+    # Create the I2C bus
+    i2c = busio.I2C(board.SCL, board.SDA)
+                                                                   
+    # Create the ADC object using the I2C bus
+    ads = ADS.ADS1115(i2c)
+
+    # Create single-ended input on channel 0
+    V0 = AnalogIn(ads, ADS.P0)
+    
+except:
+    vib_flag='N'
+    modify_inform('No vibration sensor')
+
+## setting temperature sensor ##
+temp_flag = 'Y'
+try:
+    i2c_temp=board.I2C()
+    mlx = adafruit_mlx90614.MLX90614(i2c_temp)
+except:
+    temp_flag = 'N'
+    modify_inform('No temperature sensor')
+
+## set proximity sensor ##
+# 제품 갯수 측정 함수 
 def add_product(channel):
     global product_number
     product_number += 1
-    
-'''
-def count_RPM(channel) :
-    global RPM
-    global checkR
-    global timeC
-    checkR+=1
-    RPM=1/(time.time()-timeC)*60
-    RPM=round(RPM,1)
-    if RPM<30:
-        RPM=0
-    timeC=time.time()
-'''
+#product counter
+GPIO.setmode(GPIO.BCM)
+proximity_pin = 18
+GPIO.setup(proximity_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.add_event_detect(proximity_pin, GPIO.FALLING, callback=add_product, bouncetime=1000)
 
+## setting buzzer ##
+buzzer_pin = 23
+GPIO.setup(buzzer_pin, GPIO.OUT)
+def temp_buzz():
+    try:
+        GPIO.output(buzzer_pin, GPIO.HIGH)
+        time.sleep(0.3)
+        GPIO.output(buzzer_pin, GPIO.LOW)
+        time.sleep(0.2)
+    except:
+        pass
+
+def vib_buzz():
+    try:
+        GPIO.output(buzzer_pin, GPIO.HIGH)
+        time.sleep(0.1)
+        GPIO.output(buzzer_pin, GPIO.LOW)
+        time.sleep(0.2)
+    except:
+        pass
+
+def buzz_loop():
+    global wv_flag, wt_flag
+    if wv_flag:
+        vib_buzz()
+    if wt_flag:
+        temp_buzz()
+        
+## 센서로부터 수집된 데이터 처리 ##
 data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}        
 time_list = []
 temp_list = []
@@ -322,42 +334,6 @@ def save_all_data():
     else:
         if len(data_dic['Information']) > 1:
             data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}
-
-#set proximity sensor
-#product counter
-GPIO.setmode(GPIO.BCM)
-proximity_pin = 18
-GPIO.setup(proximity_pin, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.add_event_detect(proximity_pin, GPIO.FALLING, callback=add_product, bouncetime=1000)
-
-#buzzer
-buzzer_pin = 23
-GPIO.setup(buzzer_pin, GPIO.OUT)
-
-def temp_buzz():
-    try:
-        GPIO.output(buzzer_pin, GPIO.HIGH)
-        time.sleep(0.3)
-        GPIO.output(buzzer_pin, GPIO.LOW)
-        time.sleep(0.2)
-    except:
-        pass
-
-def vib_buzz():
-    try:
-        GPIO.output(buzzer_pin, GPIO.HIGH)
-        time.sleep(0.1)
-        GPIO.output(buzzer_pin, GPIO.LOW)
-        time.sleep(0.2)
-    except:
-        pass
-
-def buzz_loop():
-    global wv_flag, wt_flag
-    if wv_flag:
-        vib_buzz()
-    if wt_flag:
-        temp_buzz()
         
 # run schedule
 schedule.every(1).seconds.do(run_lcd)
@@ -386,8 +362,8 @@ def captureData():
         if d_cnt == 0:
             VibV = 0.0; temp = 0.0;
             d_cnt += 1
-            if information != '-':
-                save_all_data()
+        if information != '-':
+            save_all_data()
         
         #warning temperature, warning vibration
         wt_flag = False
@@ -484,18 +460,11 @@ def captureFrames():
         cv2.putText(frame,time_now,L_time,font,fontscale,black,thickness,cv2.LINE_AA)
         cv2.putText(frame,time_now,L_time,font,fontscale,white,thickness-1,cv2.LINE_AA)
         
-        '''
-            cv2.putText(frame,'RPM',L_RPMT,font,fontscale,white,thickness,cv2.LINE_AA)
-            if checkR==0:
-                cv2.putText(frame,'0',L_RPM,font,fontscale,white,thickness)
-            else:
-                cv2.putText(frame,str(RPM),L_RPM,font,fontscale,white,thickness)
-        ''' 
         #warning
         global n, config_data
-
         w_temp = config_data['w_temp']
         w_vib = config_data['w_vib']
+        
         # modify warning video
         if temp>w_temp and VibV>w_vib and n%5==0:
             n=n+1
@@ -543,13 +512,10 @@ def streamFrames():
 
 @app.route('/data', methods=["GET", "POST"])
 def data_info():
-    #try:
-        global data_dic
-        global time_list, temp_list, vib_list
-        time = data_dic['Time'].split('.')[0]
-        return jsonify({'time':time, 'time_list':time_list,'info':data_dic['Information'], 'temp_list':temp_list, 'vib_list':vib_list})
-    #except:
-    #    return '<h1> Error </h1>'
+    global data_dic
+    global time_list, temp_list, vib_list
+    time = data_dic['Time'].split('.')[0]
+    return jsonify({'time':time, 'time_list':time_list,'info':data_dic['Information'], 'temp_list':temp_list, 'vib_list':vib_list})
 
 @app.route('/temp_graph')
 def temp_graph():
@@ -563,8 +529,8 @@ def vib_graph():
 def index():
     return render_template('index.html', ipaddr = ipaddr)
 
+# open log file in the web
 search_date = 0
-#log file open
 @app.route('/log', methods=['GET', 'POST'])
 def log():
     try:
