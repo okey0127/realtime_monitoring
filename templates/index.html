@@ -14,19 +14,15 @@
 			var path2 = '/setting';
 			window.open(path2);
 			}
-		var auto_refresh = setInterval(function()
-        {                
-            
-            var getData = $.get('/data');
-            
-            getData.done(function(result) {
-                var time = result.time;
-                var info = result.info;
-                var str = 'INFO: ' + '[' + time +'] ' + info;
+		var auto_refresh = setInterval(function(){                
+            		var getData = $.get('/data');
+            		getData.done(function(result) {
+                		var time = result.time;
+                		var info = result.info;
+                		var str = 'INFO: ' + '[' + time +'] ' + info;
 				document.getElementById('Information').innerHTML = str;
-            });
-        },1000); 
-            
+            		});
+        	},1000); 
 	</script>
     </head>
 	<body>
@@ -56,20 +52,16 @@
 	</div>
 	<div id='Information' align='center'> </div>
 	<table width="100%">
-		
 		<td align='left'>
 		<form method="GET" action='/log'>
 			<input type="date" name="search_date"> <input type="submit" value="log">
 		</form>
 		</td>
-		
-		
 		<td align='right'>
 		<a target="_blank" href="javascript:void(0);" onclick="Setting_open();">
 			<img src="{{url_for('static', filename='image/setting.png')}}"/ width="50">
 		</a>
 		</td>
-		
 	</table>
 	<td>
 		<details>
