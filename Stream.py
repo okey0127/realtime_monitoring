@@ -235,7 +235,7 @@ def modify_inform(a):
         information += ', ' + a
         
 ## setting ADC module(Vibration Sensor) ##
-vib_flag = 'Y'
+vib_flag = True
 try:
     # Create the I2C bus
     i2c = busio.I2C(board.SCL, board.SDA)
@@ -247,16 +247,16 @@ try:
     V0 = AnalogIn(ads, ADS.P0)
     
 except:
-    vib_flag='N'
+    vib_flag=False
     modify_inform('No vibration sensor')
 
 ## setting temperature sensor ##
-temp_flag = 'Y'
+temp_flag = True
 try:
     i2c_temp=board.I2C()
     mlx = adafruit_mlx90614.MLX90614(i2c_temp)
 except:
-    temp_flag = 'N'
+    temp_flag = False
     modify_inform('No temperature sensor')
 
 ## set proximity sensor ##
@@ -374,7 +374,7 @@ def captureData():
         information = '-'
         
         #Capture Data
-        if vib_flag == 'Y':
+        if vib_flag:
             try:
                 VibV= V0.value /(pow(2,15)/10000)
                 if VibV > w_vib:
@@ -382,10 +382,10 @@ def captureData():
                     wv_flag = True
             except:
                 modify_inform('Vibration sensor is not working')
-                vib_flag = 'N'
+                vib_flag = False
                 VibV = '-'
                 
-        if temp_flag == 'Y':
+        if temp_flag:
             try:
                 temp = round(mlx.object_temperature, 2)
                 if temp > w_temp:
@@ -393,7 +393,7 @@ def captureData():
                     wt_flag = True
             except:
                 modify_inform('Temperature sensor is not working')
-                temp_flag = 'N'
+                temp_flag = False
                 temp = '-'
                 
         if wv_flag or wt_flag:
@@ -424,17 +424,16 @@ def captureFrames():
         time_now=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         
         ret, frame = cap.read()
-        #frame = cv2.flip(frame, 0)
-        if c_cnt == 0: 
-            if frame is None:
-                frame = n_img
-                cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
-                modify_inform('Camera is not detected!')               
-            c_cnt += 1
         
-        
+        if frame is None:
+            frame = n_img
+            cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
+            if c_cnt == 0:
+                modify_inform('Camera is not detected!')
+                c_cnt += 1
+            
         #filter
-        if vib_flag == 'Y':
+        if vib_flag:
              VibV=data_dic['Vibration']
              cv2.putText(frame,'Vibration',L_VibT,font,fontscale,black,thickness,cv2.LINE_AA)
              cv2.putText(frame,str(round(VibV,2)),L_Vib,font,fontscale,black,thickness,cv2.LINE_AA)
@@ -442,7 +441,7 @@ def captureFrames():
              cv2.putText(frame,'Vibration',L_VibT,font,fontscale,white,thickness-1,cv2.LINE_AA)
              cv2.putText(frame,str(round(VibV,2)),L_Vib,font,fontscale,white,thickness-1,cv2.LINE_AA)
                 
-        if temp_flag == 'Y':
+        if temp_flag:
             temp = data_dic['Temperature']
             cv2.putText(frame,'Temperature',L_tempT,font,fontscale,black,thickness,cv2.LINE_AA)
             cv2.putText(frame,str(temp)+"'C",L_temp,font,fontscale,black,thickness,cv2.LINE_AA)
@@ -466,21 +465,22 @@ def captureFrames():
         w_vib = config_data['w_vib']
         
         # modify warning video
-        if temp>w_temp and VibV>w_vib and n%5==0:
-            n=n+1
-            check=check+1
-            frame = img4 
-        elif temp>w_temp and n%5==0:
-            n=n+1
-            check=check+1
-            frame = img2
-        elif VibV>w_vib and n%5==0:
-            n=n+1
-            check=check+1
-            frame = img3
-        else:
-            check=check+1
-            n=n+1
+        if vib_flag and temp_flag:
+            if temp>w_temp and VibV>w_vib and n%5==0:
+                n=n+1
+                check=check+1
+                frame = img4 
+            elif temp>w_temp and n%5==0:
+                n=n+1
+                check=check+1
+                frame = img2
+            elif VibV>w_vib and n%5==0:
+                n=n+1
+                check=check+1
+                frame = img3
+            else:
+                check=check+1
+                n=n+1
         
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
