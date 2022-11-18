@@ -34,7 +34,6 @@
                         ],
                         borderWidth: 1
                     }]
-                
             };
             // config block
             const config = {
@@ -49,25 +48,17 @@
                 document.getElementById('tempChart'),
                 config
             );
-            
             var auto_refresh = setInterval(function()
             {                
-                
                 var getData = $.get('/data');
-                
                 getData.done(function(result) {
                     var time_list = result.time_list;
                     var temper = result.temp_list;
-                    
                     tempChart.data.datasets[0].data = temper;
                     tempChart.data.labels = time_list;
                 });
                 tempChart.update();
             },1000);               
-                
-        
 		</script>
- 
 	</body>
-
 </html>
