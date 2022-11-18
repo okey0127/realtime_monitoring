@@ -107,23 +107,32 @@ now_dir = os.path.dirname(os.path.abspath(__file__))
 if not os.path.exists(now_dir+'/log'):
     os.mkdir(now_dir+'/log')
 
+## LCD ##
+# Setting LCD
+def try_lcd():
+    global lcd, lcd_flag
+    try:
+        lcd=CharLCD('PCF8574', 0x3f)
+        lcd_flag = True
+    except:
+        lcd_flag = False
+try_lcd()
+
 ## Get IP ##
 global i_flag
 global ipaddr
 global i_cnt
-i_cnt = 0
 
 def get_ip():
-    global i_flag, ipaddr, i_cnt
+    global i_flag, ipaddr
     try:
         URL = 'https://icanhazip.com'
         respons = requests.get(URL)
         ex_ip = respons.text.strip()
-        i_flag = 'Y'
-        i_cnt = 1
+        i_flag = True
     except:
-        i_flag = 'N'
-        if lcd_flag == 'Y':
+        i_flag = False
+        if lcd_flag:
             lcd.clear()
             lcd.cursor_pos=(0,0)
             lcd.write_string('No internet')
@@ -131,17 +140,6 @@ def get_ip():
     in_ip = os.popen('hostname -I').read().strip()
     ipaddr={'in_ip':in_ip, 'ex_ip':ex_ip}
 get_ip()
-
-## LCD ##
-# Setting LCD
-def try_lcd():
-    global lcd, lcd_flag
-    try:
-        lcd=CharLCD('PCF8574', 0x3f)
-        lcd_flag = 'Y'
-    except:
-        lcd_flag = 'N'
-try_lcd()
 
 # LCD 동작 함수 
 ip_st = 0
@@ -151,11 +149,11 @@ inf_en = 17
 def run_lcd():
     global ip_st, ip_en, inf_st, inf_en, data_dic, i_flag, ipaddr, lcd_flag
     try:
-        if lcd_flag == 'Y':
+        if lcd_flag:
             get_ip()
             ip_addr = ipaddr['in_ip']+':8080'
             str_len = len(ip_addr)
-            if i_flag == 'Y':
+            if i_flag:
                 if str_len <= 16:
                     lcd.cursor_pos=(0,0)
                     lcd.write_string(ip_addr)
@@ -264,6 +262,7 @@ except:
 def add_product(channel):
     global product_number
     product_number += 1
+    
 #product counter
 GPIO.setmode(GPIO.BCM)
 proximity_pin = 18
@@ -297,7 +296,7 @@ def buzz_loop():
         vib_buzz()
     if wt_flag:
         temp_buzz()
-        
+
 ## 센서로부터 수집된 데이터 처리 ##
 data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}        
 time_list = []
@@ -308,11 +307,11 @@ global s_cnt
 s_cnt = 0
 def save_all_data():
     #save log data as CSV
-    global data_dic, information, i_cnt, s_cnt
+    global data_dic, i_flag, s_cnt, information
     get_ip()
     day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
     log_path = f'{now_dir}/log/{day}server.csv'
-    if data_dic['Date'] == day and i_cnt == 1:
+    if i_flag:
         df = pd.DataFrame([data_dic])
         if not os.path.exists(log_path):
             df.to_csv(log_path, index=False, header = True)
@@ -323,6 +322,7 @@ def save_all_data():
                 data_.dropna(axis = 0)
                 data_.to_csv(log_path, index=False, header = True)
                 s_cnt = 1
+            
             df.to_csv(log_path, mode='a', index=False, header = False)
         time_list.append(str(datetime.datetime.now().strftime('%H:%M:%S')))
         temp_list.append(data_dic['Temperature'])
@@ -333,7 +333,11 @@ def save_all_data():
             vib_list.pop(0)
     else:
         if len(data_dic['Information']) > 1:
-            data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}
+            data_dic['Date'] = '-'
+            data_dic['Time'] = '-'
+            df = pd.DataFrame([data_dic])
+            df.to_csv(log_path, mode='a', index=False, header = False)
+    information = '-'
         
 # run schedule
 schedule.every(1).seconds.do(run_lcd)
@@ -370,8 +374,6 @@ def captureData():
         wv_flag = False
         w_temp = config_data['w_temp']
         w_vib = config_data['w_vib']
-    
-        information = '-'
         
         #Capture Data
         if vib_flag:
@@ -403,11 +405,10 @@ def captureData():
         #save All data as dictionary                
         data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
         schedule.run_pending()
-        information = '-'
     
 def captureFrames():
     global video_frame, thread_lock
-    camera_flag = ''
+    
     # Video capturing
     cap = cv2.VideoCapture(-1)   
     
@@ -425,13 +426,15 @@ def captureFrames():
         
         ret, frame = cap.read()
         
-        if frame is None:
+        if not ret:
             frame = n_img
             cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
             if c_cnt == 0:
                 modify_inform('Camera is not detected!')
+                data_dic['Information'] = information
+                save_all_data()
                 c_cnt += 1
-            
+ 
         #filter
         if vib_flag:
              VibV=data_dic['Vibration']
@@ -465,8 +468,8 @@ def captureFrames():
         w_vib = config_data['w_vib']
         
         # modify warning video
-        if vib_flag and temp_flag:
-            if temp>w_temp and VibV>w_vib and n%5==0:
+        if vib_flag or temp_flag:
+            if vib_flag and temp_flag and temp>w_temp and VibV>w_vib and n%5==0:
                 n=n+1
                 check=check+1
                 frame = img4 
@@ -486,10 +489,8 @@ def captureFrames():
         # with thread safe access
         with thread_lock:
             video_frame = frame.copy()
-            
+
     cap.release()
-    GPIO.output(buzzer_pin, GPIO.LOW)
-    GPIO.cleanup()
 
 def encodeFrame():
     global thread_lock
