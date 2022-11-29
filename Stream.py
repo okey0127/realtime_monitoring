@@ -402,11 +402,13 @@ def captureData():
                 temp = '-'
                 
         if wv_flag or wt_flag:
-            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
+            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp,\
+                        'Vibration':VibV, 'Information': information}
             save_all_data()
         
         #save All data as dictionary                
-        data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
+        data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, \
+                    'Vibration':VibV, 'Information': information}
         schedule.run_pending()
     
 def captureFrames():
@@ -540,7 +542,8 @@ def data_info():
     global data_dic
     global time_list, temp_list, vib_list
     time = data_dic['Time'].split('.')[0]
-    return jsonify({'time':time, 'time_list':time_list,'info':data_dic['Information'], 'temp_list':temp_list, 'vib_list':vib_list})
+    return jsonify({'time':time, 'time_list':time_list,'info':data_dic['Information'], \
+                    'temp_list':temp_list, 'vib_list':vib_list})
 
 @app.route('/temp_graph')
 def temp_graph():
@@ -566,7 +569,8 @@ def log():
             df = pd.read_csv(log_path)
             df = df.iloc[::-1]
             
-            return "<form action ='/log', method='POST'><button type='submit'>Download</button></form>"+df.to_html(header=True, index = False, justify='center')
+            return "<form action ='/log', method='POST'><button type='submit'>Download</button></form>"+\
+                    df.to_html(header=True, index = False, justify='center')
         elif request.method == 'POST':
             return redirect(url_for('DownloadFile', date = search_date))
     except:
@@ -620,7 +624,8 @@ def Settingpage():
             return redirect('/setting')
         except:
             pass
-    return render_template('setting.html', save_term = config_data['save_term'], w_temp = config_data['w_temp'], w_vib=config_data['w_vib'])
+    return render_template('setting.html', save_term = config_data['save_term'], \
+                           w_temp = config_data['w_temp'], w_vib=config_data['w_vib'])
     
 if __name__ == '__main__':
     # Create a thread and attach the method that captures the image frames, to it
