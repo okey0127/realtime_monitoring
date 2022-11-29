@@ -1,4 +1,4 @@
-# edit: 22.11.29
+# edit: 22.11.18
 
 import cv2
 import time
@@ -343,7 +343,6 @@ def save_all_data():
         
 # run schedule
 schedule.every(1).seconds.do(run_lcd)
-schedule.every(0.1).seconds.do(buzz_loop)
 schedule.every(1).seconds.do(save_all_data)
 schedule.every(12).hours.do(delete_old_data)
 
@@ -504,8 +503,8 @@ def captureFrames():
             
         cv2.putText(frame,'FPS: ',L_FPST,font,fontscale,white,thickness-1,cv2.LINE_AA)
         cv2.putText(frame,str(M_FPS),L_FPS,font,fontscale,white,thickness-1,cv2.LINE_AA)
+        print(max(FPS_list), min(FPS_list))
         '''
-        
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
@@ -629,6 +628,10 @@ if __name__ == '__main__':
     # Capature Data thread
     data_thread = threading.Thread(target=captureData)
     data_thread.daemon = True
+    
+    # buzzer Thread
+    buzz_thread = threading.Thread(target=buzz_loop)
+    buzz_thread.daemon = True
     
     # Start the thread
     process_thread.start()
