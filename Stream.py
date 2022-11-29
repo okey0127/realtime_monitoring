@@ -1,4 +1,4 @@
-# edit: 22.11.18
+# edit: 22.11.29
 
 import cv2
 import time
@@ -645,3 +645,4 @@ if __name__ == '__main__':
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
     # the host machine's localhost and is discoverable by other machines on the same network 
     app.run(host="0.0.0.0", port="8080")
+
