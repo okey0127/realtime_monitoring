@@ -293,11 +293,13 @@ def vib_buzz():
         pass
 
 def buzz_loop():
-    global wv_flag, wt_flag
-    if wv_flag:
-        vib_buzz()
-    if wt_flag:
-        temp_buzz()
+    while True:
+        global wv_flag, wt_flag
+        if wv_flag:
+            vib_buzz()
+        if wt_flag:
+            temp_buzz()
+
 
 ## 센서로부터 수집된 데이터 처리 ##
 data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}        
@@ -503,7 +505,7 @@ def captureFrames():
             
         cv2.putText(frame,'FPS: ',L_FPST,font,fontscale,white,thickness-1,cv2.LINE_AA)
         cv2.putText(frame,str(M_FPS),L_FPS,font,fontscale,white,thickness-1,cv2.LINE_AA)
-        print(max(FPS_list), min(FPS_list))
+        print(FPS_list)
         '''
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
@@ -636,6 +638,8 @@ if __name__ == '__main__':
     # Start the thread
     process_thread.start()
     data_thread.start()
+    buzz_thread.start()
+    
     
     # start the Flask Web Application
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
