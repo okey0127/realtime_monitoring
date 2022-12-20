@@ -167,7 +167,7 @@ def run_lcd():
                         ip_en = 17
                     lcd.cursor_pos=(0,0)
                     lcd.write_string(ip_addr[ip_st:ip_en])
-    
+            
             lcd_inf = data_dic['Information']
             info_len = len(lcd_inf)
             if info_len <= 16:
@@ -181,6 +181,7 @@ def run_lcd():
                     inf_en = 17
                 lcd.cursor_pos=(1,0)
                 lcd.write_string(lcd_inf[inf_st:inf_en])
+            
         else:
             try_lcd()
     except:
@@ -326,8 +327,8 @@ def save_all_data():
                 data_.dropna(axis = 0)
                 data_.to_csv(log_path, index=False, header = True)
                 s_cnt = 1
-            
             df.to_csv(log_path, mode='a', index=False, header = False)
+            
         time_list.append(str(datetime.datetime.now().strftime('%H:%M:%S')))
         temp_list.append(data_dic['Temperature'])
         vib_list.append(data_dic['Vibration'])
@@ -336,7 +337,7 @@ def save_all_data():
             temp_list.pop(0)
             vib_list.pop(0)
     else:
-        if len(data_dic['Information']) > 1:
+        if data_dic['Information'] != '-':
             data_dic['Date'] = '-'
             data_dic['Time'] = '-'
             df = pd.DataFrame([data_dic])
@@ -361,7 +362,6 @@ def captureData():
         global data_dic, d_cnt, config_data
         global vib_flag, temp_flag
         global wt_flag, wv_flag
-        
         time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
         time_hms=str(datetime.datetime.now().strftime('%H:%M:%S.%f'))
         
@@ -369,8 +369,8 @@ def captureData():
         if d_cnt == 0:
             VibV = 0.0; temp = 0.0;
             d_cnt += 1
-        if information != '-':
-            save_all_data()
+            if information != '-':
+                save_all_data()
         
         #warning temperature, warning vibration
         wt_flag = False
@@ -400,15 +400,13 @@ def captureData():
                 modify_inform('Temperature sensor is not working')
                 temp_flag = False
                 temp = '-'
-                
         if wv_flag or wt_flag:
-            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp,\
-                        'Vibration':VibV, 'Information': information}
+            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
             save_all_data()
+            run_lcd()
         
         #save All data as dictionary                
-        data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, \
-                    'Vibration':VibV, 'Information': information}
+        data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
         schedule.run_pending()
     
 def captureFrames():
@@ -542,8 +540,7 @@ def data_info():
     global data_dic
     global time_list, temp_list, vib_list
     time = data_dic['Time'].split('.')[0]
-    return jsonify({'time':time, 'time_list':time_list,'info':data_dic['Information'], \
-                    'temp_list':temp_list, 'vib_list':vib_list})
+    return jsonify({'time':time, 'time_list':time_list,'info':data_dic['Information'], 'temp_list':temp_list, 'vib_list':vib_list})
 
 @app.route('/temp_graph')
 def temp_graph():
@@ -569,8 +566,7 @@ def log():
             df = pd.read_csv(log_path)
             df = df.iloc[::-1]
             
-            return "<form action ='/log', method='POST'><button type='submit'>Download</button></form>"+\
-                    df.to_html(header=True, index = False, justify='center')
+            return "<form action ='/log', method='POST'><button type='submit'>Download</button></form>"+df.to_html(header=True, index = False, justify='center')
         elif request.method == 'POST':
             return redirect(url_for('DownloadFile', date = search_date))
     except:
@@ -624,8 +620,7 @@ def Settingpage():
             return redirect('/setting')
         except:
             pass
-    return render_template('setting.html', save_term = config_data['save_term'], \
-                           w_temp = config_data['w_temp'], w_vib=config_data['w_vib'])
+    return render_template('setting.html', save_term = config_data['save_term'], w_temp = config_data['w_temp'], w_vib=config_data['w_vib'])
     
 if __name__ == '__main__':
     # Create a thread and attach the method that captures the image frames, to it
@@ -650,4 +645,3 @@ if __name__ == '__main__':
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
     # the host machine's localhost and is discoverable by other machines on the same network 
     app.run(host="0.0.0.0", port="8080")
-
