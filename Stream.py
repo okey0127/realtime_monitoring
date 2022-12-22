@@ -490,7 +490,7 @@ def captureFrames():
             else:
                 check=check+1
                 n=n+1
-        '''
+
         # calculate time interval for measuring FPS
         cur_time = time.time()
         diff = cur_time - prev_time
@@ -506,7 +506,7 @@ def captureFrames():
         cv2.putText(frame,'FPS: ',L_FPST,font,fontscale,white,thickness-1,cv2.LINE_AA)
         cv2.putText(frame,str(M_FPS),L_FPS,font,fontscale,white,thickness-1,cv2.LINE_AA)
         print(FPS_list)
-        '''
+
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
         with thread_lock:
