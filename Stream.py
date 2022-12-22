@@ -239,11 +239,9 @@ def modify_inform(a):
 vib_flag = True
 try:
     # Create the I2C bus
-    i2c = busio.I2C(board.SCL, board.SDA)
-                                                                   
+    i2c = busio.I2C(board.SCL, board.SDA)                                                          
     # Create the ADC object using the I2C bus
     ads = ADS.ADS1115(i2c)
-
     # Create single-ended input on channel 0
     V0 = AnalogIn(ads, ADS.P0)
     
@@ -295,11 +293,14 @@ def vib_buzz():
 
 def buzz_loop():
     while True:
-        global wv_flag, wt_flag
-        if wv_flag:
-            vib_buzz()
-        if wt_flag:
-            temp_buzz()
+        try:
+            global wv_flag, wt_flag
+            if wv_flag:
+                vib_buzz()
+            if wt_flag:
+                temp_buzz()
+        except:
+            pass
 
 
 ## 센서로부터 수집된 데이터 처리 ##
@@ -511,9 +512,6 @@ def captureFrames():
         # with thread safe access
         with thread_lock:
             video_frame = frame.copy()
-        
-        
-        
     cap.release()
 
 def encodeFrame():
@@ -639,7 +637,6 @@ if __name__ == '__main__':
     process_thread.start()
     data_thread.start()
     buzz_thread.start()
-    
     
     # start the Flask Web Application
     # While it can be run on any feasible IP, IP = 0.0.0.0 renders the web app on
