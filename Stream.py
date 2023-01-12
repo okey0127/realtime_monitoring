@@ -1,46 +1,56 @@
-# edit: 22.11.29
+#Realtime monitoring module Final ver.
 
+#### import libraries ####
 import cv2
 import time
-import threading
-from flask import Response, Flask, render_template, request, redirect, session, send_file
-from flask import abort, jsonify, url_for, Blueprint, make_response
 import numpy as np
 import datetime
 import math
 import schedule
-import json
-import RPi.GPIO as GPIO
 import os
 import io
 import base64
+# for multi-threading
+import threading
+# for creating web server
+from flask import Response, Flask, render_template, request, redirect, session, send_file
+from flask import abort, jsonify, url_for, Blueprint, make_response
+import json
 import requests
-
+# using Rasberry Pi GPIO pins
+import RPi.GPIO as GPIO
 #data visualize
 import pandas as pd
 from RPLCD.i2c import CharLCD
 import I2C_LCD
-
 #temperature sensor
 import adafruit_mlx90614
-
 #ADC module import(Vibration Sensor)
 import board
 import busio
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
 
-# initial
+####initial values####
+#size of video
 img_w = 640
 img_h = 480
+
+#number of products
 product_number = 0
-timeC=0
-check=0
-n=0
-c_cnt = 0
+#information
 information = '-'
 
-# 영상 글꼴
+#warning 발생 시 영상이 깜빡이는 주기를 조절
+n=0 
+#c_cnt = 0 #captureFrames()가 가동 이후 첫 루프인지 판별
+first_v_capture = True 
+#captureData()가 가동 이후 첫 루프인지 판별
+first_d_capture = True
+#save_all_data가 가동 이후 첫 실행인지 판별
+first_s_func = True
+
+# 영상 텍스트 글꼴
 thickness = 2
 font=cv2.FONT_HERSHEY_PLAIN
 fontscale = 1
@@ -59,14 +69,6 @@ L_Vib=(center_x+250,center_y-200)
 L_VibT=(center_x+150,center_y-200)
 L_FPS = (center_x+250,center_y+200)
 L_FPST = (center_x+150,center_y+200)
-
-# Image frame sent to the Flask object
-global video_frame
-video_frame = None
-
-# Use locks for thread-safe viewing of frames in multiple browsers
-global thread_lock 
-thread_lock = threading.Lock()
 
 # 문제 발생시 송출할 화면 생성(고온: 빨강, 충격: 회색, 동시 발생: 보라)
 n_img=np.zeros((img_h,img_w,3),np.uint8)
@@ -94,13 +96,15 @@ for i in range(0,img_h-1):
 
 # Colors
 black = (0,0,0)
-red=(0,0,255)
-green=(0,255,0)
-blue=(255,0,0)
 white=(255,255,255)
-yellow=(0,255,255)
-cyan=(255,255,0)
-magenta=(255,0,255)
+
+# Image frame sent to the Flask object
+global video_frame
+video_frame = None
+
+# Use locks for thread-safe viewing of frames in multiple browsers
+global thread_lock 
+thread_lock = threading.Lock()
 
 # 파일 경로 가져오기
 now_dir = os.path.dirname(os.path.abspath(__file__))
@@ -109,6 +113,7 @@ now_dir = os.path.dirname(os.path.abspath(__file__))
 if not os.path.exists(now_dir+'/log'):
     os.mkdir(now_dir+'/log')
 
+####functions####
 ## LCD ##
 # Setting LCD
 def try_lcd():
@@ -167,7 +172,6 @@ def run_lcd():
                         ip_en = 17
                     lcd.cursor_pos=(0,0)
                     lcd.write_string(ip_addr[ip_st:ip_en])
-            
             lcd_inf = data_dic['Information']
             info_len = len(lcd_inf)
             if info_len <= 16:
@@ -181,12 +185,10 @@ def run_lcd():
                     inf_en = 17
                 lcd.cursor_pos=(1,0)
                 lcd.write_string(lcd_inf[inf_st:inf_en])
-            
         else:
             try_lcd()
     except:
         pass
-
 ## load config data ##
 config_data={}
 def load_config_data():
@@ -199,7 +201,6 @@ def load_config_data():
             config_data_list.append(d.split(':'))
     for index, value in enumerate(config_data_list):
         config_data[value[0]] = int(value[1])
-
 load_config_data()
 
 ## save config data ##
@@ -226,7 +227,6 @@ def delete_old_data():
         except OSError:
           pass #오류 무시
 
-
 # information 수정 함수
 def modify_inform(a):
     global information
@@ -234,7 +234,7 @@ def modify_inform(a):
         information = a
     else:
         information += ', ' + a
-        
+
 ## setting ADC module(Vibration Sensor) ##
 vib_flag = True
 try:
@@ -244,7 +244,6 @@ try:
     ads = ADS.ADS1115(i2c)
     # Create single-ended input on channel 0
     V0 = AnalogIn(ads, ADS.P0)
-    
 except:
     vib_flag=False
     modify_inform('No vibration sensor')
@@ -263,7 +262,7 @@ except:
 def add_product(channel):
     global product_number
     product_number += 1
-    
+
 #product counter
 GPIO.setmode(GPIO.BCM)
 proximity_pin = 18
@@ -292,28 +291,23 @@ def vib_buzz():
         pass
 
 def buzz_loop():
-    while True:
-        try:
-            global wv_flag, wt_flag
-            if wv_flag:
-                vib_buzz()
-            if wt_flag:
-                temp_buzz()
-        except:
-            pass
-
+    try:
+        global wv_flag, wt_flag
+        if wv_flag:
+            vib_buzz()
+        if wt_flag:
+            temp_buzz()
+    except:
+        pass
 
 ## 센서로부터 수집된 데이터 처리 ##
 data_dic = {'Date':'-', 'Time':'-', 'Product': '-', 'Temperature':'-', 'Vibration':'-', 'Information': information}        
 time_list = []
 temp_list = []
 vib_list = []
-
-global s_cnt
-s_cnt = 0
 def save_all_data():
     #save log data as CSV
-    global data_dic, i_flag, s_cnt, information
+    global data_dic, i_flag, information, first_s_func
     get_ip()
     day = time.strftime('%Y-%m-%d',time.localtime(time.time()))
     log_path = f'{now_dir}/log/{day}server.csv'
@@ -323,13 +317,12 @@ def save_all_data():
             df.to_csv(log_path, index=False, header = True)
         else:
             os.system(f'sudo chmod 777 {log_path}')
-            if s_cnt == 0:
+            if first_s_func:
                 data_ = pd.read_csv(log_path)
                 data_.dropna(axis = 0)
                 data_.to_csv(log_path, index=False, header = True)
-                s_cnt = 1
+                first_s_func = False
             df.to_csv(log_path, mode='a', index=False, header = False)
-            
         time_list.append(str(datetime.datetime.now().strftime('%H:%M:%S')))
         temp_list.append(data_dic['Temperature'])
         vib_list.append(data_dic['Vibration'])
@@ -343,34 +336,36 @@ def save_all_data():
             data_dic['Time'] = '-'
             df = pd.DataFrame([data_dic])
             df.to_csv(log_path, mode='a', index=False, header = False)
-    information = '-'
-        
+    information = '-' #data의 저장이 완료되었으므로 information을 초기화
+
 # run schedule
 schedule.every(1).seconds.do(run_lcd)
+schedule.every(0.1).seconds.do(buzz_loop)
 schedule.every(1).seconds.do(save_all_data)
 schedule.every(12).hours.do(delete_old_data)
 
-#declare Flask Server
+## declare Flask Server ##
 app = Flask(__name__)
 
-global d_cnt
-d_cnt = 0
+## Thread 1. capture data ##
 global wt_flag, wv_flag
-
 def captureData():
     while True:
         global information
-        global data_dic, d_cnt, config_data
+        global data_dic, config_data, first_d_capture
         global vib_flag, temp_flag
         global wt_flag, wv_flag
         time_ymd=str(datetime.datetime.now().strftime('%Y-%m-%d'))
         time_hms=str(datetime.datetime.now().strftime('%H:%M:%S.%f'))
-        
+        data_dic['Date'] = time_ymd
+        data_dic['Time'] = time_hms
+
         # run only in the first loop
-        if d_cnt == 0:
-            VibV = 0.0; temp = 0.0;
-            d_cnt += 1
+        if first_d_capture:
+            VibV = 0.0; temp = 0.0
+            first_d_capture = False
             if information != '-':
+                data_dic['Information'] = information
                 save_all_data()
         
         #warning temperature, warning vibration
@@ -380,9 +375,10 @@ def captureData():
         w_vib = config_data['w_vib']
         
         #Capture Data
+        data_dic['Product'] = product_number
         if vib_flag:
             try:
-                VibV= V0.value /(pow(2,15)/10000)
+                VibV= V0.value/(pow(2,15)/10000)
                 if VibV > w_vib:
                     modify_inform('high Vibration')
                     wv_flag = True
@@ -390,7 +386,7 @@ def captureData():
                 modify_inform('Vibration sensor is not working')
                 vib_flag = False
                 VibV = '-'
-                
+            data_dic['Vibration'] = VibV
         if temp_flag:
             try:
                 temp = round(mlx.object_temperature, 2)
@@ -401,15 +397,18 @@ def captureData():
                 modify_inform('Temperature sensor is not working')
                 temp_flag = False
                 temp = '-'
+            data_dic['Temperature'] = temp
+
+        data_dic['Information'] = information
+        
+        #오류 발생시 즉각 정보 저장 및 표시
         if wv_flag or wt_flag:
-            data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
             save_all_data()
             run_lcd()
         
-        #save All data as dictionary                
-        data_dic = {'Date':time_ymd, 'Time':time_hms, 'Product':product_number, 'Temperature':temp, 'Vibration':VibV, 'Information': information}
         schedule.run_pending()
-    
+
+## Thread 2. capture frames ##
 def captureFrames():
     global video_frame, thread_lock
     
@@ -420,11 +419,10 @@ def captureFrames():
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, img_w)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, img_h)
     
-    # Time measurement
+    # param for Time measurement
     prev_time = 0
     FPS_list = []
     while True:
-        global check, c_cnt
         global information
         global data_dic
         global vib_flag, temp_flag
@@ -432,15 +430,15 @@ def captureFrames():
         time_now=str(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         
         ret, frame = cap.read()
-        
+       
         if not ret:
             frame = n_img
             cv2.putText(frame,'Camera is not detected!',(center_x-200, center_y),font,2,white,thickness,cv2.LINE_AA)
-            if c_cnt == 0:
+            if first_v_capture:
                 modify_inform('Camera is not detected!')
                 data_dic['Information'] = information
                 save_all_data()
-                c_cnt += 1
+                first_v_capture = False
  
         #filter
         if vib_flag:
@@ -476,21 +474,16 @@ def captureFrames():
         
         # modify warning video
         if vib_flag or temp_flag:
-            if vib_flag and temp_flag and temp>w_temp and VibV>w_vib and n%5==0:
-                n=n+1
-                check=check+1
-                frame = img4 
-            elif temp>w_temp and n%5==0:
-                n=n+1
-                check=check+1
-                frame = img2
-            elif VibV>w_vib and n%5==0:
-                n=n+1
-                check=check+1
-                frame = img3
-            else:
-                check=check+1
-                n=n+1
+            try:
+                if vib_flag and temp_flag and temp>w_temp and VibV>w_vib and n%5==0:
+                    frame = img4 
+                elif temp>w_temp and n%5==0:
+                    frame = img2
+                elif VibV>w_vib and n%5==0:
+                    frame = img3
+            except:
+                pass
+            n=n+1
 
         # calculate time interval for measuring FPS
         cur_time = time.time()
@@ -501,12 +494,12 @@ def captureFrames():
         if len(FPS_list) > 30:
             FPS_list.pop(0)
         M_FPS = round(sum(FPS_list)/len(FPS_list),2)
+
         cv2.putText(frame,'FPS: ',L_FPST,font,fontscale,black,thickness,cv2.LINE_AA)
         cv2.putText(frame,str(M_FPS),L_FPS,font,fontscale,black,thickness,cv2.LINE_AA)
             
         cv2.putText(frame,'FPS: ',L_FPST,font,fontscale,white,thickness-1,cv2.LINE_AA)
         cv2.putText(frame,str(M_FPS),L_FPS,font,fontscale,white,thickness-1,cv2.LINE_AA)
-        print(FPS_list)
 
         # Create a copy of the frame and store it in the global variable,
         # with thread safe access
@@ -528,7 +521,7 @@ def encodeFrame():
 
         # Output image as a byte array
         yield(b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' + bytearray(encoded_image) + b'\r\n')
-        
+
 @app.route('/video')
 def streamFrames():
     return Response(encodeFrame(), mimetype = "multipart/x-mixed-replace; boundary=frame")
